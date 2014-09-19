@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140919035501) do
+ActiveRecord::Schema.define(version: 20140919052918) do
+
+  create_table "articles", force: true do |t|
+    t.string   "body_html_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contents", force: true do |t|
+    t.string   "title"
+    t.string   "subtitle"
+    t.string   "description"
+    t.integer  "content_variant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "content_variant_type"
+  end
 
   create_table "time_line_items", force: true do |t|
     t.string   "title"
@@ -23,6 +39,12 @@ ActiveRecord::Schema.define(version: 20140919035501) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active"
+  end
+
+  create_table "videos", force: true do |t|
+    t.string   "video_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
