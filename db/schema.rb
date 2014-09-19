@@ -11,12 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140919052918) do
+ActiveRecord::Schema.define(version: 20140919123053) do
 
   create_table "articles", force: true do |t|
     t.string   "body_html_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
+    t.string   "subtitle"
+    t.string   "description"
   end
 
   create_table "contents", force: true do |t|
@@ -45,6 +48,9 @@ ActiveRecord::Schema.define(version: 20140919052918) do
     t.string   "video_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
+    t.string   "subtitle"
+    t.string   "description"
   end
 
 end

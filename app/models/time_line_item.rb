@@ -1,6 +1,4 @@
 class TimeLineItem < ActiveRecord::Base
-  has_one :content
-
   enum content_type: [:article, :album, :video]
 
   validates :title, presence: true,
