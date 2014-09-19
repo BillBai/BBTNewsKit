@@ -1,0 +1,23 @@
+<h1> all Sections </h1>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>Category</th>
+    <th>Module</th>
+  </tr>
+
+  <% @sections.each do |section| %>
+      <tr>
+        <td><%= section.id %></td>
+        <td><%= section.category %></td>
+        <td><%= section.module %></td>
+
+        <td><%= link_to 'Show', section_path(section) %></td>
+        <td><%= link_to 'Edit', edit_section_path(section) %></td>
+        <td><%= link_to 'Delete', section_path(section),
+                        method: :delete, data: { confirm: 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
+  <%= link_to 'new section', new_section_path %>
+</table>

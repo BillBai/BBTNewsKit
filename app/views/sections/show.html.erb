@@ -1,0 +1,19 @@
+<h1> Section </h1>
+
+<p>
+  <strong>id: </strong>
+  <%= @section.id %>
+</p>
+
+<p>
+  <strong> Category: </strong>
+  <%= @section.category %>
+
+<p>
+  <strong> Module: </strong>
+  <%= @section.module %>
+</p>
+
+<%= link_to 'Back', sections_path %>
+<%= link_to 'Edit', edit_section_path(@section) %>
+

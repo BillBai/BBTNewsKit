@@ -1,4 +1,4 @@
 BBTNewsKit
 ==========
 
-news publishing kit for bbt new center~
+news publishing kit for bbt news center~

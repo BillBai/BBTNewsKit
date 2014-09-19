@@ -1,0 +1,29 @@
+<%= form_for @section do |f| %>
+
+    <% if @section.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@section.errors.count, "error") %>
+            prohibited
+            this article from being saved:</h2>
+          <ul>
+            <% @section.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <p>
+      <%= f.label :category %>
+      <%= f.select :category, options_for_select(Section.categories.keys.to_a, selected: @section.category) %>
+    </p>
+
+    <p>
+      <%= f.label :module %>
+      <%= f.text_field :module %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>
