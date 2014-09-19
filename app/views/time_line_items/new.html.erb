@@ -1,0 +1,33 @@
+<h1> new time line item </h1>
+
+<%= form_for :time_line_item, url: time_line_items_path do |f| %>
+
+    <% if @time_line_item.errors.any? %>
+        <dvi id="error_explanation">
+        <h2><%= pluralize(@time_line_item.errors.count, "error") %>
+          prohibited
+          this article from being saved:</h2>
+        <ul>
+          <%= @time_line_item.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+        </dvi>
+    <% end %>
+
+
+    <p>
+      <%= f.label :title%> <br>
+      <%= f.text_field :title %>
+    </p>
+
+    <p>
+      <%= f.label :subtitle%> <br>
+      <%= f.text_field :subtitle %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+
+<%= link_to 'Back', time_line_items_path %>
+<% end %>

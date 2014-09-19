@@ -1,0 +1,18 @@
+<h1> all time line items </h1>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>Title</th>
+    <th>Subtitle</th>
+  </tr>
+
+  <% @time_line_items.each do |time_line_item| %>
+    <tr>
+      <td><%= time_line_item.id %></td>
+      <td><%= time_line_item.title %></td>
+      <td><%= time_line_item.subtitle %></td>
+    </tr>
+  <% end %>
+  <%= link_to 'new time line item', new_time_line_item_path %>
+</table>
