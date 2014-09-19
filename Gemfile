@@ -45,6 +45,9 @@ gem 'bootstrap-sass-rails'
 # use puma as the server
 gem 'puma'
 
+# use paperclip for attachment file management
+gem 'paperclip', "~> 4.2"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140919123053) do
+ActiveRecord::Schema.define(version: 20140919150628) do
 
   create_table "articles", force: true do |t|
     t.string   "body_html_url"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20140919123053) do
     t.string   "title"
     t.string   "subtitle"
     t.string   "description"
+    t.integer  "author_id"
+    t.integer  "section_id"
+  end
+
+  create_table "authors", force: true do |t|
+    t.integer  "department"
+    t.string   "name"
+    t.string   "display_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "contents", force: true do |t|
@@ -30,6 +40,13 @@ ActiveRecord::Schema.define(version: 20140919123053) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "content_variant_type"
+  end
+
+  create_table "sections", force: true do |t|
+    t.integer  "category"
+    t.string   "module"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "time_line_items", force: true do |t|
@@ -51,6 +68,8 @@ ActiveRecord::Schema.define(version: 20140919123053) do
     t.string   "title"
     t.string   "subtitle"
     t.string   "description"
+    t.integer  "author_id"
+    t.integer  "section_id"
   end
 
 end

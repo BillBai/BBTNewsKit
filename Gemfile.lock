@@ -41,6 +41,10 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.4)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -77,6 +81,11 @@ GEM
     minitest (5.4.1)
     multi_json (1.10.1)
     orm_adapter (0.5.0)
+    paperclip (4.2.0)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     polyglot (0.3.5)
     puma (2.9.1)
       rack (>= 1.1, < 2.0)
@@ -153,6 +162,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   mini_magick
+  paperclip (~> 4.2)
   puma
   rails (= 4.1.1)
   sass-rails (~> 4.0.3)
