@@ -1,0 +1,24 @@
+<h1> Author </h1>
+
+<p>
+  <strong>id: </strong>
+  <%= @author.id %>
+</p>
+
+<p>
+  <strong> Name: </strong>
+  <%= @author.name %>
+
+<p>
+  <strong> Department: </strong>
+  <%= @author.department %>
+</p>
+
+<p>
+  <strong> Display name: </strong>
+  <%= @author.display_name %>
+</p>
+
+<%= link_to 'Back', authors_path %>
+<%= link_to 'Edit', edit_author_path(@author) %>
+

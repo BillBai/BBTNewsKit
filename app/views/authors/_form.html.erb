@@ -1,0 +1,34 @@
+<%= form_for @author do |f| %>
+
+    <% if @author.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@author.errors.count, "error") %>
+            prohibited
+            this article from being saved:</h2>
+          <ul>
+            <% @author.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <p>
+      <%= f.label :department %>
+      <%= f.select :department, options_for_select(Author.departments.keys.to_a, selected: @author.department) %>
+    </p>
+
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :display_name %>
+      <%= f.text_field :display_name %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>
