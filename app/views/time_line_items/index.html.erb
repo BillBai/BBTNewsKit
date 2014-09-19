@@ -5,6 +5,10 @@
     <th>id</th>
     <th>Title</th>
     <th>Subtitle</th>
+    <th>Description</th>
+    <th>Content_type</th>
+    <th>Active</th>
+
   </tr>
 
   <% @time_line_items.each do |time_line_item| %>
@@ -12,6 +16,10 @@
       <td><%= time_line_item.id %></td>
       <td><%= time_line_item.title %></td>
       <td><%= time_line_item.subtitle %></td>
+      <td><%= time_line_item.description %></td>
+      <td><%= time_line_item.content_type %></td>
+      <td><%= time_line_item.active %></td>
+
       <td><%= link_to 'Show', time_line_item_path(time_line_item) %></td>
       <td><%= link_to 'Edit', edit_time_line_item_path(time_line_item) %></td>
       <td><%= link_to 'Delete', time_line_item_path(time_line_item),

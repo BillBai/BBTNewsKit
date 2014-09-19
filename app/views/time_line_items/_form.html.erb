@@ -19,7 +19,22 @@
 
     <p>
       <%= f.label :subtitle %><br>
-      <%= f.text_area :subtitle %>
+      <%= f.text_field :subtitle %>
+    </p>
+
+    <p>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </p>
+
+    <p>
+      <%= f.label :content_type %>
+      <%= f.select :content_type, options_for_select(TimeLineItem.content_types.keys.to_a, selected: @time_line_item.content_type) %>
+    </p>
+
+    <p>
+      <%= f.label :active %>
+      <%= f.check_box :active %>
     </p>
 
     <p>

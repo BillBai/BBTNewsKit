@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140913125046) do
+ActiveRecord::Schema.define(version: 20140919035501) do
 
   create_table "time_line_items", force: true do |t|
     t.string   "title"
     t.string   "subtitle"
     t.string   "description"
-    t.string   "contentType"
-    t.integer  "contentId"
-    t.string   "contentURL"
+    t.integer  "content_type", limit: 255, default: 0
+    t.integer  "content_id"
+    t.string   "content_url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active"

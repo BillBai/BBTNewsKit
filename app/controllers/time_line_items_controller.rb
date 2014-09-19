@@ -49,6 +49,6 @@ class TimeLineItemsController < ApplicationController
 
   private
     def time_line_item_params
-      params.require(:time_line_item).permit(:title, :subtitle)
+      params.require(:time_line_item).permit(:title, :subtitle, :description, :content_type, :active)
     end
 end

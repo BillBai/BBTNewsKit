@@ -13,6 +13,23 @@
     <strong> Subtitle: </strong>
     <%= @time_line_item.subtitle %>
   </p>
+
+    <p>
+      <strong> Description: </strong>
+      <%= @time_line_item.description %>
+    </p>
+
+    <p>
+      <strong> Content_type: </strong>
+      <% p '++++++++++++++++', @time_line_item.content_type %>
+
+      <%= @time_line_item.content_type %>
+    </p>
+
+    <p>
+      <strong> Active: </strong>
+      <%= @time_line_item.active %>
+    </p>
 </p>
 
 <%= link_to 'Back', time_line_items_path %>
