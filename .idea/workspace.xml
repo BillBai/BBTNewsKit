@@ -1,85 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eee672f0-33e6-4e7a-b604-5f6986c5db7a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/.keep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/concerns/.keep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/mailers/.keep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/.keep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/concerns/.keep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/assets/.keep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/tasks/.keep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/.keep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/controllers/.keep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/.keep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/helpers/.keep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/integration/.keep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/mailers/.keep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/.keep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/assets/javascripts/.keep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/assets/stylesheets/.keep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20140913125046_add_active_to_time_line_item.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/404.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/422.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/500.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/BBTNewsKit.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.rdoc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Rakefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/application.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/initializers/backtrace_silencers.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/boot.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/bundle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config.ru" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/initializers/cookies_serializer.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/database.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/locales/en.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/environment.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/initializers/filter_parameter_logging.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/time_line_items/index.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/initializers/inflections.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/initializers/mime_types.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/time_line_items/new.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/rails" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/rake" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/robots.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/secrets.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/seeds.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/initializers/session_store.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/time_line_items/show.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/spring" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/environments/test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/test_helper.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/time_line_item.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/time_line_item_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/time_line_items.css.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/time_line_items.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/time_line_items.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/time_line_items_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/controllers/time_line_items_controller_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/time_line_items_helper.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/helpers/time_line_items_helper_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/initializers/wrap_parameters.rb" />
+    <list default="true" id="eee672f0-33e6-4e7a-b604-5f6986c5db7a" name="Default" comment="create">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/time_line_items/_form.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/time_line_items/edit.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/time_line_items/index.html.erb" afterPath="$PROJECT_DIR$/app/views/time_line_items/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/time_line_items/new.html.erb" afterPath="$PROJECT_DIR$/app/views/time_line_items/new.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/time_line_items/show.html.erb" afterPath="$PROJECT_DIR$/app/views/time_line_items/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/time_line_items_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/time_line_items_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BBTNewsKit.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -96,6 +25,7 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="BBTNewsKit" />
   </component>
@@ -113,7 +43,7 @@
       <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1035">
+            <state line="1" column="0" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="1035">
               <folding />
             </state>
           </provider>
@@ -122,16 +52,34 @@
       <file leaf-file-name="time_line_items_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/time_line_items_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="18" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
+            <state line="43" column="36" selection-start="824" selection-end="824" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/time_line_items/_form.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="14" selection-start="272" selection-end="272" vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="495">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/time_line_items/edit.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="43" selection-start="99" selection-end="99" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="150">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/time_line_items/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="54" selection-start="377" selection-end="377" vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="345">
+            <state line="21" column="8" selection-start="697" selection-end="697" vertical-scroll-proportion="0.4694486" vertical-offset="0" max-vertical-offset="671">
               <folding />
             </state>
           </provider>
@@ -140,16 +88,20 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/time_line_items/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="24" selection-start="78" selection-end="78" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="315">
-              <folding />
+            <state line="18" column="60" selection-start="344" selection-end="344" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="390">
+              <folding>
+                <marker date="1411090878000" expanded="true" signature="28:85" placeholder="..." />
+                <marker date="1411090878000" expanded="true" signature="90:153" placeholder="..." />
+                <marker date="1411090878000" expanded="true" signature="156:232" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="new.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/time_line_items/new.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="9" selection-start="751" selection-end="751" vertical-scroll-proportion="0.7153502" vertical-offset="0" max-vertical-offset="671">
+            <state line="2" column="16" selection-start="47" selection-end="47" vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="165">
               <folding />
             </state>
           </provider>
@@ -167,7 +119,7 @@
       <file leaf-file-name="schema.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/schema.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="27" selection-start="1012" selection-end="1012" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+            <state line="21" column="27" selection-start="1012" selection-end="1012" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="510">
               <folding />
             </state>
           </provider>
@@ -180,6 +132,9 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
@@ -188,11 +143,13 @@
         <option value="$PROJECT_DIR$/db/migrate/20140913125046_add_active_to_time_line_item.rb" />
         <option value="$PROJECT_DIR$/app/controllers/time_line_item_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/views/time_line_items/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/time_line_items/index.html.erb" />
         <option value="$PROJECT_DIR$/app/models/time_line_item.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/time_line_items_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/time_line_items/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/time_line_items/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/time_line_items/new.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/time_line_items/edit.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/time_line_items_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/time_line_items/index.html.erb" />
       </list>
     </option>
   </component>
@@ -325,6 +282,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="SearchEverywhereHistory" value="" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="RSpecRunConfigurationType" factoryName="RSpec">
@@ -458,14 +416,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="41" y="-1178" width="1317" height="1178" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3291367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3291367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291367" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24941176" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22039215" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22352941" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -497,6 +455,66 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="975">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="1035">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/time_line_items_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="18" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="525">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/time_line_items/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="54" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="345">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/time_line_items/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="24" selection-start="78" selection-end="78" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="315">
+          <folding>
+            <marker date="1411090878000" expanded="true" signature="28:85" placeholder="..." />
+            <marker date="1411090878000" expanded="true" signature="90:153" placeholder="..." />
+            <marker date="1411090878000" expanded="true" signature="156:232" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/time_line_items/new.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="9" selection-start="751" selection-end="751" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/time_line_item.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="127" selection-end="127" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="150">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="27" selection-start="1012" selection-end="1012" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="510">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="0" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="975">
@@ -539,28 +557,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/database.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="718">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="718" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/schema.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="27" selection-start="1012" selection-end="1012" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/time_line_items/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="24" selection-start="78" selection-end="78" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="315">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/time_line_items/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="54" selection-start="377" selection-end="377" vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="345">
           <folding />
         </state>
       </provider>
@@ -572,16 +574,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/time_line_items_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/time_line_items/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="18" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
+        <state line="18" column="60" selection-start="344" selection-end="344" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="390">
+          <folding>
+            <marker date="1411090878000" expanded="true" signature="28:85" placeholder="..." />
+            <marker date="1411090878000" expanded="true" signature="90:153" placeholder="..." />
+            <marker date="1411090878000" expanded="true" signature="156:232" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/time_line_items/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="14" selection-start="272" selection-end="272" vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="495">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/time_line_items/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="9" selection-start="751" selection-end="751" vertical-scroll-proportion="0.7153502" vertical-offset="0" max-vertical-offset="671">
+        <state line="2" column="16" selection-start="47" selection-end="47" vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="165">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/time_line_items/edit.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="43" selection-start="99" selection-end="99" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="150">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/time_line_items_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="36" selection-start="824" selection-end="824" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/time_line_items/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="8" selection-start="697" selection-end="697" vertical-scroll-proportion="0.4694486" vertical-offset="0" max-vertical-offset="671">
           <folding />
         </state>
       </provider>

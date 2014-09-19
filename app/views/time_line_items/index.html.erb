@@ -12,6 +12,10 @@
       <td><%= time_line_item.id %></td>
       <td><%= time_line_item.title %></td>
       <td><%= time_line_item.subtitle %></td>
+      <td><%= link_to 'Show', time_line_item_path(time_line_item) %></td>
+      <td><%= link_to 'Edit', edit_time_line_item_path(time_line_item) %></td>
+      <td><%= link_to 'Delete', time_line_item_path(time_line_item),
+                      method: :delete, data: { confirm: 'Are you sure?'} %></td>
     </tr>
   <% end %>
   <%= link_to 'new time line item', new_time_line_item_path %>
