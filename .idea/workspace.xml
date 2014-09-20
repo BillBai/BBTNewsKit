@@ -2,59 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eee672f0-33e6-4e7a-b604-5f6986c5db7a" name="Default" comment="more attributes for time line item&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/001/medium/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/001/original/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/005/medium/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/005/original/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/002/medium/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/002/original/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/007/medium/Oshino-Shinobu-desktopsky-19837.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/003/medium/_D_AM)F_X_W__CL0K8LQUIE.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/003/original/_D_AM)F_X_W__CL0K8LQUIE.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/008/medium/_D_AM)F_X_W__CL0K8LQUIE.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/008/original/_D_AM)F_X_W__CL0K8LQUIE.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/004/medium/_UT8JA877CL_6IIL__M`HZX.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/004/original/_UT8JA877CL_6IIL__M`HZX.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/006/medium/_UT8JA877CL_6IIL__M`HZX.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/006/original/_UT8JA877CL_6IIL__M`HZX.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/009/medium/技术部_梁建熙.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/009/original/技术部_梁建熙.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20140920101428_create_article_body_images.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20140920101644_add_body_image_to_article_image.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20140920101824_add_article_reference_to_article_body_image.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20140920121430_add_body_html_to_article.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/article_body_image.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/article_body_image_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/article_body_images.css.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/article_body_images.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/article_body_images.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/article_body_images_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/controllers/article_body_images_controller_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/article_body_images_helper.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/helpers/article_body_images_helper_test.rb" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/normalize.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/articles/header_images/000/000/008/medium/Oshino-Shinobu-desktopsky-19837.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/articles/header_images/000/000/008/thumb/Oshino-Shinobu-desktopsky-19837.jpg" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/system/articles/header_images/000/000/006/medium/Oshino-Shinobu-desktopsky-39514.jpg" afterPath="$PROJECT_DIR$/public/system/articles/header_images/000/000/010/medium/Oshino-Shinobu-desktopsky-39514.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/system/articles/header_images/000/000/006/original/Oshino-Shinobu-desktopsky-39514.jpg" afterPath="$PROJECT_DIR$/public/system/articles/header_images/000/000/010/original/Oshino-Shinobu-desktopsky-39514.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/system/articles/header_images/000/000/006/thumb/Oshino-Shinobu-desktopsky-39514.jpg" afterPath="$PROJECT_DIR$/public/system/articles/header_images/000/000/010/thumb/Oshino-Shinobu-desktopsky-39514.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/system/articles/header_images/000/000/007/medium/Oshino-Shinobu-desktopsky-19837.jpg" afterPath="$PROJECT_DIR$/public/system/articles/header_images/000/000/009/medium/Oshino-Shinobu-desktopsky-19837.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/system/articles/header_images/000/000/007/original/Oshino-Shinobu-desktopsky-19837.jpg" afterPath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/007/original/Oshino-Shinobu-desktopsky-19837.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/system/articles/header_images/000/000/007/thumb/Oshino-Shinobu-desktopsky-19837.jpg" afterPath="$PROJECT_DIR$/public/system/articles/header_images/000/000/009/thumb/Oshino-Shinobu-desktopsky-19837.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/system/articles/header_images/000/000/008/original/Oshino-Shinobu-desktopsky-19837.jpg" afterPath="$PROJECT_DIR$/public/system/articles/header_images/000/000/009/original/Oshino-Shinobu-desktopsky-19837.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/articles/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/articles/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/article.rb" afterPath="$PROJECT_DIR$/app/models/article.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/articles.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/articles.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/articles_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/articles_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/development.rb" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/articles/header_images/000/000/009/medium/Oshino-Shinobu-desktopsky-19837.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/articles/header_images/000/000/009/original/Oshino-Shinobu-desktopsky-19837.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/articles/header_images/000/000/009/thumb/Oshino-Shinobu-desktopsky-19837.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/articles/header_images/000/000/010/medium/Oshino-Shinobu-desktopsky-39514.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/articles/header_images/000/000/010/original/Oshino-Shinobu-desktopsky-39514.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/articles/header_images/000/000/010/thumb/Oshino-Shinobu-desktopsky-39514.jpg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/article_body_images_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/article_body_images_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/articles/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/articles/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/articles/new.html.erb" afterPath="$PROJECT_DIR$/app/views/articles/new.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/articles/show.html.erb" afterPath="$PROJECT_DIR$/app/views/articles/show.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BBTNewsKit.iws" />
@@ -78,10 +34,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="17" selection-start="1130" selection-end="1130" vertical-scroll-proportion="0.22237197" vertical-offset="270" max-vertical-offset="1065">
+            <state line="43" column="0" selection-start="1275" selection-end="1275" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/routes.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="34" selection-start="210" selection-end="237" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1305">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="article_body_images_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/article_body_images_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="4" selection-start="371" selection-end="371" vertical-scroll-proportion="0.25827813" vertical-offset="0" max-vertical-offset="755">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="articles_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/articles_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="47" column="88" selection-start="803" selection-end="803" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="840">
               <folding />
             </state>
           </provider>
@@ -90,7 +73,7 @@
       <file leaf-file-name="edit.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/articles/edit.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="25" selection-start="599" selection-end="599" vertical-scroll-proportion="-16.875" vertical-offset="0" max-vertical-offset="705">
+            <state line="28" column="42" selection-start="642" selection-end="642" vertical-scroll-proportion="-17.5" vertical-offset="0" max-vertical-offset="720">
               <folding />
             </state>
           </provider>
@@ -123,24 +106,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="article_body_images.css.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/article_body_images.css.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="135">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="837" selection-end="837" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="medium-editor-insert-plugin-frontend.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vendor/assets/dist/css/medium-editor-insert-plugin-frontend.css">
           <provider selected="true" editor-type-id="text-editor">
@@ -154,15 +119,6 @@
         <entry file="file://$PROJECT_DIR$/app/views/articles/new.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="4" column="0" selection-start="82" selection-end="82" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="150">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="17" selection-start="164" selection-end="168" vertical-scroll-proportion="-3.125" vertical-offset="0" max-vertical-offset="315">
               <folding />
             </state>
           </provider>
@@ -221,8 +177,6 @@
         <option value="$PROJECT_DIR$/app/models/article_body_image.rb" />
         <option value="$PROJECT_DIR$/app/models/article.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/articles.css.scss" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/article_body_images_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/articles/new.html.erb" />
         <option value="$PROJECT_DIR$/db/migrate/20140920121430_add_body_html_to_article.rb" />
         <option value="$PROJECT_DIR$/app/controllers/articles_controller.rb" />
@@ -230,13 +184,15 @@
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/config/environments/development.rb" />
         <option value="$PROJECT_DIR$/app/views/articles/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/articles/edit.html.erb" />
         <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/views/articles/edit.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/article_body_images_controller.rb" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="289" />
+    <option name="x" value="294" />
     <option name="y" value="-1178" />
     <option name="width" value="1201" />
     <option name="height" value="1178" />
@@ -464,6 +420,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="authors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BBTNewsKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BBTNewsKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="articles" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -479,6 +457,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BBTNewsKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BBTNewsKit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -679,11 +675,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="289" y="-1178" width="1201" height="1178" extended-state="0" />
-    <editor active="false" />
+    <frame x="294" y="-1178" width="1201" height="1178" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2544964" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2544964" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291367" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -954,23 +950,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="6" selection-start="206" selection-end="417" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/article_body_images_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="755">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/article_body_images_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="255" selection-end="255" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
           <folding />
         </state>
       </provider>
@@ -985,13 +967,6 @@
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/articles.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="0" selection-start="229" selection-end="229" vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="195">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/articles_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="88" selection-start="803" selection-end="803" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="840">
           <folding />
         </state>
       </provider>
@@ -1059,6 +1034,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="0" selection-start="1275" selection-end="1275" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/articles/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="65" column="28" selection-start="1476" selection-end="1476" vertical-scroll-proportion="-26.083334" vertical-offset="349" max-vertical-offset="1110">
@@ -1066,16 +1048,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/articles/edit.html.erb">
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="25" selection-start="599" selection-end="599" vertical-scroll-proportion="-16.875" vertical-offset="0" max-vertical-offset="705">
+        <state line="12" column="34" selection-start="210" selection-end="237" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1305">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
+    <entry file="file://$PROJECT_DIR$/app/views/articles/edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="17" selection-start="1130" selection-end="1130" vertical-scroll-proportion="0.22237197" vertical-offset="270" max-vertical-offset="1065">
+        <state line="28" column="42" selection-start="642" selection-end="642" vertical-scroll-proportion="-17.5" vertical-offset="0" max-vertical-offset="720">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/articles_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="88" selection-start="803" selection-end="803" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="840">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/article_body_images_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="4" selection-start="371" selection-end="371" vertical-scroll-proportion="0.25827813" vertical-offset="0" max-vertical-offset="755">
           <folding />
         </state>
       </provider>

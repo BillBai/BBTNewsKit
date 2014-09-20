@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :article_body_images
   end
 
+  post 'article_body_image/delete' => 'article_body_images#destroy'
+
   #resources :authors do
   #  resources :articles do
   #    resources :article_body_images
