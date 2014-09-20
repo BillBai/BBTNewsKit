@@ -31,5 +31,8 @@
   <%= @article.section.module %>
 </p>
 
+<%= image_tag @article.header_image.url(:medium) %> <br/>
+<%= image_tag @article.header_image.url(:thumb) %>
+
 <%= link_to 'Back', articles_path %>
 <%= link_to 'Edit', edit_article_path(@article) %>

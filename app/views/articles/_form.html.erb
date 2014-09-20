@@ -1,4 +1,4 @@
-<%= form_for @article do |f| %>
+<%= form_for @article, :html => { :multipart => true } do |f| %>
     <% if @article.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@time_line_item.errors.count, "error") %>
@@ -35,6 +35,16 @@
     <p>
       <%= f.label :section_id %>
       <%= f.select :section_id, options_for_select(section_selection_field_dict, selected: @article.section_id) %>
+    </p>
+
+    <p>
+      <%= f.label :header_image %>
+      <%= f.file_field :header_image %>
+    </p>
+
+    <p>
+      <%= f.label :header_image_info %>
+      <%= f.text_field :header_image_info %>
     </p>
 
     <p>
