@@ -51,6 +51,9 @@ gem 'paperclip', "~> 4.2"
 # use medium style WYSIWYG editor
 gem 'medium-editor-rails'
 
+gem 'font-awesome-rails'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

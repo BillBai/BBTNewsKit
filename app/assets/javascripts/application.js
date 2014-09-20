@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require medium-editor
-// = require_tree .
+//= require js/medium-editor-insert-plugin.all.js
+//= require_tree .
