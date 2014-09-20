@@ -48,6 +48,9 @@ gem 'puma'
 # use paperclip for attachment file management
 gem 'paperclip', "~> 4.2"
 
+# use medium style WYSIWYG editor
+gem 'medium-editor-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

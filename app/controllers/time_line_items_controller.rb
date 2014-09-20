@@ -7,8 +7,6 @@ class TimeLineItemsController < ApplicationController
     @time_line_item = TimeLineItem.new
   end
 
-
-
   def show
     @time_line_item = TimeLineItem.find(params[:id])
   end
@@ -43,9 +41,6 @@ class TimeLineItemsController < ApplicationController
 
     redirect_to time_line_items_path
   end
-
-
-
 
   private
     def time_line_item_params
