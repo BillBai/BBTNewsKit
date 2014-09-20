@@ -48,6 +48,10 @@
     </p>
 
     <p>
-      <%= f.submit %>
+      <%= f.hidden_field :body_html %>
+    </p>
+
+    <p>
+      <%= f.submit class: "submit_button"%>
     </p>
 <% end %>

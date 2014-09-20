@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140920053007) do
+ActiveRecord::Schema.define(version: 20140920121430) do
+
+  create_table "article_body_images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "body_image_file_name"
+    t.string   "body_image_content_type"
+    t.integer  "body_image_file_size"
+    t.datetime "body_image_updated_at"
+    t.integer  "article_id"
+  end
 
   create_table "articles", force: true do |t|
     t.string   "body_html_url"
@@ -27,6 +37,7 @@ ActiveRecord::Schema.define(version: 20140920053007) do
     t.integer  "header_image_file_size"
     t.datetime "header_image_updated_at"
     t.string   "header_image_info"
+    t.text     "body_html"
   end
 
   create_table "authors", force: true do |t|

@@ -29,9 +29,6 @@ gem 'spring',        group: :development
 # wrapper for image magick
 gem 'mini_magick'
 
-# for uplaoding file
-gem 'carrierwave'
-
 gem 'simple_form'
 
 # paginator

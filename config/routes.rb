@@ -3,19 +3,24 @@ Rails.application.routes.draw do
   root 'time_line_items#index'
 
   resources :time_line_items
-  resources :articles
+
   resources :videos
   resources :albums
-
-  resources :authors do
-    resources :articles
-    resources :videos
+  resources :articles do
+    resources :article_body_images
   end
 
-  resources :sections do
-    resources :articles
-    resources :videos
-  end
+  #resources :authors do
+  #  resources :articles do
+  #    resources :article_body_images
+  #  end
+  #  resources :videos
+  #end
+  #
+  #resources :sections do
+  #  resources :articles
+  #  resources :videos
+  #end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

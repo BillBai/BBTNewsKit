@@ -1,3 +1,6 @@
+<% content_for :head do %>
+<% end %>
+
 <h1> article <%= @article.id %></h1>
 
 <p>
@@ -36,3 +39,30 @@
 
 <%= link_to 'Back', articles_path %>
 <%= link_to 'Edit', edit_article_path(@article) %>
+
+<div id="container">
+  <div class="editable">
+    <%=raw @article.body_html %>
+  </div>
+</div>
+
+<script>
+    var editor = new MediumEditor('.editable', {
+        elementsContainer: document.getElementById('container'),
+        buttonLabels: 'fontawesome',
+        buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
+    });
+
+    $(function () {
+        $('.editable').mediumInsert({
+            editor: editor,
+            addons: {
+                images: {
+                    imagesUploadScript: '/articles/<%= @article.id %>/article_body_images'
+                }
+            }
+        });
+        $('.editable').mediumInsert('disable');
+        editor.deactivate();
+    });
+</script>

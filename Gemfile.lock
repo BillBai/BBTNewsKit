@@ -36,11 +36,6 @@ GEM
       railties (>= 3.2.0)
       sass-rails (>= 3.2.0)
     builder (3.2.2)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.4)
@@ -159,7 +154,6 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass-rails
-  carrierwave
   coffee-rails (~> 4.0.0)
   devise
   font-awesome-rails
