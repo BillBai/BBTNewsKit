@@ -1,101 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eee672f0-33e6-4e7a-b604-5f6986c5db7a" name="Default" comment="more attributes for time line item&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/contents_helper.rb" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/time_line_items.css.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/controllers/time_line_items_controller.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/helpers/articles_helper.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/helpers/time_line_items_helper.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/models/time_line_item.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/models/video.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/time_line_items/_form.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/time_line_items/edit.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/time_line_items/index.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/time_line_items/new.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/time_line_items/show.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/db/migrate/20140919052918_create_videos.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/001/medium/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/001/original/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/002/medium/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/002/original/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/003/medium/_D_AM)F_X_W__CL0K8LQUIE.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/003/original/_D_AM)F_X_W__CL0K8LQUIE.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/004/medium/_UT8JA877CL_6IIL__M`HZX.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/004/original/_UT8JA877CL_6IIL__M`HZX.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/005/medium/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/005/original/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/006/medium/_UT8JA877CL_6IIL__M`HZX.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/006/original/_UT8JA877CL_6IIL__M`HZX.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/007/medium/Oshino-Shinobu-desktopsky-19837.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/007/original/Oshino-Shinobu-desktopsky-19837.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/008/medium/_D_AM)F_X_W__CL0K8LQUIE.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/008/original/_D_AM)F_X_W__CL0K8LQUIE.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/009/medium/技术部_梁建熙.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/009/original/技术部_梁建熙.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/010/medium/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/010/original/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/011/medium/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/011/original/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/012/medium/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/012/original/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/013/medium/Oshino-Shinobu-desktopsky-19837.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/013/original/Oshino-Shinobu-desktopsky-19837.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/014/medium/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/014/original/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/015/medium/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/015/original/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/016/medium/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/016/original/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/017/medium/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/017/original/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/018/medium/3GF4Y_VO_TY5_6E9XF063_5.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/018/original/3GF4Y_VO_TY5_6E9XF063_5.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/019/medium/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/019/original/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/020/medium/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/020/original/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/021/medium/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/021/original/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/022/medium/技术部_梁建熙.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/022/original/技术部_梁建熙.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/023/medium/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/023/original/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/024/medium/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/024/original/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/025/medium/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/025/original/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/026/medium/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/026/original/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/027/medium/_UT8JA877CL_6IIL__M`HZX.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/027/original/_UT8JA877CL_6IIL__M`HZX.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/031/medium/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/031/original/9S_1_VY7BH2_OJ(7RJ_Y7WM.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/032/medium/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/system/article_body_images/body_images/000/000/032/original/79ba7be1jw1egkyqjrvm4j204b038weh.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/fixtures/time_line_items.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/fixtures/videos.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/models/time_line_item_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/models/video_test.rb" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/articles.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/contents.css.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/controllers/articles_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/contents_controller.rb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/models/article.rb" afterPath="$PROJECT_DIR$/app/models/content.rb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/articles/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/contents/_form.html.erb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/articles/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/contents/edit.html.erb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/articles/index.html.erb" afterPath="$PROJECT_DIR$/app/views/contents/index.html.erb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/articles/new.html.erb" afterPath="$PROJECT_DIR$/app/views/contents/new.html.erb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/articles/show.html.erb" afterPath="$PROJECT_DIR$/app/views/contents/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20140919052645_create_articles.rb" afterPath="$PROJECT_DIR$/db/migrate/20140919052645_create_articles.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20140919123053_add_attr_to_article_and_video.rb" afterPath="$PROJECT_DIR$/db/migrate/20140919123053_add_attr_to_article_and_video.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20140919150628_add_references_to_article_and_video.rb" afterPath="$PROJECT_DIR$/db/migrate/20140919150628_add_references_to_article_and_video.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20140920053007_addheader_image_to_article.rb" afterPath="$PROJECT_DIR$/db/migrate/20140920053007_addheader_image_to_article.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20140920121430_add_body_html_to_article.rb" afterPath="$PROJECT_DIR$/db/migrate/20140920121430_add_body_html_to_article.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/article_body_image.rb" afterPath="$PROJECT_DIR$/app/models/article_body_image.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/article_body_images_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/article_body_images_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/author.rb" afterPath="$PROJECT_DIR$/app/models/author.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/section.rb" afterPath="$PROJECT_DIR$/app/models/section.rb" />
+    <list default="true" id="eee672f0-33e6-4e7a-b604-5f6986c5db7a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BBTNewsKit.iws" />
@@ -828,7 +734,11 @@
       <created>1411099137366</created>
       <updated>1411099137366</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="more attributes for time line item&#10;rename article to content and remove useless models">
+      <created>1411739128376</created>
+      <updated>1411739128376</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -857,20 +767,20 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2535971" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291367" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3518851" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3518851" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291367" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24941176" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18210863" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -890,7 +800,8 @@
     </option>
     <MESSAGE value="CURD operation for timeLineItem" />
     <MESSAGE value="more attributes for time line item" />
-    <option name="LAST_COMMIT_MESSAGE" value="more attributes for time line item" />
+    <MESSAGE value="more attributes for time line item&#10;rename article to content and remove useless models" />
+    <option name="LAST_COMMIT_MESSAGE" value="more attributes for time line item&#10;rename article to content and remove useless models" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
