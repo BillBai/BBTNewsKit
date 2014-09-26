@@ -3,6 +3,7 @@
 
 <h1> article <%= @content.id %></h1>
 
+<h2>Content Meta Data</h2>
 <p>
   <strong>id: </strong>
   <%= @content.id %>
@@ -33,55 +34,42 @@
 </p>
 
 <p>
+  <strong> Author: </strong>
+  <%= @content.author.name %> - <%= @content.author.display_name %>
+</p>
+
+<p>
+  <strong> Section: </strong>
+  <%= @content.section.category %> - <%= @content.section.module %>
+</p>
+
+<p>
+  <strong> Header Image:</strong><br/>
+  <%= image_tag @content.header_image.url(:thumb) %>
+</p>
+
+<p>
   <strong> Video URL</strong>
   <%= @content.video_url %>
 </p>
-<p>
-  <strong> Author: </strong> <br/>
-  <%= @content.author.name %> <br/>
-  <%= @content.author.display_name %>
-</p>
 
-<p>
-  <strong> section: </strong> <br/>
-  <%= @content.section.category %> <br/>
-  <%= @content.section.module %>
-</p>
-
-<%= image_tag @content.header_image.url(:medium) %> <br/>
-<%= image_tag @content.header_image.url(:thumb) %>
-
-<%= link_to 'Back', contents_path %>
-<%= link_to 'Edit', edit_content_path(@content) %>
-
+<hr/>
+<h2> Article Body </h2>
 <div id="container">
   <div class="editable">
     <%=raw @content.body_html %>
   </div>
 </div>
 
-<h2>Add a Photo:</h2>
-<%= form_for([@content, @content.photos.build], {:html => { :multipart => true }}) do |f| %>
-    <p>
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
-    </p>
-    <p>
-      <%= f.label :description %><br>
-      <%= f.text_area :description %>
-    </p>
-    <p>
-      <%= f.label :photographer %><br>
-      <%= f.text_field :photographer %>
-    </p>
-    <p>
-      <%= f.label :image %>
-      <%= f.file_field :image %>
-    </p>
-    <p>
-      <%= f.submit %>
-    </p>
-<% end %>
+<hr/>
+<h2> Photos </h2>
+<%= render @content.photos %>
+
+
+
+<%= link_to 'Back', contents_path %>
+<%= link_to 'Edit', edit_content_path(@content) %><br/>
+
 
 <script>
     var editor = new MediumEditor('.editable', {
