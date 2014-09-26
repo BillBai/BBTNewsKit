@@ -3,6 +3,10 @@ class Content < ActiveRecord::Base
   belongs_to :section
 
   has_many :article_body_images
+  has_many :photos
+
+  enum statuses: [:draft, :published]
+  enum content_types: [:article, :album, :video]
 
   has_attached_file :header_image, :styles => { :medium => "500x300>", :thumb => "100x60>" }
   validates_attachment_content_type :header_image, :content_type => /\Aimage\/.*\Z/

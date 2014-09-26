@@ -45,6 +45,6 @@ class ContentsController < ApplicationController
 
 private
   def content_params
-    params.require(:content).permit(:title, :subtitle, :description, :author_id, :section_id, :header_image, :header_image_info, :body_html)
+    params.require(:content).permit(:title, :subtitle, :description, :author_id, :section_id, :header_image, :header_image_info, :body_html, :content_type, :status, :video_url)
   end
 end

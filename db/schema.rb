@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140926132537) do
+ActiveRecord::Schema.define(version: 20140926142815) do
 
   create_table "article_body_images", force: true do |t|
     t.datetime "created_at"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140926132537) do
     t.string   "display_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active"
   end
 
   create_table "contents", force: true do |t|
@@ -46,13 +47,33 @@ ActiveRecord::Schema.define(version: 20140926132537) do
     t.datetime "header_image_updated_at"
     t.string   "header_image_info"
     t.text     "body_html"
+    t.integer  "status"
+    t.boolean  "delete_flag"
+    t.integer  "content_type"
+    t.string   "video_url"
   end
+
+  create_table "photos", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "photographer"
+    t.integer  "content_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "photos", ["content_id"], name: "index_photos_on_content_id"
 
   create_table "sections", force: true do |t|
     t.integer  "category"
     t.string   "module"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active"
   end
 
 end

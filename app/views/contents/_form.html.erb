@@ -28,6 +28,16 @@
     </p>
 
     <p>
+      <%= f.label :content_type %>
+      <%= f.select :content_type, options_for_select(Content.content_types.keys.to_a, selected: @content.content_type) %>
+    </p>
+
+    <p>
+      <%= f.label :status %>
+      <%= f.select :status, options_for_select(Content.statuses.keys.to_a, selected: @content.status) %>
+    </p>
+
+    <p>
       <%= f.label :author_id %>
       <%= f.select :author_id, options_for_select(author_selection_field_dict, selected: @content.author_id) %>
     </p>
@@ -45,6 +55,11 @@
     <p>
       <%= f.label :header_image_info %>
       <%= f.text_field :header_image_info %>
+    </p>
+
+    <p>
+      <%= f.label :video_url %>
+      <%= f.text_field :video_url %>
     </p>
 
     <p>

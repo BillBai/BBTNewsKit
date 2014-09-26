@@ -23,6 +23,20 @@
 </p>
 
 <p>
+  <strong> Content Type</strong>
+  <%= @content.content_type %>
+</p>
+
+<p>
+  <strong> Status</strong>
+  <%= @content.status %>
+</p>
+
+<p>
+  <strong> Video URL</strong>
+  <%= @content.video_url %>
+</p>
+<p>
   <strong> Author: </strong> <br/>
   <%= @content.author.name %> <br/>
   <%= @content.author.display_name %>
@@ -45,6 +59,29 @@
     <%=raw @content.body_html %>
   </div>
 </div>
+
+<h2>Add a Photo:</h2>
+<%= form_for([@content, @content.photos.build], {:html => { :multipart => true }}) do |f| %>
+    <p>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
+    </p>
+    <p>
+      <%= f.label :photographer %><br>
+      <%= f.text_field :photographer %>
+    </p>
+    <p>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>
 
 <script>
     var editor = new MediumEditor('.editable', {

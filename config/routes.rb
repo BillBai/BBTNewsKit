@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :contents do
     resources :article_body_images
+    resources :photos
   end
 
   post 'article_body_image/delete' => 'article_body_images#destroy'
