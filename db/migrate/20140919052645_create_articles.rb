@@ -1,6 +1,6 @@
 class CreateArticles < ActiveRecord::Migration
   def change
-    create_table :articles do |t|
+    create_table :contents do |t|
       t.string :body_html_url
 
       t.timestamps

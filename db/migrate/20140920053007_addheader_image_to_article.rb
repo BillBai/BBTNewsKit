@@ -1,7 +1,7 @@
 class AddheaderImageToArticle < ActiveRecord::Migration
   def change
-    add_attachment :articles, :header_image
-    add_column :articles, :header_image_info, :string
+    add_attachment :contents, :header_image
+    add_column :contents, :header_image_info, :string
   end
 
 end

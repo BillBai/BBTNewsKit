@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140920121430) do
+ActiveRecord::Schema.define(version: 20140926132537) do
 
   create_table "article_body_images", force: true do |t|
     t.datetime "created_at"
@@ -20,10 +20,18 @@ ActiveRecord::Schema.define(version: 20140920121430) do
     t.string   "body_image_content_type"
     t.integer  "body_image_file_size"
     t.datetime "body_image_updated_at"
-    t.integer  "article_id"
+    t.integer  "content_id"
   end
 
-  create_table "articles", force: true do |t|
+  create_table "authors", force: true do |t|
+    t.integer  "department"
+    t.string   "name"
+    t.string   "display_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contents", force: true do |t|
     t.string   "body_html_url"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -40,52 +48,11 @@ ActiveRecord::Schema.define(version: 20140920121430) do
     t.text     "body_html"
   end
 
-  create_table "authors", force: true do |t|
-    t.integer  "department"
-    t.string   "name"
-    t.string   "display_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "contents", force: true do |t|
-    t.string   "title"
-    t.string   "subtitle"
-    t.string   "description"
-    t.integer  "content_variant_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "content_variant_type"
-  end
-
   create_table "sections", force: true do |t|
     t.integer  "category"
     t.string   "module"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "time_line_items", force: true do |t|
-    t.string   "title"
-    t.string   "subtitle"
-    t.string   "description"
-    t.integer  "content_type", limit: 255, default: 0
-    t.integer  "content_id"
-    t.string   "content_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "active"
-  end
-
-  create_table "videos", force: true do |t|
-    t.string   "video_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "title"
-    t.string   "subtitle"
-    t.string   "description"
-    t.integer  "author_id"
-    t.integer  "section_id"
   end
 
 end

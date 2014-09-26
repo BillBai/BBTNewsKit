@@ -1,0 +1,27 @@
+<h1> all articles </h1>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>Title</th>
+    <th>Subtitle</th>
+    <th>Description</th>
+
+  </tr>
+<% @contents.each do |content| %>
+      <tr>
+        <td><%= content.id %></td>
+        <td><%= content.title %></td>
+        <td><%= content.subtitle %></td>
+        <td><%= content.description %></td>
+
+        <td><%= link_to 'Show', content_path(content) %></td>
+        <td><%= link_to 'Edit', edit_content_path(content) %></td>
+        <td><%= link_to 'Delete', content_path(content),
+                        method: :delete, data: { confirm: 'Are you sure?'} %></td>
+      </tr>
+
+<% end  %>
+
+  <%= link_to 'new article', new_content_path %>
+</table>

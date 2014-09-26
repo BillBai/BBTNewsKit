@@ -4,8 +4,8 @@ class ArticleBodyImagesController < ApplicationController
   # TODO: security issue
   def create
     @article_body_image = ArticleBodyImage.new(article_body_image_params)
-    @article = Article.find(params[:article_id])
-    @article_body_image.article = @article
+    @content = Content.find(params[:content_id])
+    @article_body_image.content = @content
     @article_body_image.save
     render json: body_image_url_with_id
   end

@@ -1,0 +1,65 @@
+<% content_for :head do %>
+<% end %>
+
+<h1> article <%= @content.id %></h1>
+
+<p>
+  <strong>id: </strong>
+  <%= @content.id %>
+</p>
+
+<p>
+  <strong> Title: </strong>
+  <%= @content.title %>
+
+<p>
+  <strong> Subtitle: </strong>
+  <%= @content.subtitle %>
+</p>
+
+<p>
+  <strong> Description: </strong>
+  <%= @content.description %>
+</p>
+
+<p>
+  <strong> Author: </strong> <br/>
+  <%= @content.author.name %> <br/>
+  <%= @content.author.display_name %>
+</p>
+
+<p>
+  <strong> section: </strong> <br/>
+  <%= @content.section.category %> <br/>
+  <%= @content.section.module %>
+</p>
+
+<%= image_tag @content.header_image.url(:medium) %> <br/>
+<%= image_tag @content.header_image.url(:thumb) %>
+
+<%= link_to 'Back', contents_path %>
+<%= link_to 'Edit', edit_content_path(@content) %>
+
+<div id="container">
+  <div class="editable">
+    <%=raw @content.body_html %>
+  </div>
+</div>
+
+<script>
+    var editor = new MediumEditor('.editable', {
+        elementsContainer: document.getElementById('container'),
+        buttonLabels: 'fontawesome',
+        buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
+    });
+    editor.deactivate();
+
+    $(function () {
+        $('.editable').mediumInsert({
+            editor: editor,
+            addons: {
+                images: {}
+            }
+        });
+    });
+</script>

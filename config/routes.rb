@@ -1,26 +1,27 @@
 Rails.application.routes.draw do
 
-  root 'time_line_items#index'
+  root 'contents#index'
 
-  resources :time_line_items
+  resources :authors
+  resources :sections do
+    resources :contents
+  end
 
-  resources :videos
-  resources :albums
-  resources :articles do
+  resources :contents do
     resources :article_body_images
   end
 
   post 'article_body_image/delete' => 'article_body_images#destroy'
 
   #resources :authors do
-  #  resources :articles do
+  #  resources :contents do
   #    resources :article_body_images
   #  end
   #  resources :videos
   #end
   #
   #resources :sections do
-  #  resources :articles
+  #  resources :contents
   #  resources :videos
   #end
 

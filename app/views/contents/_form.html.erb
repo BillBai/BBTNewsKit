@@ -1,0 +1,57 @@
+<%= form_for @content, :html => { :multipart => true } do |f| %>
+    <% if @content.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@time_line_item.errors.count, "error") %>
+            prohibited
+            this article from being saved:</h2>
+          <ul>
+            <% @content.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <p>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </p>
+
+    <p>
+      <%= f.label :subtitle %><br>
+      <%= f.text_field :subtitle %>
+    </p>
+
+    <p>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </p>
+
+    <p>
+      <%= f.label :author_id %>
+      <%= f.select :author_id, options_for_select(author_selection_field_dict, selected: @content.author_id) %>
+    </p>
+
+    <p>
+      <%= f.label :section_id %>
+      <%= f.select :section_id, options_for_select(section_selection_field_dict, selected: @content.section_id) %>
+    </p>
+
+    <p>
+      <%= f.label :header_image %>
+      <%= f.file_field :header_image %>
+    </p>
+
+    <p>
+      <%= f.label :header_image_info %>
+      <%= f.text_field :header_image_info %>
+    </p>
+
+    <p>
+      <%= f.hidden_field :body_html %>
+    </p>
+
+    <p>
+      <%= f.submit class: "submit_button"%>
+    </p>
+<% end %>

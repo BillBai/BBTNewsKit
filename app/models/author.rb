@@ -1,6 +1,5 @@
 class Author < ActiveRecord::Base
-  has_many :articles
-  has_many :videos
+  has_many :contents
 
   enum department: [:admin_dept, :hr_dept, :news_dept,
                     :channel_dept, :video_dept, :market_dept,

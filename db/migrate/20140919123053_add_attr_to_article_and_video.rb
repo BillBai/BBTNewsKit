@@ -1,8 +1,8 @@
 class AddAttrToArticleAndVideo < ActiveRecord::Migration
   def change
-    add_column :articles, :title, :string
-    add_column :articles, :subtitle, :string
-    add_column :articles, :description, :string
+    add_column :contents, :title, :string
+    add_column :contents, :subtitle, :string
+    add_column :contents, :description, :string
 
     add_column :videos, :title, :string
     add_column :videos, :subtitle, :string
