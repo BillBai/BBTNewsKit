@@ -1,82 +1,92 @@
-<h1> article <%= @content.id %></h1>
+<div class="page-header">
+  <h3> <%= @content.content_type %> <%= @content.id %></h3>
+  <%= link_to 'Back', contents_path %>
+  <%= link_to 'Edit', edit_content_path(@content) %><br/>
+</div>
 
-<h2>Content Meta Data</h2>
-<p>
-  <strong>id: </strong>
-  <%= @content.id %>
-</p>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Content Meta Data
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>id: </strong>
+          <%= @content.id %>
+        </p>
+        <p>
+          <strong> Title: </strong>
+          <%= @content.title %>
+        <p>
+          <strong> Subtitle: </strong>
+          <%= @content.subtitle %>
+        </p>
+        <p>
+          <strong> Description: </strong>
+          <%= @content.description %>
+        </p>
+        <p>
+          <strong> Content Type</strong>
+          <%= @content.content_type %>
+        </p>
+        <p>
+          <strong> Status </strong>
+          <%= @content.status %>
+        </p>
+        <p>
+          <strong> Author: </strong>
+          <%= @content.author.name if @content.author %> - <%= @content.author.display_name if @content.author %>
+        </p>
+        <p>
+          <strong> Section: </strong>
+          <%= @content.section.category if @content.section %> - <%= @content.section.module if @content.section %>
+        </p>
+        <p>
+          <strong> Header Image:</strong><br/>
+          <%= image_tag @content.header_image.url(:thumb) %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong> Title: </strong>
-  <%= @content.title %>
-
-<p>
-  <strong> Subtitle: </strong>
-  <%= @content.subtitle %>
-</p>
-
-<p>
-  <strong> Description: </strong>
-  <%= @content.description %>
-</p>
-
-<p>
-  <strong> Content Type</strong>
-  <%= @content.content_type %>
-</p>
-
-<p>
-  <strong> Status </strong>
-  <%= @content.status %>
-</p>
-
-<p>
-  <strong> Author: </strong>
-  <%= @content.author.name if @content.author %> - <%= @content.author.display_name if @content.author %>
-</p>
-
-<p>
-  <strong> Section: </strong>
-  <%= @content.section.category if @content.section %> - <%= @content.section.module if @content.section %>
-</p>
-
-<p>
-  <strong> Header Image:</strong><br/>
-  <%= image_tag @content.header_image.url(:thumb) %>
-</p>
-
-<hr/>
 <% case  @content.content_type %>
-<% when 0 #article%>
-    <h2> Article </h2>
-    <strong> Article Body:</strong>
-    <div id="container">
-      <div class="editable">
-        <%=raw @content.body_html %>
+<% when 'article' %>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">Article Body</div>
+          <div class="panel-body">
+            <div id="editor-container">
+              <div class="editable"><%=raw @content.body_html %></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-<% when 1 #album%>
-    <h2> Album  </h2>
+<% when 'album'%>
     <strong> Photos:</strong>
     <%= render @content.photos %>
 
-<% when 2 #video%>
-    <h2> Video </h2>
-    <p>
-      <strong> Video URL: </strong>
-      <%= @content.video_url %>
-    </p>
+<% when 'video'%>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">Video Url</div>
+          <div class="panel-body">
+            <%= @content.video_url %>
+          </div>
+        </div>
+      </div>
+    </div>
 <% end %>
-<hr/>
-
-<%= link_to 'Back', contents_path %>
-<%= link_to 'Edit', edit_content_path(@content) %><br/>
 
 
 <script>
     var editor = new MediumEditor('.editable', {
-        elementsContainer: document.getElementById('container'),
+        elementsContainer: document.getElementById('editor-container'),
         buttonLabels: 'fontawesome',
         buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
     });
