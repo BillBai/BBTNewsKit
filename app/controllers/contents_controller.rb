@@ -1,6 +1,11 @@
 class ContentsController < ApplicationController
   def index
-    @contents = Content.all
+    if params[:section_id]
+      @section = Section.find(params[:section_id])
+      @contents = @section.contents
+    else
+      @contents = Content.all
+    end
   end
 
   def show
