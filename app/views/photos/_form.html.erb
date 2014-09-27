@@ -10,12 +10,9 @@
               <%= f.file_field :image %>
         </span>
         <span>
-          <%= f.label :title %>
-          <%= f.text_field :title %>
-          <%= f.label :description %>
-          <%= f.text_area :description %>
-          <%= f.label :photographer %>
-          <%= f.text_field :photographer %>
+          <%= f.hidden_field :title %>
+          <%= f.hidden_field :description %>
+          <%= f.hidden_field :photographer %>
         </span>
         <button type="submit" class="btn btn-primary start" id="photos_submit">
           <i class="icon-upload icon-white"></i>
@@ -65,9 +62,9 @@
     <td class="preview"><span class="fade"></span></td>
     <td class="name"><span>{%=file.name%}</span></td>
     <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
-    <td><input type="text" name="photo[title]"/></td>
-    <td><input type="text" name="photo[description]"/></td>
-    <td><input type="text" name="photo[photographer]"/></td>
+    <td>title:<input type="text" name="photo[title]"/></td>
+    <td>description:<input type="text" name="photo[description]"/></td>
+    <td>photographer:<input type="text" name="photo[photographer]"/></td>
 
     {% if (file.error) { %}
     <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>

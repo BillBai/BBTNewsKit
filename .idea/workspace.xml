@@ -56,7 +56,7 @@
       <file leaf-file-name="_form.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/photos/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="139" column="9" selection-start="5769" selection-end="5769" vertical-scroll-proportion="0.92287916" vertical-offset="1367" max-vertical-offset="2175">
+            <state line="84" column="38" selection-start="3580" selection-end="3580" vertical-scroll-proportion="0.8290489" vertical-offset="615" max-vertical-offset="2130">
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -1006,7 +1006,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/photos/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="9" selection-start="5769" selection-end="5769" vertical-scroll-proportion="0.92287916" vertical-offset="1367" max-vertical-offset="2175">
+        <state line="84" column="38" selection-start="3580" selection-end="3580" vertical-scroll-proportion="0.8290489" vertical-offset="615" max-vertical-offset="2130">
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
