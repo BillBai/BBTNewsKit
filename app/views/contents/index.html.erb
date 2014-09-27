@@ -4,9 +4,9 @@
 
 <div class="page-header">
   <h3> All Contents </h3>
-    <%= link_to 'add article', add_contents_path(content_type: :article) %> ｜
-    <%= link_to 'add album', add_contents_path(content_type: :album)%> ｜
-    <%= link_to 'add video', add_contents_path(content_type: :video) %>
+    <%= link_to 'add article', add_contents_path(content_type: :article), {role: 'button', class: 'btn btn-primary'} %>
+    <%= link_to 'add album', add_contents_path(content_type: :album), {role: 'button', class: 'btn btn-primary'}%>
+    <%= link_to 'add video', add_contents_path(content_type: :video), {role: 'button', class: 'btn btn-primary'} %>
 </div>
 
 
@@ -38,8 +38,6 @@
 
             <td><%= link_to 'Show', content_path(content) %></td>
             <td><%= link_to 'Edit', edit_content_path(content) %></td>
-            <td><%= link_to 'Delete', content_path(content),
-                            method: :delete, data: { confirm: 'Are you sure?'} %></td>
           </tr>
       <% end  %>
       </tbody>

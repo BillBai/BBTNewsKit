@@ -1,8 +1,15 @@
 <div class="page-header">
   <h3> <%= @content.content_type %> <%= @content.id %></h3>
-  <%= link_to 'Back', contents_path %>
-  <%= link_to 'Edit', edit_content_path(@content) %><br/>
 </div>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to 'Edit', edit_content_path(@content), {role: 'button', class: 'btn btn-primary'} %>
+    <%= link_to 'Delete', content_path(@content), method: :delete, data: { confirm: 'Are you sure?'}, role: 'button', class: 'btn btn-danger' %>
+  </div>
+</div>
+
+
 
 <div class="row">
   <div class="col-sm-12">
@@ -68,7 +75,9 @@
 
 <% when 'album'%>
     <strong> Photos:</strong>
-    <%= render @content.photos %>
+    <ul class="media-list">
+      <%= render @content.photos %>
+    </ul>
 
 <% when 'video'%>
     <div class="row">

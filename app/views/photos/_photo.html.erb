@@ -1,19 +1,18 @@
-<p>
-  <strong>Title:</strong>
-  <%= photo.title %>
-</p>
+<li class="media">
+  <a class="pull-left" href="#">
+    <%= image_tag photo.image.url(:thumb), class: 'media-object' %>
 
-<p>
-  <strong>Description:</strong>
-  <%= photo.description %>
-</p>
+  </a>
+  <div class="media-body">
+      <h4 class="media-heading">
+        <%= photo.title %>
+      </h4>
+    photographer: <%= photo.photographer %> <br/>
 
-<p>
-  <strong>Photographer:</strong>
-  <%= photo.photographer %>
-</p>
+    <%= photo.description %>
+  </div>
 
-<p>
-  <%= image_tag photo.image.url(:thumb) %>
-</p>
+</li>
+
+
 

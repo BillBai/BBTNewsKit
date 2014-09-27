@@ -1,22 +1,28 @@
-<h1> edit Content </h1>
+<div class="page-header">
+  <h3> Edit <%= @content.content_type %> <%= @content.id %></h3>
+</div>
 
-<%= render partial: 'form' , locals: {content_type: @content.content_type}%>
+<div class="row">
+  <div class="col-md-12">
+    <%= render partial: 'form' , locals: {content_type: @content.content_type}%>
+  </div>
+</div>
 
-<hr/>
-<% case  @content.content_type %>
-<% when 'article' %>
-    <div id="container">
-      <div class="editable">
-        <%=raw @content.body_html %>
-      </div>
-    </div>
+    <% case  @content.content_type %>
+    <% when 'article' %>
+        <div id="editor-container">
+          <div class="editable">
+            <%=raw @content.body_html %>
+          </div>
+        </div>
+    <% when 'album' %>
+        <h2>Add photo</h2>
+        <%= render 'photos/form' %>
 
-<% when 'album' %>
-    <h2>Add photo</h2>
-    <%= render 'photos/form' %>
+    <% when 'video' %>
+    <% end %>
 
-<% when 'video' %>
-<% end %>
+
 
 <%= link_to 'Back', content_path(@content) %>
 
@@ -26,7 +32,7 @@
 <% case  @content.content_type %>
 <% when 'article'%>
         var editor = new MediumEditor('.editable', {
-            elementsContainer: document.getElementById('container'),
+            elementsContainer: document.getElementById('editor-container'),
             buttonLabels: 'fontawesome',
             buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
         });
@@ -43,7 +49,7 @@
             });
         });
 
-        $(".content_submit_button").click(function() {
+        $("#content_submit_button").click(function() {
             var allContents = editor.serialize();
             var elContent = allContents["element-0"].value;
             $("#content_body_html").val(elContent);
