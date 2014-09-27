@@ -1,5 +1,5 @@
 <div class="container">
-<%= form_for([@content, @content.photos.build], {:html => { :multipart => true, id: "fileupload"}}) do |f| %>
+<%= form_for([@content, @content.photos.build], {:html => { :multipart => true, id: 'fileupload'}}) do |f| %>
     <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
     <div class="row fileupload-buttonbar">
       <div class="span7">
@@ -65,7 +65,6 @@
     <td>title:<input type="text" name="photo[title]"/></td>
     <td>description:<input type="text" name="photo[description]"/></td>
     <td>photographer:<input type="text" name="photo[photographer]"/></td>
-
     {% if (file.error) { %}
     <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
     {% } else if (o.files.valid && !i) { %}
@@ -108,6 +107,15 @@
           <a href="{%=file.url%}" title="{%=file.name%}" rel="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
         </td>
         <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+        <td>
+          {%= file.title %}
+        </td>
+        <td>
+          {%= file.description %}
+        </td>
+        <td>
+         {%= file.photographer %}
+        </td>
         <td colspan="2"></td>
         {% } %}
       <td class="delete">
@@ -125,6 +133,21 @@
     $(function () {
         // Initialize the jQuery File Upload widget:
         $('#fileupload').fileupload();
+
+        // Load existing files:
+        $.getJSON($('#fileupload').prop('action'), function (files) {
+            var fu = $('#fileupload').data('blueimpFileupload'),
+                    template;
+            fu._adjustMaxNumberOfFiles(-files.length);
+            console.log(files);
+            template = fu._renderDownload(files)
+                    .appendTo($('#fileupload .files'));
+            // Force reflow:
+            fu._reflow = fu._transition && template.length &&
+                    template[0].offsetWidth;
+            template.addClass('in');
+            $('#loading').remove();
+        });
 
         $('#fileupload').bind('fileuploadsubmit', function (e, data) {
             var inputs = data.context.find(':input');

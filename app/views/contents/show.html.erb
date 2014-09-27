@@ -32,12 +32,12 @@
 
 <p>
   <strong> Author: </strong>
-  <%= @content.author.name %> - <%= @content.author.display_name %>
+  <%= @content.author.name if @content.author %> - <%= @content.author.display_name if @content.author %>
 </p>
 
 <p>
   <strong> Section: </strong>
-  <%= @content.section.category %> - <%= @content.section.module %>
+  <%= @content.section.category if @content.section %> - <%= @content.section.module if @content.section %>
 </p>
 
 <p>
