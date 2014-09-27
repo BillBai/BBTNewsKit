@@ -23,5 +23,8 @@
 
 <% end  %>
 
-  <%= link_to 'new article', new_content_path %>
+  <%= link_to 'add article', add_contents_path(content_type: :article) %> ｜
+  <%= link_to 'add album', add_contents_path(content_type: :album)%> ｜
+  <%= link_to 'add video', add_contents_path(content_type: :video) %>
+
 </table>

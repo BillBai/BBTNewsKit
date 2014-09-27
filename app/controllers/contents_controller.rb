@@ -12,8 +12,7 @@ class ContentsController < ApplicationController
   end
 
   def create
-    @content = Content.new(article_params)
-
+    @content = Content.new(content_params)
 
     if @content.save
       redirect_to @content
@@ -41,6 +40,15 @@ class ContentsController < ApplicationController
     @content.destroy
 
     redirect_to contents_path
+  end
+
+  def add
+    if Content.content_types[params[:content_type]]
+      @content = Content.create(Content.default_content_params(params[:content_type]))
+    else
+      @content = Content.create(Content.default_content_params)
+    end
+    redirect_to action: 'edit', id: @content.id
   end
 
 private

@@ -1,43 +1,22 @@
-<h1> edit Article </h1>
+<h1> edit Content </h1>
 
-<%= render 'form' %>
-
-<hr/>
-<div id="container">
-  <div class="editable">
-    <%=raw @content.body_html %>
-  </div>
-</div>
-
+<%= render partial: 'form' , locals: {content_type: @content.content_type}%>
 
 <hr/>
-<h2>Add a Photo:</h2>
-<%= form_for([@content, @content.photos.build], {:html => { :multipart => true }}) do |f| %>
-    <p>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </p>
-    <p>
-      <%= f.label :description %>
-      <%= f.text_area :description %>
-    </p>
-    <p>
-      <%= f.label :photographer %>
-      <%= f.text_field :photographer %>
-    </p>
-    <p>
-      <%= f.label :image %>
-      <%= f.file_field :image %>
-    </p>
-    <p>
-      <%= f.submit %>
-    </p>
+<% case  @content.content_type %>
+<% when 0 #article%>
+    <div id="container">
+      <div class="editable">
+      </div>
+    </div>
+
+<% when 1 #album%>
+    <h2>Add a photo</h2>
+    <%= render 'photos/form' %>
+<% when 2 #video%>
 <% end %>
 
-
-
 <%= link_to 'Back', content_path(@content) %>
-
 
 <script>
 
@@ -59,7 +38,7 @@
         });
     });
 
-    $(".submit_button").click(function() {
+    $(".content_submit_button").click(function() {
         var allContents = editor.serialize();
         var elContent = allContents["element-0"].value;
         $("#content_body_html").val(elContent);

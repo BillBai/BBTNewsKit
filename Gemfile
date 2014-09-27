@@ -42,8 +42,11 @@ gem 'bootstrap-sass-rails'
 # use puma as the server
 gem 'puma'
 
+# use jquery-file-upload for file uploading
+gem 'jquery-fileupload-rails'
+
 # use paperclip for attachment file management
-gem 'paperclip', "~> 4.2"
+gem 'paperclip', '~> 4.2'
 
 # use medium style WYSIWYG editor
 gem 'medium-editor-rails'

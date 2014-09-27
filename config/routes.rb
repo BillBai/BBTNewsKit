@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   end
 
   resources :contents do
+    collection do
+      get 'add' => 'contents#add'
+    end
     resources :article_body_images
     resources :photos
   end
