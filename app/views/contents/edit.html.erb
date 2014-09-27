@@ -13,35 +13,44 @@
 <% when 1 #album%>
     <h2>Add a photo</h2>
     <%= render 'photos/form' %>
+
 <% when 2 #video%>
 <% end %>
 
 <%= link_to 'Back', content_path(@content) %>
 
+
+
 <script>
-
-    var editor = new MediumEditor('.editable', {
-        elementsContainer: document.getElementById('container'),
-        buttonLabels: 'fontawesome',
-        buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
-    });
-
-    $(function () {
-        $('.editable').mediumInsert({
-            editor: editor,
-            addons: {
-                images: {
-                    imagesDeleteScript: '/article_body_image/delete',
-                    imagesUploadScript: '/contents/<%= @content.id %>/article_body_images'
-                }
-            }
+<% case  @content.content_type %>
+<% when 0 #article%>
+        var editor = new MediumEditor('.editable', {
+            elementsContainer: document.getElementById('container'),
+            buttonLabels: 'fontawesome',
+            buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
         });
-    });
 
-    $(".content_submit_button").click(function() {
-        var allContents = editor.serialize();
-        var elContent = allContents["element-0"].value;
-        $("#content_body_html").val(elContent);
-    });
+        $(function () {
+            $('.editable').mediumInsert({
+                editor: editor,
+                addons: {
+                    images: {
+                        imagesDeleteScript: '/article_body_image/delete',
+                        imagesUploadScript: '/contents/<%= @content.id %>/article_body_images'
+                    }
+                }
+            });
+        });
 
+        $(".content_submit_button").click(function() {
+            var allContents = editor.serialize();
+            var elContent = allContents["element-0"].value;
+            $("#content_body_html").val(elContent);
+        });
+<% when 1 #album%>
+
+<% when 2 #video%>
+<% end %>
 </script>
+
+

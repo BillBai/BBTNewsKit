@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-fileupload
 //= require turbolinks
 //= require medium-editor
 //= require js/medium-editor-insert-plugin.all.js
