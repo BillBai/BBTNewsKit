@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BBTNewsKit</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= yield :head %>
@@ -8,8 +11,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container">
 
-<%= yield %>
+  <div class="header">
+    <ul class="nav nav-pills pull-right">
+      <li class="active">
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/help">Help</a>
+      </li>
+    </ul>
+    <h3 class="text-muted"> BBT News Kit</h3>
+  </div>
+  <hr/>
+
+  <div class="container" roal="main">
+
+  <%= yield %>
+  </div>
+
+</div>
 
 </body>
 </html>

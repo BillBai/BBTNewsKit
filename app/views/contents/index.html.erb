@@ -1,30 +1,49 @@
-<h1> all Contents </h1>
+<div class="jumbotron">
+  <h1>Hello~</h1>
+</div>
 
-<table>
-  <tr>
-    <th>id</th>
-    <th>Title</th>
-    <th>Subtitle</th>
-    <th>Description</th>
+<div class="page-header">
+  <h3> All Contents </h3>
+    <%= link_to 'add article', add_contents_path(content_type: :article) %> ｜
+    <%= link_to 'add album', add_contents_path(content_type: :album)%> ｜
+    <%= link_to 'add video', add_contents_path(content_type: :video) %>
+</div>
 
-  </tr>
-<% @contents.each do |content| %>
+
+<div class="row">
+
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
       <tr>
-        <td><%= content.id %></td>
-        <td><%= content.title %></td>
-        <td><%= content.subtitle %></td>
-        <td><%= content.description %></td>
+        <th>id</th>
+        <th>Title</th>
+        <th>Subtitle</th>
+        <th>Description</th>
 
-        <td><%= link_to 'Show', content_path(content) %></td>
-        <td><%= link_to 'Edit', edit_content_path(content) %></td>
-        <td><%= link_to 'Delete', content_path(content),
-                        method: :delete, data: { confirm: 'Are you sure?'} %></td>
       </tr>
+      </thead>
 
-<% end  %>
+      <tbody>
+      <% @contents.each do |content| %>
+          <tr>
+            <td><%= content.id %></td>
+            <td><%= content.title %></td>
+            <td><%= content.subtitle %></td>
+            <td><%= content.description %></td>
 
-  <%= link_to 'add article', add_contents_path(content_type: :article) %> ｜
-  <%= link_to 'add album', add_contents_path(content_type: :album)%> ｜
-  <%= link_to 'add video', add_contents_path(content_type: :video) %>
+            <td><%= link_to 'Show', content_path(content) %></td>
+            <td><%= link_to 'Edit', edit_content_path(content) %></td>
+            <td><%= link_to 'Delete', content_path(content),
+                            method: :delete, data: { confirm: 'Are you sure?'} %></td>
+          </tr>
+      <% end  %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-</table>
+
+
+
+
