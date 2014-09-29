@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
   root 'contents#index'
 
-  namespace :api, :path => "" do
-    namespace :v1 do
-      resources :contents
+  constraints subdomain: 'api' do
+    namespace :api, :path => '/' do
+      namespace :v1 do
+        resources :contents, only: [:index, :show]
+      end
     end
   end
 
