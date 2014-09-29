@@ -65,4 +65,20 @@ class Content < ActiveRecord::Base
     ]
     return item
   end
+
+  def self.getDetail(id)
+    content = Content.find(id)
+    item = Hash[
+      "id" => content.id,
+      "content_type" => content.content_type,
+      "created_at" => content.created_at,
+      "updated_at" => content.updated_at,
+      "title" => content.title,
+      "subtitle" => content.subtitle,
+      "description" => content.description,
+      "author_id" => content.author_id,
+      "section_id" => content.section_id,
+      "body_html" => content.body_html
+    ]
+  end
 end
