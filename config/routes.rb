@@ -1,24 +1,37 @@
 Rails.application.routes.draw do
 
-  root 'time_line_items#index'
-
-  resources :time_line_items
-
-  resources :videos
-  resources :albums
-  resources :articles do
-    resources :article_body_images
+  namespace :api, :path => "" do
+    namespace :v1 do
+      resources :contents
+    end
   end
 
+  resources :authors
+  resources :sections do
+    resources :contents
+  end
+
+  resources :contents do
+    collection do
+      get 'add' => 'contents#add'
+    end
+    resources :article_body_images
+    resources :photos
+  end
+
+  post 'article_body_image/delete' => 'article_body_images#destroy'
+
+  root 'contents#index'
+
   #resources :authors do
-  #  resources :articles do
+  #  resources :contents do
   #    resources :article_body_images
   #  end
   #  resources :videos
   #end
   #
   #resources :sections do
-  #  resources :articles
+  #  resources :contents
   #  resources :videos
   #end
 
