@@ -21,64 +21,66 @@ class Content < ActiveRecord::Base
     }
   end
 
-  def self.getList(from,limit)
-    had_from_id = false
-    if(from == '')
-      from_id = Content.last.id
+  def self.getList(from_id,limit)
+    if(from_id == '')
+      temp = Content.where('delete_flag' => nil,'status' => 1).last(limit)
     else
-      had_from_id = true
-      from_id = from
-    end
-
-    count = 0
-    from_id_count = 0
-    id = from_id
-    list = Array.new
-
-     loop do
-        if (Content.exists?(id) && Content.find(id).status == 'published' && Content.find(id).delete_flag ==nil)
-          list << getListItem(id)
-          count = count + 1
-        end
-        from_id_count = from_id_count + 1
-        id = id - 1
-        break if (id < 0 || count == limit  || (had_from_id && from_id_count == limit))
+      if(from_id - limit < 0)
+        offset = 0
+        @limit = from_id
+      else
+        offset = from_id - limit
+        @limit = limit
       end
-
-      return list
+      temp = Content.limit(@limit).offset(offset)
+    end
+    return getListItem(temp)
   end
 
   private
-  def self.getListItem(id)
-    content = Content.find(id)
-    item = Hash[
-      "id" => content.id,
-      "content_type" => content.content_type,
-      "created_at" => content.created_at,
-      "updated_at" => content.updated_at,
-      "title" => content.title,
-      "subtitle" => content.subtitle,
-      "description" => content.description,
-      "author_id" => content.author_id,
-      "section_id" => content.section_id,
-      "trumb_image_url" => nil
-    ]
-    return item
+  def self.getListItem(content_array)
+    list = Array.new
+    content_array.each do |content|
+      if(content.delete_flag != nil || content.status != 'published')
+        next
+      end
+      author = Author.find(content.author_id)
+      section = Section.find(content.section_id)
+      item = Hash[
+        "id" => content.id,
+        "title" => content.title,
+        "subtitle" => content.subtitle,
+        "description" => content.description,
+        "content_type" => content.content_type,
+        "author" => Hash["name" => author.name , "display_name" => author.display_name , "department" => author.department],
+        "section" => Hash["category" => section.category,"module" => section.module],
+        "created_at" => content.created_at,
+        "updated_at" => content.updated_at,
+        "trumb_image_url" => nil,
+      ]
+      list << item
+    end
+    return list
   end
 
   def self.getDetail(id)
     content = Content.find(id)
+    author = Author.find(content.author_id)
+    section = Section.find(content.section_id)
     item = Hash[
       "id" => content.id,
-      "content_type" => content.content_type,
-      "created_at" => content.created_at,
-      "updated_at" => content.updated_at,
       "title" => content.title,
       "subtitle" => content.subtitle,
       "description" => content.description,
-      "author_id" => content.author_id,
-      "section_id" => content.section_id,
-      "body_html" => content.body_html
+      "content_type" => content.content_type,
+      "author" => Hash["name" => author.name , "display_name" => author.display_name , "department" => author.department],
+      "section" => Hash["category" => section.category,"module" => section.module],
+      "created_at" => content.created_at,
+      "updated_at" => content.updated_at,
+      "trumb_image_url" => nil,
+      "body_html" => content.body_html,
+      "video_url" => content.video_url,
+      "photos" => content.photos
     ]
   end
 end

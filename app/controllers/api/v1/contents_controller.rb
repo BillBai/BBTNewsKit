@@ -1,10 +1,10 @@
 class Api::V1::ContentsController < ApplicationController
   def index
     @response = Hash.new
-    if((params.include?('from_id') && !params[:from_id].is_a?(Integer)) && (params.include?('limit') && !params[:id].is_a?(Integer)))
+    if((params.include?('from_id') && params[:from_id].to_i.to_s != params[:from_id]) || (params.include?('limit') && params[:limit].to_i.to_s != params[:limit]))
       @response["status"] = 1
       @response["message"] = 'Invaild params'
-      render :json => @response
+      render :json => @response , status: 400
       return
     end
     if(params.include?('limit'))
@@ -13,7 +13,7 @@ class Api::V1::ContentsController < ApplicationController
       limit = 10
     end
     if(params.include?('from_id'))
-      list = Content.getList(params[:from_id],limit)
+      list = Content.getList(params[:from_id].to_i,limit)
     else
       list = Content.getList('',limit)
     end
@@ -29,27 +29,24 @@ class Api::V1::ContentsController < ApplicationController
     if(!Content.exists?(params[:id]))
       @response["status"] = 1
       @response["message"] = "content didn't exist"
-      render :json => @response
+      render :json => @response, status: 404
       return
     end
 
     @content = Content.find(params[:id])
-    render :json => @content
-    return
-
     if(@content.status != 'published')
       @response["status"] = 1
       @response["message"] = "content didn't exist"
-      render :json => @response
+      render :json => @response, status: 404
       return
     end
     if(@content.delete_flag != nil)
       @response["status"] = 2
       @response["message"] = "content had been deleted"
-      render :json => @response
+      render :json => @response, status: 404
       return
     end
 
-
+    render :json => Content.getDetail(params[:id])
   end
 end
