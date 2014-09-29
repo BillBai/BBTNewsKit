@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   root 'contents#index'
 
+  namespace :api, :path => "" do
+    namespace :v1 do
+      resources :contents
+    end
+  end
+
   resources :authors
   resources :sections do
     resources :contents

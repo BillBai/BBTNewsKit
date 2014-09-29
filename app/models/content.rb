@@ -20,4 +20,65 @@ class Content < ActiveRecord::Base
         :status => Content.statuses[:draft],
     }
   end
+
+  def self.getList(from,limit)
+    had_from_id = false
+    if(from == '')
+      from_id = Content.last.id
+    else
+      had_from_id = true
+      from_id = from
+    end
+
+    count = 0
+    from_id_count = 0
+    id = from_id
+    list = Array.new
+
+     loop do
+        if (Content.exists?(id) && Content.find(id).status == 'published' && Content.find(id).delete_flag ==nil)
+          list << getListItem(id)
+          count = count + 1
+        end
+        from_id_count = from_id_count + 1
+        id = id - 1
+        break if (id < 0 || count == limit  || (had_from_id && from_id_count == limit))
+      end
+
+      return list
+  end
+
+  private
+  def self.getListItem(id)
+    content = Content.find(id)
+    item = Hash[
+      "id" => content.id,
+      "content_type" => content.content_type,
+      "created_at" => content.created_at,
+      "updated_at" => content.updated_at,
+      "title" => content.title,
+      "subtitle" => content.subtitle,
+      "description" => content.description,
+      "author_id" => content.author_id,
+      "section_id" => content.section_id,
+      "trumb_image_url" => nil
+    ]
+    return item
+  end
+
+  def self.getDetail(id)
+    content = Content.find(id)
+    item = Hash[
+      "id" => content.id,
+      "content_type" => content.content_type,
+      "created_at" => content.created_at,
+      "updated_at" => content.updated_at,
+      "title" => content.title,
+      "subtitle" => content.subtitle,
+      "description" => content.description,
+      "author_id" => content.author_id,
+      "section_id" => content.section_id,
+      "body_html" => content.body_html
+    ]
+  end
 end
