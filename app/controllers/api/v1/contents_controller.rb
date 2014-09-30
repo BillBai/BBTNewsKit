@@ -1,12 +1,19 @@
 class Api::V1::ContentsController < ApplicationController
   def index
     @response = Hash.new
-    if((params.include?('from_id') && params[:from_id].to_i.to_s != params[:from_id]) || (params.include?('limit') && params[:limit].to_i.to_s != params[:limit]))
+    if(params.include?('from_id') && (params[:from_id].to_i.to_s != params[:from_id] || params[:from_id].to_i != params[:from_id].to_f))
       @response["status"] = 1
-      @response["message"] = 'Invaild params'
+      @response["message"] = 'Invaild param : id'
       render :json => @response , status: 400
       return
     end
+    if(params.include?('limit') && (params[:limit].to_i.to_s != params[:limit]) || params[:limit].to_i != params[:limit].to_f)
+      @response["status"] = 1
+      @response["message"] = 'Invaild param : limit'
+      render :json => @response , status: 400
+      return
+    end
+
     if(params.include?('limit'))
       limit = params[:limit].to_i
     else
