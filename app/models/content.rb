@@ -11,6 +11,8 @@ class Content < ActiveRecord::Base
   has_attached_file :header_image, :styles => { :medium => "500x300>", :thumb => "100x60>" }
   validates_attachment_content_type :header_image, :content_type => /\Aimage\/.*\Z/
 
+  paginates_per 23
+
   def self.default_content_params(content_type = :article)
     {
         :title => 'default title',

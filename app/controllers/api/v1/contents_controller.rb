@@ -1,5 +1,5 @@
 class Api::V1::ContentsController < ApplicationController
-  protect_from_forgery with: :null_session
+  protect_from_forgery with: :null_session ＃
   def index
     @response = Hash.new
     if((params.include?('from_id') && !params[:from_id].is_a?(Integer)) && (params.include?('limit') && !params[:id].is_a?(Integer)))

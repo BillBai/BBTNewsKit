@@ -2,9 +2,9 @@ class ContentsController < ApplicationController
   def index
     if params[:section_id]
       @section = Section.find(params[:section_id])
-      @contents = @section.contents
+      @contents = @section.contents.order(:id).page params[:page]
     else
-      @contents = Content.all
+      @contents = Content.order(:id).page params[:page]
     end
   end
 

@@ -29,8 +29,6 @@ gem 'spring',        group: :development
 # wrapper for image magick
 gem 'mini_magick'
 
-gem 'simple_form'
-
 # paginator
 gem 'kaminari'
 
