@@ -51,34 +51,34 @@ class Content < ActiveRecord::Base
 
   def full_hash_for_api
       {
-        id: self.id,
-        title: self.title,
-        "subtitle" => self.subtitle,
-        "description" => self.description,
-        "content_type" => self.content_type,
-        "author" => Hash["name" => author.name , "display_name" => author.display_name , "department" => author.department],
-        "section" => Hash["category" => section.category,"module" => section.module],
-        "created_at" => self.created_at,
-        "updated_at" => self.updated_at,
-        "trumb_image_url" => self.header_image.url(:thumb),
-        "body_html" => self.body_html,
-        "video_url" => self.video_url,
-        "photos" => self.photos
+          id: self.id,
+          title: self.title,
+          subtitle: self.subtitle,
+          description: self.description,
+          content_type: self.content_type,
+          author: {name: author.name, display_name: author.display_name, department: author.department},
+          section: {category: section.category, module: section.module},
+          created_at: self.created_at,
+          updated_at: self.updated_at,
+          trumb_image_url: self.header_image.url(:thumb),
+          body_html: self.body_html,
+          video_url: self.video_url,
+          photos: self.photos
       }
     end
 
     def reduced_hash_for_api
       {
-        "id" => self.id,
-        "title" => self.title,
-        "subtitle" => self.subtitle,
-        "description" => self.description,
-        "content_type" => self.content_type,
-        "author" => Hash["name" => self.author.name , "display_name" => self.author.display_name , "department" => self.author.department],
-        "section" => Hash["category" => self.section.category,"module" => self.section.module],
-        "created_at" => self.created_at,
-        "updated_at" => self.updated_at,
-        "trumb_image_url" => self.header_image.url(:thumb)
+          id: self.id,
+          title: self.title,
+          subtitle: self.subtitle,
+          description: self.description,
+          content_type: self.content_type,
+          author: {name: self.author.name, display_name: self.author.display_name, department: self.author.department},
+          section: {category: self.section.category, module: self.section.module},
+          created_at: self.created_at,
+          updated_at: self.updated_at,
+          trumb_image_url: self.header_image.url(:thumb)
       }
     end
 
