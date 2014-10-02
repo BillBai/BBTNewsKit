@@ -14,13 +14,11 @@ class Content < ActiveRecord::Base
   paginates_per 23
 
   def self.default_content_params(content_type = :article)
-    {
-        :title => 'default title',
+      { :title => 'default title',
         :subtitle => 'default subtitle',
         :description => 'default description',
         :content_type => Content.content_types[content_type],
-        :status => Content.statuses[:draft],
-    }
+        :status => Content.statuses[:draft]}
   end
 
   def self.getList(from_id,limit)
