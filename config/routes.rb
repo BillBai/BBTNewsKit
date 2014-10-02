@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     namespace :api, :path => '/' do
       namespace :v1 do
         resources :contents, only: [:index, :show]
+        resources :sections, only: [:index, :show] do
+          resources :contents, only: [:index, :show]
+        end
       end
     end
   end
@@ -26,13 +29,6 @@ Rails.application.routes.draw do
 
   post 'article_body_image/delete' => 'article_body_images#destroy'
 
-  #resources :authors do
-  #  resources :contents do
-  #    resources :article_body_images
-  #  end
-  #  resources :videos
-  #end
-  #
   #resources :sections do
   #  resources :contents
   #  resources :videos

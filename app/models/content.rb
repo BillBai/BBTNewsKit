@@ -13,6 +13,7 @@ class Content < ActiveRecord::Base
 
   paginates_per 23
 
+  public
   def self.default_content_params(content_type = :article)
       { :title => 'default title',
         :subtitle => 'default subtitle',
@@ -37,55 +38,62 @@ class Content < ActiveRecord::Base
     return get_list_item(temp)
   end
 
-  private
-  def self.get_list_item(content_array)
-    list = Array.new
-    content_array.each do |content|
-      if(content.delete_flag != nil || content.status != 'published')
-        next
-      end
-      author = Author.find(content.author_id)
-      section = Section.find(content.section_id)
-      item = Hash[
-        "id" => content.id,
-        "title" => content.title,
-        "subtitle" => content.subtitle,
-        "description" => content.description,
-        "content_type" => content.content_type,
-        "author" => Hash["name" => author.name , "display_name" => author.display_name , "department" => author.department],
-        "section" => Hash["category" => section.category,"module" => section.module],
-        "created_at" => content.created_at,
-        "updated_at" => content.updated_at,
-        "trumb_image_url" => nil,
-      ]
-      list << item
-    end
-    return list
-  end
-
-  public
   def get_detail
     author = Author.find(self.author_id)
     section = Section.find(self.section_id)
-    item = Hash[
-      "id" => self.id,
-      "title" => self.title,
-      "subtitle" => self.subtitle,
-      "description" => self.description,
-      "content_type" => self.content_type,
-      "author" => Hash["name" => author.name , "display_name" => author.display_name , "department" => author.department],
-      "section" => Hash["category" => section.category,"module" => section.module],
-      "created_at" => self.created_at,
-      "updated_at" => self.updated_at,
-      "trumb_image_url" => nil,
-      "body_html" => self.body_html,
-      "video_url" => self.video_url,
-      "photos" => self.photos
-    ]
+    item = full_hash_for_api
   end
 
   def self.get_contents_by_section(id)
     temp = Content.where('delete_flag' => nil,'status' => 1,'section_id' => id)
     return get_list_item(temp)
   end
+
+  def full_hash_for_api
+      {
+        id: self.id,
+        title: self.title,
+        "subtitle" => self.subtitle,
+        "description" => self.description,
+        "content_type" => self.content_type,
+        "author" => Hash["name" => author.name , "display_name" => author.display_name , "department" => author.department],
+        "section" => Hash["category" => section.category,"module" => section.module],
+        "created_at" => self.created_at,
+        "updated_at" => self.updated_at,
+        "trumb_image_url" => self.header_image.url(:thumb),
+        "body_html" => self.body_html,
+        "video_url" => self.video_url,
+        "photos" => self.photos
+      }
+    end
+
+    def reduced_hash_for_api
+      {
+        "id" => self.id,
+        "title" => self.title,
+        "subtitle" => self.subtitle,
+        "description" => self.description,
+        "content_type" => self.content_type,
+        "author" => Hash["name" => self.author.name , "display_name" => self.author.display_name , "department" => self.author.department],
+        "section" => Hash["category" => self.section.category,"module" => self.section.module],
+        "created_at" => self.created_at,
+        "updated_at" => self.updated_at,
+        "trumb_image_url" => self.header_image.url(:thumb)
+      }
+    end
+
+  private
+    def self.get_list_item(content_array)
+      list = Array.new
+      content_array.each do |content|
+        if(content.delete_flag != nil || !content.published?)
+          next
+        end
+        author = Author.find(content.author_id)
+        section = Section.find(content.section_id)
+        item = content.reduced_hash_for_api
+        list << item
+      end
+      return list
+    end
 end
