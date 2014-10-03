@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141003140017) do
+ActiveRecord::Schema.define(version: 20141003143423) do
 
   create_table "article_body_images", force: true do |t|
     t.datetime "created_at"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20141003140017) do
     t.string   "header_image_info"
     t.text     "body_html"
     t.integer  "status"
-    t.boolean  "delete_flag"
+    t.boolean  "delete_flag",               default: false
     t.integer  "content_type"
     t.string   "video_url"
   end

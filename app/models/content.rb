@@ -19,8 +19,7 @@ class Content < ActiveRecord::Base
         :subtitle => 'default subtitle',
         :description => 'default description',
         :content_type => Content.content_types[content_type],
-        :status => Content.statuses[:draft],
-        :delete_flag => false
+        :status => Content.statuses[:draft]
       }
   end
 
