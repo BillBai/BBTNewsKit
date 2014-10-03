@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :authors
+
   resources :sections do
     resources :contents
   end
