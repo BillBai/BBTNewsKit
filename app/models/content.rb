@@ -19,12 +19,14 @@ class Content < ActiveRecord::Base
         :subtitle => 'default subtitle',
         :description => 'default description',
         :content_type => Content.content_types[content_type],
-        :status => Content.statuses[:draft]}
+        :status => Content.statuses[:draft],
+        :delete_flag => false
+      }
   end
 
   def self.get_list(from_id,limit)
     if(from_id == '')
-      temp = Content.where('delete_flag' => nil,'status' => 1).last(limit)
+      temp = Content.where(delete_flag: false ,status: 1).last(limit)
     else
       if(from_id - limit < 0)
         offset = 0
@@ -45,7 +47,7 @@ class Content < ActiveRecord::Base
   end
 
   def self.get_contents_by_section(id)
-    temp = Content.where('delete_flag' => nil,'status' => 1,'section_id' => id)
+    temp = Content.where(delete_flag: false, status: 1, section_id: id)
     return get_list_item(temp)
   end
 
@@ -82,11 +84,15 @@ class Content < ActiveRecord::Base
       }
     end
 
+  def archive
+    self.update_attributes!(delete_flag: true)
+  end
+
   private
     def self.get_list_item(content_array)
       list = Array.new
       content_array.each do |content|
-        if(content.delete_flag != nil || !content.published?)
+        if(content.delete_flag || !content.published?)
           next
         end
         author = Author.find(content.author_id)
@@ -96,4 +102,6 @@ class Content < ActiveRecord::Base
       end
       return list
     end
+
+
 end

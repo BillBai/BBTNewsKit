@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930144727) do
+ActiveRecord::Schema.define(version: 20141003140017) do
 
   create_table "article_body_images", force: true do |t|
     t.datetime "created_at"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140930144727) do
     t.string   "display_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active"
+    t.boolean  "active",              default: true
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20140930144727) do
     t.string   "module"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active"
+    t.boolean  "active",                     default: true
     t.string   "section_image_file_name"
     t.string   "section_image_content_type"
     t.integer  "section_image_file_size"

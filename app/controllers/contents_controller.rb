@@ -2,9 +2,9 @@ class ContentsController < ApplicationController
   def index
     if params[:section_id]
       @section = Section.find(params[:section_id])
-      @contents = @section.contents.order(:id).page params[:page]
+      @contents = @section.contents.where(delete_flag: false).order(:id).page params[:page]
     else
-      @contents = Content.order(:id).page params[:page]
+      @contents = Content.where(delete_flag: false).order(:id).page params[:page]
     end
   end
 
@@ -42,7 +42,7 @@ class ContentsController < ApplicationController
 
   def destroy
     @content = Content.find(params[:id])
-    @content.destroy
+    @content.archive
 
     redirect_to contents_path
   end

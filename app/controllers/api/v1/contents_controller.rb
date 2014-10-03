@@ -63,7 +63,7 @@ class Api::V1::ContentsController < ApplicationController
       render :json => @response, status: 404
       return
     end
-    if(content.delete_flag != nil)
+    if(content.delete_flag)
       @response["status"] = 2
       @response["message"] = "content had been deleted"
       render :json => @response, status: 404

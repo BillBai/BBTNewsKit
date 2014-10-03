@@ -1,3 +1,25 @@
-one: {}
+one:
+  body_html_url: string
+  title: string
+  subtitle: string
+  description: string
+  author_id: 1
+  section_id: 1
+  body_html: string
+  status: 1
+  delete_flag: null
+  content_type: 1
+  video_url: string
 
-two: {}
+two:
+  body_html_url: string
+  title: string
+  subtitle: string
+  description: string
+  author_id: 1
+  section_id: 1
+  body_html: string
+  status: 1
+  delete_flag: null
+  content_type: 1
+  video_url: string
