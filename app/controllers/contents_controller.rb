@@ -56,6 +56,18 @@ class ContentsController < ApplicationController
     redirect_to action: 'edit', id: @content.id
   end
 
+  def publish
+    @content = Content.find(params[:id])
+    @content.published!
+    redirect_to action: 'show', id: @content.id
+  end
+
+  def revoke
+    @content = Content.find(params[:id])
+    @content.draft!
+    redirect_to action: 'show', id: @content.id
+  end
+
 private
   def content_params
     params.require(:content).permit(:title, :subtitle, :description, :author_id, :section_id, :header_image, :header_image_info, :body_html, :video_url)

@@ -24,6 +24,11 @@ Rails.application.routes.draw do
     collection do
       get 'add' => 'contents#add'
     end
+
+    member do
+      patch 'publish' => 'contents#publish'
+      patch 'revoke' => 'contents#revoke'
+    end
     resources :article_body_images
     resources :photos
   end
