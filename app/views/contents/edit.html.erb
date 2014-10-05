@@ -45,31 +45,40 @@
     <% end %>
 
 <script>
-
-        var editor = new MediumEditor('.editable', {
+    var editor = new MediumEditor('.editable', {
             elementsContainer: document.getElementById('editor-container'),
             buttonLabels: 'fontawesome',
             buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
-        });
+    });
 
-        $(function () {
-            $('.editable').mediumInsert({
-                editor: editor,
-                addons: {
-                    images: {
-                        imagesDeleteScript: '/article_body_image/delete',
-                        imagesUploadScript: '/contents/<%= @content.id %>/article_body_images'
-                    }
+    $(function () {
+        $('.editable').mediumInsert({
+            editor: editor,
+            addons: {
+                images: {
+                    imagesDeleteScript: '/article_body_image/delete',
+                    imagesUploadScript: '/contents/<%= @content.id %>/article_body_images'
                 }
-            });
+            }
         });
+    });
 
-        $("#content_submit_button").click(function() {
-            var allContents = editor.serialize();
-            var elContent = allContents["element-0"].value;
-            $("#content_body_html").val(elContent);
-        });
+    function save_edit_content_to_form() {
+        var allContents = editor.serialize();
+        var elContent = allContents["element-0"].value;
+        $("#content_body_html").val(elContent);
+    }
 
+   $("#content-form").submit(function(event) {
+       console.log('submitting');
+
+   });
+
+   $("#save-content-button").click(function() {
+       console.log('23333');
+       save_edit_content_to_form();
+       $("#content-form").submit();
+    });
 
 
 </script>
