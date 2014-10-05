@@ -1,4 +1,4 @@
-<%= form_for @content, :html => { :multipart => true , role: 'form'} do |f| %>
+<%= form_for @content, :html => { :multipart => true , role: 'form', id: 'contnet_form'} do |f| %>
     <% if @content.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@time_line_item.errors.count, "error") %>
@@ -64,7 +64,7 @@
         </p>
     <% end %>
 
-    <p>
-      <%= f.submit id: 'content_submit_button'%>
-    </p>
+    <!--<p>-->
+      <!--<%= f.submit id: 'content_submit_button'%>-->
+    <!--</p>-->
 <% end %>

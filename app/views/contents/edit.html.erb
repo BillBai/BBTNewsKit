@@ -13,7 +13,8 @@
         Actions
       </div>
       <div class="panel-body">
-        <%= link_to 'Edit', edit_content_path(@content), {role: 'button', class: 'btn btn-default'}%>
+        <button type="button" class="btn btn-primary" id="save-content-button">Save draft</button>
+        <button type="button" class="btn btn-success" id="publish-content-button">Publish</button>
         <!-- Single button -->
         <div class="btn-group">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -44,8 +45,7 @@
     <% end %>
 
 <script>
-<% case  @content.content_type %>
-<% when 'article'%>
+
         var editor = new MediumEditor('.editable', {
             elementsContainer: document.getElementById('editor-container'),
             buttonLabels: 'fontawesome',
@@ -69,10 +69,9 @@
             var elContent = allContents["element-0"].value;
             $("#content_body_html").val(elContent);
         });
-<% when 'album' %>
 
-<% when 'video' %>
-<% end %>
+
+
 </script>
 
 

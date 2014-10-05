@@ -24,10 +24,10 @@ class Content < ActiveRecord::Base
   end
 
   def self.get_list(from_id,limit)
-    if(from_id == '')
+    if from_id == ''
       temp = Content.where(delete_flag: false ,status: 1).last(limit)
     else
-      if(from_id - limit < 0)
+      if from_id - limit < 0
         offset = 0
         @limit = from_id
       else
