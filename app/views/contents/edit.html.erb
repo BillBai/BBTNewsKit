@@ -5,16 +5,23 @@
     <%= link_to 'Back', content_path(@content) %>
 <div class="row">
   <div class="col-md-8">
-    <%= render partial: 'form' , locals: {content_type: @content.content_type}%>
+    <div class="panel panel-default">
+      <div class="panel-heading">Content meta data</div>
+      <div class="panel-body">
+        <%= render partial: 'form' , locals: {content_type: @content.content_type}%>
+      </div>
+    </div>
   </div>
+
+
   <div class="col-md-4">
-      <div class="panel panel-default">
+    <!-- Actions panel-->
+      <div class="panel panel-primary">
       <div class="panel-heading">
         Actions
       </div>
       <div class="panel-body">
         <button type="button" class="btn btn-primary" id="save-content-button">Save draft</button>
-        <button type="button" class="btn btn-success" id="publish-content-button">Publish</button>
         <!-- Single button -->
         <div class="btn-group">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -27,11 +34,34 @@
         </div>
       </div>
     </div>
+    <!-- Actions panel END -->
+
+    <!-- Author panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading">Author</div>
+      <div class="panel-body">
+        <%= select_tag :content_author, options_from_collection_for_select(Author.all, :id, :name) , {class: 'selectpicker'}%>
+      </div>
+    </div>
+    <!--Author panel END-->
+
+    <!--Section panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading">Section</div>
+      <div class="panel-body">
+        <select class="selectpicker">
+          <%= select_tag :content_section, options_from_collection_for_select(Section.all, :id, :module) , {class: 'selectpicker'}%>
+        </select>
+      </div>
+    </div>
+    <!-- Section panel END-->
   </div>
 </div>
 
     <% case  @content.content_type %>
     <% when 'article' %>
+    <strong>Article body</strong>
+    <hr/>
         <div id="editor-container">
           <div class="editable">
             <%=raw @content.body_html %>
@@ -61,6 +91,8 @@
                 }
             }
         });
+
+        $('.selectpicker').selectpicker();
     });
 
     function save_edit_content_to_form() {

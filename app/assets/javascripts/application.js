@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require jquery-fileupload
 //= require turbolinks
+//= require js/bootstrap-select.min
 //= require medium-editor
 //= require js/medium-editor-insert-plugin.all.js
 //= require_tree .

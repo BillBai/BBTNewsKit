@@ -3,7 +3,7 @@ module SectionsHelper
     sections = Section.all
     dict = {}
     sections.each do |section|
-      dict["#{section.category}-#{section.module}"] = section.id
+      dict["#{section.category}-#{section.module}"] = section.id if section.active
     end
 
     dict

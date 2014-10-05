@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require font-awesome
+ *= require css/bootstrap-select.min
  *= require medium-editor/medium-editor
  *= require medium-editor/themes/default
  *= require css/medium-editor-insert-plugin.css

@@ -27,17 +27,14 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :status %>
-      <%= f.select :status, options_for_select(Content.statuses.keys.to_a, selected: @content.status), {}, class: 'form-control'%>
-    </div>
-
-    <div class="form-group">
       <%= f.label :author_id %>
+      <%= f.hidden_field :author_id %>
       <%= f.select :author_id, options_for_select(author_selection_field_dict, selected: @content.author_id), {}, class: 'form-control' %>
     </div>
 
     <div class="form-group">
       <%= f.label :section_id %>
+      <%= f.hidden_field :author_id %>
       <%= f.select :section_id, options_for_select(section_selection_field_dict, selected: @content.section_id),  {}, class: 'form-control' %>
     </div>
 

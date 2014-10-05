@@ -3,7 +3,7 @@ module AuthorsHelper
     authors = Author.all
     dict = {}
     authors.each do |author|
-      dict["#{author.name}-#{author.display_name}"] = author.id
+      dict["#{author.name}-#{author.display_name}"] = author.id if author.active
     end
 
     dict
