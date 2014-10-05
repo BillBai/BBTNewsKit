@@ -6,11 +6,30 @@
 <div class="row">
   <div class="col-md-8">
     <div class="panel panel-default">
-      <div class="panel-heading">Content meta data</div>
+      <div class="panel-heading">
+        Content meta data
+        <%=raw status_label(@content, @content.status) %>
+        <%=raw content_type_label(@content, @content.content_type) %>
+      </div>
       <div class="panel-body">
         <%= render partial: 'form' , locals: {content_type: @content.content_type}%>
       </div>
     </div>
+    <% case  @content.content_type %>
+    <% when 'article' %>
+        <strong>Article body</strong>
+        <hr/>
+        <div id="editor-container">
+          <div class="editable">
+            <%=raw @content.body_html %>
+          </div>
+        </div>
+    <% when 'album' %>
+        <h2>Add photo</h2>
+        <%= render 'photos/form' %>
+
+    <% when 'video' %>
+    <% end %>
   </div>
 
 
@@ -58,30 +77,18 @@
   </div>
 </div>
 
-    <% case  @content.content_type %>
-    <% when 'article' %>
-    <strong>Article body</strong>
-    <hr/>
-        <div id="editor-container">
-          <div class="editable">
-            <%=raw @content.body_html %>
-          </div>
-        </div>
-    <% when 'album' %>
-        <h2>Add photo</h2>
-        <%= render 'photos/form' %>
 
-    <% when 'video' %>
-    <% end %>
 
 <script>
     var editor = new MediumEditor('.editable', {
-            elementsContainer: document.getElementById('editor-container'),
-            buttonLabels: 'fontawesome',
-            buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
+        elementsContainer: document.getElementById('editor-container'),
+        buttonLabels: 'fontawesome',
+        buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
     });
 
     $(function () {
+
+
         $('.editable').mediumInsert({
             editor: editor,
             addons: {
@@ -101,14 +108,12 @@
         $("#content_body_html").val(elContent);
     }
 
-   $("#content-form").submit(function(event) {
-       console.log('submitting');
-
-   });
-
    $("#save-content-button").click(function() {
        console.log('23333');
-       save_edit_content_to_form();
+       // if there is no editor, that means the content_type is not Article.
+       if($('#editor-container').length != 0) {
+           save_edit_content_to_form();
+       }
        $("#content-form").submit();
     });
 

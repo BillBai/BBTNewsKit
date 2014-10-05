@@ -2,8 +2,8 @@ class Content < ActiveRecord::Base
   belongs_to :author
   belongs_to :section
 
-  has_many :article_body_images
-  has_many :photos
+  has_many :article_body_images, dependent: :destroy
+  has_many :photos, dependent: :destroy
 
   enum status: [:draft, :published]
   enum content_type: [:article, :album, :video]

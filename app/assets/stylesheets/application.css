@@ -15,6 +15,7 @@
  *= require medium-editor/medium-editor
  *= require medium-editor/themes/default
  *= require css/medium-editor-insert-plugin.css
+ *= require css/medium-editor-insert-plugin-frontend.css
  *= require bootstrap
  *= require_tree .
  *= require_self

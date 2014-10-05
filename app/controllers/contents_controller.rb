@@ -3,6 +3,8 @@ class ContentsController < ApplicationController
     if params[:section_id]
       @section = Section.find(params[:section_id])
       @contents = @section.contents.where(delete_flag: false).order(:id).page params[:page]
+    elsif params[:content_type] && Content.content_types[params[:content_type]]
+      @contents = Content.where(delete_flag: false, content_type: Content.content_types[params[:content_type]]).order(:id).page params[:page]
     else
       @contents = Content.where(delete_flag: false).order(:id).page params[:page]
     end

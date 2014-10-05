@@ -6,10 +6,12 @@
 
 
 <div class="row">
-  <div class="col-sm-8">
+  <div class="col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
         Content Meta Data
+        <%=raw status_label(@content, @content.status) %>
+        <%=raw content_type_label(@content, @content.content_type) %>
       </div>
       <div class="panel-body">
         <p>
@@ -24,34 +26,44 @@
           <%= @content.subtitle %>
         </p>
         <p>
-          <strong> Description: </strong>
+          <strong> Description: </strong><br/>
           <%= @content.description %>
         </p>
-        <p>
-          <strong> Content Type</strong>
-          <%= @content.content_type %>
-        </p>
-        <p>
-          <strong> Status </strong>
-          <%= @content.status %>
-        </p>
-        <p>
-          <strong> Author: </strong>
-          <%= @content.author.name if @content.author %> - <%= @content.author.display_name if @content.author %>
-        </p>
-        <p>
-          <strong> Section: </strong>
-          <%= @content.section.category if @content.section %> - <%= @content.section.module if @content.section %>
-        </p>
+
         <p>
           <strong> Header Image:</strong><br/>
           <%= image_tag @content.header_image.url(:thumb) %>
         </p>
       </div>
     </div>
+    <% case  @content.content_type %>
+    <% when 'article' %>
+        <hr>
+        <div><%=raw @content.body_html %></div>
+
+    <% when 'album'%>
+        <strong> Photos:</strong>
+        <ul class="media-list">
+          <%= render @content.photos %>
+        </ul>
+
+    <% when 'video'%>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">Video Url</div>
+              <div class="panel-body">
+                <%= @content.video_url %>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+
   </div>
   <div class="col-md-4">
-    <div class="panel panel-default">
+    <!-- Action panel-->
+    <div class="panel panel-primary">
       <div class="panel-heading">
         Actions
       </div>
@@ -76,55 +88,57 @@
         </div>
       </div>
     </div>
+    <!-- Action panel END -->
+
+    <!-- Author panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading">Author</div>
+      <div class="panel-body">
+        <strong>Department:</strong>
+        <%= @content.author.department %>
+        <br/>
+        <strong>Name:</strong>
+        <%= @content.author.name  %>
+        <br/>
+        <strong>Display Name:</strong>
+        <%= @content.author.display_name %>
+      </div>
+    </div>
+    <!--Author panel END-->
+
+    <!--Section panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading">Section</div>
+      <div class="panel-body">
+        <strong>Category:</strong>
+        <%= @content.section.category %>
+        <br/>
+        <strong>Module:</strong>
+        <%= @content.section.module %>
+      </div>
+    </div>
+    <!-- Section panel END-->
   </div>
 </div>
 
 
-<% case  @content.content_type %>
-<% when 'article' %>
-    <hr>
-    <div class="row">
-      <div class="col-sm-12">
-            <div id="editor-container">
-              <div class="editable"><%=raw @content.body_html %></div>
-            </div>
-      </div>
-    </div>
 
-<% when 'album'%>
-    <strong> Photos:</strong>
-    <ul class="media-list">
-      <%= render @content.photos %>
-    </ul>
-
-<% when 'video'%>
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">Video Url</div>
-          <div class="panel-body">
-            <%= @content.video_url %>
-          </div>
-        </div>
-      </div>
-    </div>
-<% end %>
 
 
 <script>
-    var editor = new MediumEditor('.editable', {
-        elementsContainer: document.getElementById('editor-container'),
-        buttonLabels: 'fontawesome',
-        buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
-    });
-    editor.deactivate();
+//    var editor = new MediumEditor('.editable', {
+//        elementsContainer: document.getElementById('editor-container'),
+//        buttonLabels: 'fontawesome',
+//        buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
+//    });
+//    editor.deactivate();
 
-    $(function () {
-        $('.editable').mediumInsert({
-            editor: editor,
-            addons: {
-                images: {}
-            }
-        });
-    });
+//    $(function () {
+//        $('.editable').mediumInsert({
+//            editor: editor,
+//            addons: {
+//                images: {}
+//            }
+//        });
+//    });
 </script>
