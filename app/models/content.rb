@@ -39,6 +39,11 @@ class Content < ActiveRecord::Base
     return get_list_item(temp)
   end
 
+  def self.get_list(limit,max_id,since_id)
+    temp = Content.where(delete_flag: false, status: 0,id: since_id..max_id).last(limit)
+    return get_list_item(temp)
+  end
+
   def get_detail
     author = Author.find(self.author_id)
     section = Section.find(self.section_id)
@@ -91,9 +96,6 @@ class Content < ActiveRecord::Base
     def self.get_list_item(content_array)
       list = Array.new
       content_array.each do |content|
-        if(content.delete_flag || !content.published?)
-          next
-        end
         author = Author.find(content.author_id)
         section = Section.find(content.section_id)
         item = content.reduced_hash_for_api
