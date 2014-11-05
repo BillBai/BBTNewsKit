@@ -52,7 +52,7 @@ class Api::V1::ContentsController < ApplicationController
     if(params.include?('max_id'))
       max_id = params[:max_id].to_i
     else
-      max_id = Content.last.id
+      max_id = Content.where(delete_flag: false ,status: 0).last(1)[0].id
     end
     list = Content.get_list(limit,max_id,since_id)
 

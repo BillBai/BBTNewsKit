@@ -23,21 +23,21 @@ class Content < ActiveRecord::Base
       }
   end
 
-  def self.get_list(from_id,limit)
-    if from_id == ''
-      temp = Content.where(delete_flag: false ,status: 1).last(limit)
-    else
-      if from_id - limit < 0
-        offset = 0
-        @limit = from_id
-      else
-        offset = from_id - limit
-        @limit = limit
-      end
-      temp = Content.limit(@limit).offset(offset)
-    end
-    return get_list_item(temp)
-  end
+  # def self.get_list(from_id,limit)
+  #   if from_id == ''
+  #     temp = Content.where(delete_flag: false ,status: 1).last(limit)
+  #   else
+  #     if from_id - limit < 0
+  #       offset = 0
+  #       @limit = from_id
+  #     else
+  #       offset = from_id - limit
+  #       @limit = limit
+  #     end
+  #     temp = Content.limit(@limit).offset(offset)
+  #   end
+  #   return get_list_item(temp)
+  # end
 
   def self.get_list(limit,max_id,since_id)
     temp = Content.where(delete_flag: false, status: 0,id: since_id..max_id).last(limit)
