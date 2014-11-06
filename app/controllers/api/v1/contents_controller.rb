@@ -17,29 +17,44 @@ class Api::V1::ContentsController < ApplicationController
       return
     end
 
-    if(params.include?('from_id') && (params[:from_id].to_i.to_s != params[:from_id] || params[:from_id].to_i != params[:from_id].to_f))
-      @response["status"] = 1
-      @response["message"] = 'Invaild param : id'
-      render :json => @response , status: 400
-      return
-    end
     if(params.include?('limit') && (params[:limit].to_i.to_s != params[:limit]) || params[:limit].to_i != params[:limit].to_f)
       @response["status"] = 1
       @response["message"] = 'Invaild param : limit'
       render :json => @response , status: 400
       return
     end
+    if(params.include?('since_id') && (params[:since_id].to_i.to_s != params[:since_id] || params[:since_id].to_i != params[:since_id].to_f))
+      @response["status"] = 1
+      @response["message"] = 'Invaild param : since_id'
+      render :json => @response , status: 400
+      return
+    end
+    if(params.include?('max_id') && (params[:max_id].to_i.to_s != params[:max_id] || params[:max_id].to_i != params[:max_id].to_f))
+      @response["status"] = 1
+      @response["message"] = 'Invaild param : max_id'
+      render :json => @response , status: 400
+      return
+    end
 
     if(params.include?('limit'))
       limit = params[:limit].to_i
+      if(limit > 76)
+        limit = 76
+      end
     else
       limit = 10
     end
-    if(params.include?('from_id'))
-      list = Content.get_list(params[:from_id].to_i,limit)
+    if(params.include?('since_id'))
+      since_id = params[:since_id].to_i
     else
-      list = Content.get_list('',limit)
+      since_id = 0
     end
+    if(params.include?('max_id'))
+      max_id = params[:max_id].to_i
+    else
+      max_id = Content.where(delete_flag: false ,status: 0).last(1)[0].id
+    end
+    list = Content.get_list(limit,max_id,since_id)
 
     @response["status"] = 0
     @response["message"] = 'ok'
