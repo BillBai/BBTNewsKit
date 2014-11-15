@@ -5,8 +5,11 @@ class Content < ActiveRecord::Base
   has_many :article_body_images, dependent: :destroy
   has_many :photos, dependent: :destroy
 
-  enum status: [:draft, :published]
-  enum content_type: [:article, :album, :video]
+  has_many :subcontents, class_name: 'Content', foreign_key: 'parent_content_id'
+  belongs_to :parent_content, class_name: 'Content'
+
+  enum status: [:draft, :wating_for_review, :approved, :rejected, :published, :dead]
+  enum content_type: [:article, :album, :video, :special]
 
   has_attached_file :header_image, :styles => { :medium => "500x300>", :thumb => "100x60>" }
   validates_attachment_content_type :header_image, :content_type => /\Aimage\/.*\Z/
