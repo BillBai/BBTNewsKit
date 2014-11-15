@@ -31,7 +31,19 @@ Rails.application.routes.draw do
     end
     resources :article_body_images
     resources :photos
-    resources :contents
+
+    resources :contents do
+      collection do
+        get 'add' => 'contents#add'
+      end
+
+      member do
+        patch 'publish' => 'contents#publish'
+        patch 'revoke' => 'contents#revoke'
+      end
+      resources :article_body_images
+      resources :photos
+    end
   end
 
   post 'article_body_image/delete' => 'article_body_images#destroy'

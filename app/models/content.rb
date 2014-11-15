@@ -1,6 +1,7 @@
 class Content < ActiveRecord::Base
   belongs_to :author
   belongs_to :section
+  belongs_to :publisher
 
   has_many :article_body_images, dependent: :destroy
   has_many :photos, dependent: :destroy

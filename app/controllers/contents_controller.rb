@@ -3,6 +3,9 @@ class ContentsController < ApplicationController
     if params[:section_id]
       @section = Section.find(params[:section_id])
       @contents = @section.contents.where(delete_flag: false).order(:id).page params[:page]
+    elsif params[:content_id]
+      @content = Content.find(params[:content_id])
+      @contents = @content.subcontents.where(delete_flag: false).order(:id).page params[:page]
     elsif params[:content_type] && Content.content_types[params[:content_type]]
       @contents = Content.where(delete_flag: false, content_type: Content.content_types[params[:content_type]]).order(:id).page params[:page]
     else
@@ -12,6 +15,11 @@ class ContentsController < ApplicationController
 
   def show
     @content = Content.find(params[:id])
+    if @content.special?
+      render 'show_special'
+    else
+      render 'show'
+    end
   end
 
   def new
@@ -54,6 +62,12 @@ class ContentsController < ApplicationController
       @content = Content.create(Content.default_content_params(params[:content_type]))
     else
       @content = Content.create(Content.default_content_params)
+    end
+    if params[:content_id]
+      p '++++++++++++++++++++++'
+      p Content.find(params[:content_id])
+      @content.parent_content = Content.find(params[:content_id])
+      @content.save
     end
     redirect_to action: 'edit', id: @content.id
   end

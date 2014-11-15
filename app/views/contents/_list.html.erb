@@ -1,0 +1,33 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>header img</th>
+    <th>Type</th>
+    <th>Title</th>
+    <th>Subtitle</th>
+    <th>Description</th>
+    <th>Status</th>
+
+
+  </tr>
+  </thead>
+
+  <tbody>
+  <% contents.each do |content| %>
+      <tr>
+        <td><%= content.id %></td>
+        <td><%= image_tag content.header_image.url(:thumb) %></td>
+        <td><%=raw content_type_label(content, content.content_type) %></td>
+        <td><%= content.title %></td>
+        <td><%= content.subtitle %></td>
+        <td><%= content.description %></td>
+        <td><%=raw status_label(content, content.status) %></td>
+
+
+        <td><%= link_to 'Show', content_path(content) %></td>
+        <td><%= link_to 'Edit', edit_content_path(content) %></td>
+      </tr>
+  <% end  %>
+  </tbody>
+</table>

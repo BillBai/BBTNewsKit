@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115151637) do
+ActiveRecord::Schema.define(version: 20141115165036) do
 
   create_table "article_body_images", force: true do |t|
     t.datetime "created_at"
@@ -55,9 +55,10 @@ ActiveRecord::Schema.define(version: 20141115151637) do
     t.boolean  "delete_flag",               default: false
     t.integer  "content_type"
     t.string   "video_url"
-    t.integer  "parent_content",            default: 0
+    t.integer  "parent_content_id",         default: 0
     t.boolean  "on_focus",                  default: false
     t.boolean  "display_on_timeline",       default: true
+    t.integer  "publisher_id"
   end
 
   create_table "photos", force: true do |t|
@@ -79,6 +80,7 @@ ActiveRecord::Schema.define(version: 20141115151637) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",     default: true
   end
 
   create_table "sections", force: true do |t|
