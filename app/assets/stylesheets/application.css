@@ -10,10 +10,9 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require font-awesome
  *= require css/bootstrap-select.min
  *= require medium-editor/medium-editor
- *= require medium-editor/themes/default
+ *= require medium-editor/themes/flat
  *= require css/medium-editor-insert-plugin.css
  *= require css/medium-editor-insert-plugin-frontend.css
  *= require bootstrap

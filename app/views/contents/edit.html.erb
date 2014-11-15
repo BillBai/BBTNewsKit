@@ -59,7 +59,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">Author</div>
       <div class="panel-body">
-        <%= select_tag :content_author, options_from_collection_for_select(Author.all, :id, :name) , {class: 'selectpicker'}%>
+        <%= select_tag :content_author, options_from_collection_for_select(Author.all, :id, :name) , {class: 'selectpicker', id: 'content-author-picker'}%>
       </div>
     </div>
     <!--Author panel END-->
@@ -68,9 +68,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">Section</div>
       <div class="panel-body">
-        <select class="selectpicker">
-          <%= select_tag :content_section, options_from_collection_for_select(Section.all, :id, :module) , {class: 'selectpicker'}%>
-        </select>
+        <%= select_tag :content_section, options_from_collection_for_select(Section.all, :id, :module) , {class: 'selectpicker', id: 'content-section-picker'}%>
       </div>
     </div>
     <!-- Section panel END-->
@@ -82,7 +80,6 @@
 <script>
     var editor = new MediumEditor('.editable', {
         elementsContainer: document.getElementById('editor-container'),
-        buttonLabels: 'fontawesome',
         buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
     });
 
@@ -102,18 +99,17 @@
         $('.selectpicker').selectpicker();
     });
 
-    function save_edit_content_to_form() {
-        var allContents = editor.serialize();
-        var elContent = allContents["element-0"].value;
-        $("#content_body_html").val(elContent);
-    }
-
    $("#save-content-button").click(function() {
        console.log('23333');
        // if there is no editor, that means the content_type is not Article.
        if($('#editor-container').length != 0) {
-           save_edit_content_to_form();
+           var allContents = editor.serialize();
+           var elContent = allContents["element-0"].value;
+           $("#content_body_html").val(elContent);
+
        }
+       $('#content_author_id').val($('#content-author-picker').val());
+       $('#content_section_id').val($('#content-section-picker').val());
        $("#content-form").submit();
     });
 
