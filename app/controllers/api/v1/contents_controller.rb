@@ -17,6 +17,20 @@ class Api::V1::ContentsController < ApplicationController
       return
     end
 
+    if(params.include?('content_id'))
+      if(Content.exists?(params[:content_id]))
+        @response["status"] = 0
+        @response["message"] = "ok"
+        @response["list"] = Content.get_list_item(Content.find(params[:content_id]).subcontents)
+        render :json => @response
+      else
+        @response["status"] = 1
+        @response["message"] = "section didn't exist"
+        render :json => @response, status: 400
+      end
+      return
+    end
+
     if(params.include?('limit') && (params[:limit].to_i.to_s != params[:limit]) || params[:limit].to_i != params[:limit].to_f)
       @response["status"] = 1
       @response["message"] = 'Invaild param : limit'
@@ -52,7 +66,7 @@ class Api::V1::ContentsController < ApplicationController
     if(params.include?('max_id'))
       max_id = params[:max_id].to_i
     else
-      max_id = Content.where(delete_flag: false ,status: 0).last(1)[0].id
+      max_id = Content.where(display_on_timeline: true, delete_flag: false ,status: 4).last(1)[0].id
     end
     list = Content.get_list(limit,max_id,since_id)
 

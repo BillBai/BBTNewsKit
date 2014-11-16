@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   constraints subdomain: 'api' do
     namespace :api, :path => '/' do
       namespace :v1 do
-        resources :contents, only: [:index, :show]
+        resources :contents, only: [:index, :show] do
+          resources :contents, only: [:index, :show]
+        end
         resources :sections, only: [:index, :show] do
           resources :contents, only: [:index, :show]
         end
