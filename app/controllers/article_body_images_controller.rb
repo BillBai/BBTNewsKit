@@ -7,7 +7,9 @@ class ArticleBodyImagesController < ApplicationController
     @content = Content.find(params[:content_id])
     @article_body_image.content = @content
     @article_body_image.save
-    render json: body_image_url_with_id
+    p '=================================='
+    p json: body_image_url_with_id
+    render json: body_image_url_with_id, :status => 200
   end
 
   def destroy

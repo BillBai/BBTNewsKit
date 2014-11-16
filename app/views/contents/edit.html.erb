@@ -100,32 +100,44 @@
 <script>
 
   $(document).ready(function() {
-      $('#summernote').summernote();
-  });
-
-  function sendFile(file, editor, welEdtitable) {
-      console.log('start upload image');
-      var data = new FormData();
-      data.append("file", file);
-      console.log(data);
-      $.ajax({
-          data: data,
-          type: "POST",
-          url: '/contents/<%= @content.id %>/article_body_images',
-          cache: false,
-          processData: false,
-          success: function(url) {
-              editor.insertImage(welEdtitable, url);
+      $('#summernote').summernote({
+          height: 400,
+          onImageUpload: function(files, editor, welEdtitable) {
+              sendFile(files[0], editor, welEdtitable);
           }
       });
-  }
+
+      function sendFile(file, editor, welEdtitable) {
+          var formData = new FormData();
+          formData.append("file", file);
+          console.log('image upload:', file, editor, welEdtitable);
+          console.log(formData);
+          $.ajax({
+              data: formData,
+              type: "POST",
+              url: '/contents/<%= @content.id %>/article_body_images',
+              cache: false,
+              contentType: false,
+              processData: false,
+              success: function(data, status, jqXHR) {
+                  console.log(data, status, jqXHR);
+                  editor.insertImage(welEdtitable, url);
+              },
+              complete: function(data){
+                  var url = data.responseText;
+                  console.log('complete', url);
+                  editor.insertImage(welEdtitable, url);
+              }
+          });
+      }
+  });
+
+
 
   $("#save-content-button").click(function() {
-      // if there is no editor, that means the content_type is not Article.
-      if($('#summernote').length != 0) {
-//           var allContents = editor.serialize();
-//           var elContent = allContents["element-0"].value;
-          $("#content_body_html").val($('#summernote').code());
+      var editor = $('#summernote');
+      if(editor.length != 0) {        // if there is no editor, that means the content_type is not Article.
+          $("#content_body_html").val(editor.code());
       }
       $('#content_author_id').val($('#content-author-picker').val());
       $('#content_section_id').val($('#content-section-picker').val());
