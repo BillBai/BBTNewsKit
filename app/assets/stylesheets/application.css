@@ -11,11 +11,9 @@
  * file per style scope.
  *
  *= require css/bootstrap-select.min
- *= require medium-editor/medium-editor
- *= require medium-editor/themes/flat
- *= require css/medium-editor-insert-plugin.css
- *= require css/medium-editor-insert-plugin-frontend.css
+ *= require font-awesome
  *= require bootstrap
+ *= require summernote
  *= require_tree .
  *= require_self
  */

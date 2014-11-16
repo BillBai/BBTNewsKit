@@ -2,9 +2,6 @@
   <h3> <%= @content.content_type %> <%= @content.id %></h3>
 </div>
 
-
-
-
 <div class="row">
   <div class="col-md-8">
     <div class="panel panel-default">
@@ -40,11 +37,8 @@
     <% when 'article' %>
         <hr>
         <div>
-          <div class="editable">
-            <%=raw @content.body_html %>
-          </div>
+          <%=raw @content.body_html %>
         </div>
-
 
     <% when 'album'%>
         <strong> Photos:</strong>
@@ -125,23 +119,3 @@
     <!-- Section panel END-->
   </div>
 </div>
-
-
-
-
-
-<script>
-//       var editor = new MediumEditor('.editable', {
-//           buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
-//       });
-////       editor.deactivate();
-
-//    $(function () {
-//        $('.editable').mediumInsert({
-//            editor: editor,
-//            addons: {
-//                images: {}
-//            }
-//        });
-//    });
-</script>

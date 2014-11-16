@@ -76,8 +76,6 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    medium-editor-rails (0.12.0)
-      railties (>= 3.0)
     mime-types (1.25.1)
     mini_magick (4.0.0)
     minitest (5.4.3)
@@ -167,7 +165,6 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails
   kaminari
-  medium-editor-rails
   mini_magick
   paperclip (~> 4.2)
   puma

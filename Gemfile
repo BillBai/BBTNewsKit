@@ -46,9 +46,6 @@ gem 'jquery-fileupload-rails'
 # use paperclip for attachment file management
 gem 'paperclip', '~> 4.2'
 
-# use medium style WYSIWYG editor
-gem 'medium-editor-rails'
-
 gem 'font-awesome-rails'
 
 gem 'twitter-bootstrap-rails'

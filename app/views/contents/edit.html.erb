@@ -19,11 +19,11 @@
     <% when 'article' %>
         <strong>Article body</strong>
         <hr/>
-        <div id="editor-container">
-          <div class="editable">
-            <%=raw @content.body_html %>
-          </div>
+
+        <div id="summernote" >
+          <%=raw @content.body_html %>
         </div>
+
     <% when 'album' %>
         <h2>Add photo</h2>
         <%= render 'photos/form' %>
@@ -43,7 +43,6 @@
         <%= render partial: 'list', locals: {contents: @content.subcontents} %>
     <% end %>
   </div>
-
 
   <div class="col-md-4">
     <!-- Actions panel-->
@@ -99,41 +98,40 @@
 
 
 <script>
-    var editor = new MediumEditor('.editable', {
-        buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
-    });
 
-    $(function () {
+  $(document).ready(function() {
+      $('#summernote').summernote();
+  });
 
-
-      $('.editable').mediumInsert({
-          editor: editor,
-          addons: {
-              images: {
-                  imagesDeleteScript: '/article_body_image/delete',
-                  imagesUploadScript: '/contents/<%= @content.id %>/article_body_images'
-              }
+  function sendFile(file, editor, welEdtitable) {
+      console.log('start upload image');
+      var data = new FormData();
+      data.append("file", file);
+      console.log(data);
+      $.ajax({
+          data: data,
+          type: "POST",
+          url: '/contents/<%= @content.id %>/article_body_images',
+          cache: false,
+          processData: false,
+          success: function(url) {
+              editor.insertImage(welEdtitable, url);
           }
       });
+  }
 
-        $('.selectpicker').selectpicker();
-    });
-
-   $("#save-content-button").click(function() {
-       console.log('23333');
-       // if there is no editor, that means the content_type is not Article.
-       if($('#editor-container').length != 0) {
-           var allContents = editor.serialize();
-           var elContent = allContents["element-0"].value;
-           $("#content_body_html").val(elContent);
-
-       }
-       $('#content_author_id').val($('#content-author-picker').val());
-       $('#content_section_id').val($('#content-section-picker').val());
-       $('#content_publisher_id').val($('#content-publisher-picker').val());
-       $("#content-form").submit();
-    });
-
+  $("#save-content-button").click(function() {
+      // if there is no editor, that means the content_type is not Article.
+      if($('#summernote').length != 0) {
+//           var allContents = editor.serialize();
+//           var elContent = allContents["element-0"].value;
+          $("#content_body_html").val($('#summernote').code());
+      }
+      $('#content_author_id').val($('#content-author-picker').val());
+      $('#content_section_id').val($('#content-section-picker').val());
+      $('#content_publisher_id').val($('#content-publisher-picker').val());
+      $("#content-form").submit();
+  });
 
 </script>
 
