@@ -39,7 +39,12 @@
     <% case  @content.content_type %>
     <% when 'article' %>
         <hr>
-        <div><%=raw @content.body_html %></div>
+        <div>
+          <div class="editable">
+            <%=raw @content.body_html %>
+          </div>
+        </div>
+
 
     <% when 'album'%>
         <strong> Photos:</strong>
@@ -126,12 +131,10 @@
 
 
 <script>
-//    var editor = new MediumEditor('.editable', {
-//        elementsContainer: document.getElementById('editor-container'),
-//        buttonLabels: 'fontawesome',
-//        buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
-//    });
-//    editor.deactivate();
+//       var editor = new MediumEditor('.editable', {
+//           buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
+//       });
+////       editor.deactivate();
 
 //    $(function () {
 //        $('.editable').mediumInsert({

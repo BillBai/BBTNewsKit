@@ -29,6 +29,18 @@
         <%= render 'photos/form' %>
 
     <% when 'video' %>
+    <% when 'special'%>
+        <hr/>
+        <%= link_to add_content_contents_path(@content, content_type: :article), {role: 'button', class: 'btn btn-primary'} do %>
+            <span class='glyphicon glyphicon-file'></span> Add article
+        <% end %>
+        <%= link_to add_content_contents_path(@content, content_type: :album), {role: 'button', class: 'btn btn-primary'} do %>
+            <span class='glyphicon glyphicon-picture'></span> Add album
+        <% end %>
+        <%= link_to add_content_contents_path(@content,content_type: :video), {role: 'button', class: 'btn btn-primary'} do %>
+            <span class='glyphicon glyphicon-facetime-video'></span> Add video
+        <% end %>
+        <%= render partial: 'list', locals: {contents: @content.subcontents} %>
     <% end %>
   </div>
 
@@ -57,9 +69,18 @@
 
     <!-- Author panel -->
     <div class="panel panel-default">
+      <div class="panel-heading">Publisher</div>
+      <div class="panel-body">
+        <%= select_tag :content_publisher, options_from_collection_for_select(Publisher.where(active: true), :id, :name, selected: @content.publisher_id) , {class: 'selectpicker', id: 'content-publisher-picker'}%>
+      </div>
+    </div>
+    <!--Author panel END-->
+
+    <!-- Author panel -->
+    <div class="panel panel-default">
       <div class="panel-heading">Author</div>
       <div class="panel-body">
-        <%= select_tag :content_author, options_from_collection_for_select(Author.all, :id, :name) , {class: 'selectpicker', id: 'content-author-picker'}%>
+        <%= select_tag :content_author, options_from_collection_for_select(Author.where(active: true), :id, :name, selected: @content.author_id) , {class: 'selectpicker', id: 'content-author-picker'}%>
       </div>
     </div>
     <!--Author panel END-->
@@ -68,7 +89,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">Section</div>
       <div class="panel-body">
-        <%= select_tag :content_section, options_from_collection_for_select(Section.all, :id, :module) , {class: 'selectpicker', id: 'content-section-picker'}%>
+        <%= select_tag :content_section, options_from_collection_for_select(Section.where(active: true), :id, :module, selected: @content.section_id) , {class: 'selectpicker', id: 'content-section-picker'}%>
       </div>
     </div>
     <!-- Section panel END-->
@@ -79,22 +100,21 @@
 
 <script>
     var editor = new MediumEditor('.editable', {
-        elementsContainer: document.getElementById('editor-container'),
         buttons:['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'image']
     });
 
     $(function () {
 
 
-        $('.editable').mediumInsert({
-            editor: editor,
-            addons: {
-                images: {
-                    imagesDeleteScript: '/article_body_image/delete',
-                    imagesUploadScript: '/contents/<%= @content.id %>/article_body_images'
-                }
-            }
-        });
+      $('.editable').mediumInsert({
+          editor: editor,
+          addons: {
+              images: {
+                  imagesDeleteScript: '/article_body_image/delete',
+                  imagesUploadScript: '/contents/<%= @content.id %>/article_body_images'
+              }
+          }
+      });
 
         $('.selectpicker').selectpicker();
     });
@@ -110,6 +130,7 @@
        }
        $('#content_author_id').val($('#content-author-picker').val());
        $('#content_section_id').val($('#content-section-picker').val());
+       $('#content_publisher_id').val($('#content-publisher-picker').val());
        $("#content-form").submit();
     });
 

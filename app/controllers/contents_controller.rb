@@ -44,7 +44,11 @@ class ContentsController < ApplicationController
     @content = Content.find(params[:id])
 
     if @content.update(content_params)
-      redirect_to @content
+      if @content.parent_content_id != 0
+        redirect_to action: 'edit', id: @content.parent_content
+      else
+        redirect_to @content
+      end
     else
       render 'edit'
     end
@@ -64,8 +68,6 @@ class ContentsController < ApplicationController
       @content = Content.create(Content.default_content_params)
     end
     if params[:content_id]
-      p '++++++++++++++++++++++'
-      p Content.find(params[:content_id])
       @content.parent_content = Content.find(params[:content_id])
       @content.save
     end
@@ -86,6 +88,15 @@ class ContentsController < ApplicationController
 
 private
   def content_params
-    params.require(:content).permit(:title, :subtitle, :description, :author_id, :section_id, :header_image, :header_image_info, :body_html, :video_url)
+    params.require(:content).permit(:title,
+                                    :subtitle,
+                                    :description,
+                                    :author_id,
+                                    :section_id,
+                                    :publisher_id,
+                                    :header_image,
+                                    :header_image_info,
+                                    :body_html,
+                                    :video_url)
   end
 end

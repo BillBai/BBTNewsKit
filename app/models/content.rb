@@ -23,7 +23,10 @@ class Content < ActiveRecord::Base
         :subtitle => 'default subtitle',
         :description => 'default description',
         :content_type => Content.content_types[content_type],
-        :status => Content.statuses[:draft]
+        :status => Content.statuses[:draft],
+        :section_id => 0,
+        :author_id => 0,
+        :publisher_id => 0
       }
   end
 

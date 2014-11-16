@@ -15,6 +15,8 @@ module ContentsHelper
       "<span class='label label-danger'><span class='glyphicon glyphicon-picture'></span>    #{label_text}</span>"
     elsif content.video?
       "<span class='label label-warning'><span class='glyphicon glyphicon-facetime-video'>   </span>    #{label_text}</span>"
+    elsif content.special?
+      "<span class='label label-success'><span class='glyphicon glyphicon-star'>   </span>    #{label_text}</span>"
     end
   end
 
