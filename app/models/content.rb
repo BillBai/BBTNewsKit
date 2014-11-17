@@ -30,86 +30,99 @@ class Content < ActiveRecord::Base
       }
   end
 
-  # def self.get_list(from_id,limit)
-  #   if from_id == ''
-  #     temp = Content.where(delete_flag: false ,status: 1).last(limit)
-  #   else
-  #     if from_id - limit < 0
-  #       offset = 0
-  #       @limit = from_id
-  #     else
-  #       offset = from_id - limit
-  #       @limit = limit
-  #     end
-  #     temp = Content.limit(@limit).offset(offset)
-  #   end
-  #   return get_list_item(temp)
-  # end
-
   def self.get_list(limit,max_id,since_id)
-    temp = Content.where(delete_flag: false, status: 0,id: since_id..max_id).last(limit)
+    temp = Content.where(display_on_timeline: true, delete_flag: false, status: 4,id: since_id..max_id).last(limit)
     return get_list_item(temp)
   end
 
   def get_detail
-    author = Author.find(self.author_id)
-    section = Section.find(self.section_id)
+    #author = Author.find(self.author_id)
+    #section = Section.find(self.section_id)
     item = full_hash_for_api
   end
 
+  def self.get_focus
+    temp = Content.where(delete_flag: false, status: 4, on_focus: true).last(5)
+    return get_list_item(temp)
+  end
+
   def self.get_contents_by_section(id)
-    temp = Content.where(delete_flag: false, status: 1, section_id: id)
+    temp = Content.where(section_id: id, display_on_timeline: true, delete_flag: false, status: 4)
+    return get_list_item(temp)
+  end
+
+  def self.get_contents_by_publisher(pid,limit,max_id,since_id)
+    temp = Content.where(publisher_id: pid,display_on_timeline: true, delete_flag: false, status: 4,id: since_id..max_id).last(limit)
     return get_list_item(temp)
   end
 
   def full_hash_for_api
-      {
-          id: self.id,
-          title: self.title,
-          subtitle: self.subtitle,
-          description: self.description,
-          content_type: self.content_type,
-          author: {name: author.name, display_name: author.display_name, department: author.department},
-          section: {category: section.category, module: section.module},
-          created_at: self.created_at,
-          updated_at: self.updated_at,
-          trumb_image_url: self.header_image.url(:thumb),
-          body_html: self.body_html,
-          video_url: self.video_url,
-          photos: self.photos
-      }
-    end
+    {
+        id: self.id,
+        title: self.title,
+        subtitle: self.subtitle,
+        publisher: self.publisher,
+        description: self.description,
+        content_type: self.content_type,
+        author: {name: author.name, display_name: author.display_name, department: author.department},
+        section: {category: section.category, module: section.module},
+        created_at: self.created_at,
+        updated_at: self.updated_at,
+        trumb_image_url: self.header_image.url(:thumb),
+        body_html: self.body_html,
+        video_url: self.video_url,
+        photos: Content.get_photos(self.photos)
+    }
+  end
 
-    def reduced_hash_for_api
-      {
-          id: self.id,
-          title: self.title,
-          subtitle: self.subtitle,
-          description: self.description,
-          content_type: self.content_type,
-          author: {name: self.author.name, display_name: self.author.display_name, department: self.author.department},
-          section: {category: self.section.category, module: self.section.module},
-          created_at: self.created_at,
-          updated_at: self.updated_at,
-          trumb_image_url: self.header_image.url(:thumb)
-      }
-    end
+  def reduced_hash_for_api
+    {
+        id: self.id,
+        title: self.title,
+        subtitle: self.subtitle,
+        publisher: self.publisher,
+        description: self.description,
+        content_type: self.content_type,
+        author: {name: self.author.name, display_name: self.author.display_name, department: self.author.department},
+        section: {category: self.section.category, module: self.section.module},
+        created_at: self.created_at,
+        updated_at: self.updated_at,
+        trumb_image_url: self.header_image.url(:thumb),
+        on_focus: self.on_focus,
+        display_on_timeline: self.display_on_timeline
+    }
+  end
 
   def archive
     self.update_attributes!(delete_flag: true)
   end
+  
+  def self.get_list_item(content_array)
+    list = Array.new
+    content_array.each do |content|
+      #author = Author.find(content.author_id)
+      #section = Section.find(content.section_id)
+      item = content.reduced_hash_for_api
+      list << item
+    end
+    return list
+  end
 
   private
-    def self.get_list_item(content_array)
+    def self.get_photos(photos_array)
       list = Array.new
-      content_array.each do |content|
-        author = Author.find(content.author_id)
-        section = Section.find(content.section_id)
-        item = content.reduced_hash_for_api
-        list << item
+      photos_array.each do |photo|
+        list << {
+            id: photo.id,
+            title: photo.title,
+            description: photo.description,
+            photographer: photo.photographer,
+            created_at: photo.created_at,
+            image_file_size: photo.image_file_size,
+            image_url: photo.image.url(:medium)
+        }
       end
       return list
-    end
-
+    end 
 
 end

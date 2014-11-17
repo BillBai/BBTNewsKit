@@ -3,6 +3,7 @@ class Api::V1::ContentsController < ApplicationController
   def index
     @response = Hash.new
 
+    # v1/sections/:section_id/contents
     if(params.include?('section_id'))
       if(Section.exists?(params[:section_id]))
         @response["status"] = 0
@@ -14,6 +15,52 @@ class Api::V1::ContentsController < ApplicationController
         @response["message"] = "section didn't exist"
         render :json => @response, status: 400
       end
+      return
+    end
+
+    # v1/publisher/:publisher_id/contents
+    @publisher_id = -1
+    if(params.include?('publisher_id'))
+      if(params[:publisher_id].to_i.to_s != params[:publisher_id])
+        @response["status"] = 1
+        @response["message"] = "Invaild publisher id"
+        render :json => @response, status: 400
+        return
+      elsif(Publisher.exists?(params[:publisher_id]))
+        @publisher_id = params[:publisher_id]
+      else
+        @response["status"] = 2
+        @response["message"] = "publisher didn't exist"
+        render :json => @response, status: 400
+        return
+      end
+    end
+
+    # v1/contents/:content_id/contents
+    if(params.include?('content_id'))
+      if(params[:content_id].to_i.to_s != params[:content_id])
+        @response["status"] = 1
+        @response["message"] = "Invaild id"
+        render :json => @response, status: 400
+      elsif(Content.exists?(params[:content_id]))
+        @response["status"] = 0
+        @response["message"] = "ok"
+        @response["list"] = Content.get_list_item(Content.find(params[:content_id]).subcontents)
+        render :json => @response
+      else
+        @response["status"] = 2
+        @response["message"] = "content didn't exist"
+        render :json => @response, status: 400
+      end
+      return
+    end
+
+    # v1/contents
+    if(params.include?('focus') && params[:focus] == 'true' && !params.include?('publisher_id'))
+      @response["status"] = 0
+      @response["message"] = "ok"
+      @response["list"] = Content.get_focus
+      render :json => @response
       return
     end
 
@@ -52,10 +99,14 @@ class Api::V1::ContentsController < ApplicationController
     if(params.include?('max_id'))
       max_id = params[:max_id].to_i
     else
-      max_id = Content.where(delete_flag: false ,status: 0).last(1)[0].id
+      max_id = Content.where(display_on_timeline: true, delete_flag: false ,status: 4).last(1)[0].id
     end
-    list = Content.get_list(limit,max_id,since_id)
 
+    if(@publisher_id != -1)
+      list = Content.get_contents_by_publisher(@publisher_id,limit,max_id,since_id)
+    else
+      list = Content.get_list(limit,max_id,since_id)
+    end
     @response["status"] = 0
     @response["message"] = 'ok'
     @response["list"] = list
