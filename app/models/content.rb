@@ -30,13 +30,8 @@ class Content < ActiveRecord::Base
       }
   end
 
-<<<<<<< HEAD
-  def self.get_list(limit, max_id, since_id)
-    temp = Content.where(display_on_timeline: true, delete_flag: false, status: 4,id: since_id..max_id).last(limit)
-=======
   def self.get_list(limit,max_id,since_id)
     temp = Content.where(display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
->>>>>>> e863c4dfde2825d0c55262ef4dd99f74bc6e1b6d
     return get_list_item(temp)
   end
 
