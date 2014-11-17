@@ -30,8 +30,13 @@ class Content < ActiveRecord::Base
       }
   end
 
+<<<<<<< HEAD
   def self.get_list(limit, max_id, since_id)
     temp = Content.where(display_on_timeline: true, delete_flag: false, status: 4,id: since_id..max_id).last(limit)
+=======
+  def self.get_list(limit,max_id,since_id)
+    temp = Content.where(display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+>>>>>>> e863c4dfde2825d0c55262ef4dd99f74bc6e1b6d
     return get_list_item(temp)
   end
 
@@ -41,18 +46,23 @@ class Content < ActiveRecord::Base
     item = full_hash_for_api
   end
 
+  def self.get_subcontents(parent_content_id)
+    content_arr = Content.find(parent_content_id).subcontents.where(delete_flag:  false, status: Content.statuses[:published])
+    return get_list_item(content_arr)
+  end
+
   def self.get_focus
-    temp = Content.where(delete_flag: false, status: 4, on_focus: true).last(5)
+    temp = Content.where(delete_flag: false, status: Content.statuses[:published], on_focus: true).last(5)
     return get_list_item(temp)
   end
 
   def self.get_contents_by_section(id)
-    temp = Content.where(section_id: id, display_on_timeline: true, delete_flag: false, status: 4)
+    temp = Content.where(section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published])
     return get_list_item(temp)
   end
 
   def self.get_contents_by_publisher(pid,limit,max_id,since_id)
-    temp = Content.where(publisher_id: pid,display_on_timeline: true, delete_flag: false, status: 4,id: since_id..max_id).last(limit)
+    temp = Content.where(publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
     return get_list_item(temp)
   end
 
@@ -64,8 +74,8 @@ class Content < ActiveRecord::Base
         publisher: self.publisher,
         description: self.description,
         content_type: self.content_type,
-        author: {name: author.name, display_name: author.display_name, department: author.department},
-        section: {category: section.category, module: section.module},
+        author: {id: self.author.id, name: author.name, display_name: author.display_name, department: author.department},
+        section: {id: self.section.id, category: section.category, module: section.module},
         created_at: self.created_at,
         updated_at: self.updated_at,
         trumb_image_url: self.header_image.url(:thumb),
@@ -83,8 +93,8 @@ class Content < ActiveRecord::Base
         publisher: self.publisher,
         description: self.description,
         content_type: self.content_type,
-        author: {name: self.author.name, display_name: self.author.display_name, department: self.author.department},
-        section: {category: self.section.category, module: self.section.module},
+        author: {id: self.author.id, name: self.author.name, display_name: self.author.display_name, department: self.author.department},
+        section: {id: self.section.id, category: self.section.category, module: self.section.module},
         created_at: self.created_at,
         updated_at: self.updated_at,
         trumb_image_url: self.header_image.url(:thumb),
@@ -97,16 +107,17 @@ class Content < ActiveRecord::Base
     self.update_attributes!(delete_flag: true)
   end
   
-  def self.get_list_item(content_array)
-    list = Array.new
-    content_array.each do |content|
-      #author = Author.find(content.author_id)
-      #section = Section.find(content.section_id)
-      item = content.reduced_hash_for_api
-      list << item
+  private
+    def self.get_list_item(content_array)
+      list = Array.new
+      content_array.each do |content|
+        #author = Author.find(content.author_id)
+        #section = Section.find(content.section_id)
+        item = content.reduced_hash_for_api
+        list << item
+      end
+      return list
     end
-    return list
-  end
 
   private
     def self.get_photos(photos_array)
