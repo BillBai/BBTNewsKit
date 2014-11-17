@@ -36,13 +36,18 @@ class Content < ActiveRecord::Base
   end
 
   def get_detail
-    author = Author.find(self.author_id)
+    #author = Author.find(self.author_id)
     #section = Section.find(self.section_id)
     item = full_hash_for_api
   end
 
+  def self.get_focus
+    temp = Content.where(delete_flag: false, status: 4, on_focus: true).last(5)
+    return get_list_item(temp)
+  end
+
   def self.get_contents_by_section(id)
-    temp = Content.where(display_on_timeline: true, delete_flag: false, status: 1, section_id: id)
+    temp = Content.where(display_on_timeline: true, delete_flag: false, status: 4, section_id: id)
     return get_list_item(temp)
   end
 

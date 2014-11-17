@@ -3,6 +3,7 @@ class Api::V1::ContentsController < ApplicationController
   def index
     @response = Hash.new
 
+    # v1/sections/:section_id/contents
     if(params.include?('section_id'))
       if(Section.exists?(params[:section_id]))
         @response["status"] = 0
@@ -17,17 +18,31 @@ class Api::V1::ContentsController < ApplicationController
       return
     end
 
+    # v1/contents/:content_id/contents
     if(params.include?('content_id'))
-      if(Content.exists?(params[:content_id]))
+      if(params[:content_id].to_i.to_s != params[:content_id])
+        @response["status"] = 1
+        @response["message"] = "Invaild id"
+        render :json => @response, status: 400
+      elsif(Content.exists?(params[:content_id]))
         @response["status"] = 0
         @response["message"] = "ok"
         @response["list"] = Content.get_list_item(Content.find(params[:content_id]).subcontents)
         render :json => @response
       else
-        @response["status"] = 1
-        @response["message"] = "section didn't exist"
+        @response["status"] = 2
+        @response["message"] = "content didn't exist"
         render :json => @response, status: 400
       end
+      return
+    end
+
+    # v1/contents
+    if(params.include?('focus') && params[:focus] == 'true')
+      @response["status"] = 0
+      @response["message"] = "ok"
+      @response["list"] = Content.get_focus
+      render :json => @response
       return
     end
 
