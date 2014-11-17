@@ -44,10 +44,10 @@ class ContentsController < ApplicationController
     @content = Content.find(params[:id])
 
     if @content.update(content_params)
-      if @content.parent_content_id != 0
+      if @content.parent_content_id != 0 # a sub content, return to its parent page
         redirect_to action: 'edit', id: @content.parent_content
       else
-        redirect_to @content
+        redirect_to @content # a root content
       end
     else
       render 'edit'
@@ -67,8 +67,11 @@ class ContentsController < ApplicationController
     else
       @content = Content.create(Content.default_content_params)
     end
+
+    # if the content to be added is a subcontent to a Content (say a special)
     if params[:content_id]
       @content.parent_content = Content.find(params[:content_id])
+      @content.display_on_timeline = false # the sub content will not display on time line by default
       @content.save
     end
     redirect_to action: 'edit', id: @content.id
