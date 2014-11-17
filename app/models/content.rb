@@ -31,7 +31,7 @@ class Content < ActiveRecord::Base
   end
 
   def self.get_list(limit,max_id,since_id)
-    temp = Content.where(display_on_timeline: true, delete_flag: false, status: 4,id: since_id..max_id).last(limit)
+    temp = Content.where(display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
     return get_list_item(temp)
   end
 
@@ -42,22 +42,22 @@ class Content < ActiveRecord::Base
   end
 
   def self.get_subcontents(parent_content_id)
-    content_arr = Content.find(parent_content_id).subcontents.where(delete_flag: false, status: 4)
+    content_arr = Content.find(parent_content_id).subcontents.where(delete_flag:  false, status: Content.statuses[:published])
     return get_list_item(content_arr)
   end
 
   def self.get_focus
-    temp = Content.where(delete_flag: false, status: 4, on_focus: true).last(5)
+    temp = Content.where(delete_flag: false, status: Content.statuses[:published], on_focus: true).last(5)
     return get_list_item(temp)
   end
 
   def self.get_contents_by_section(id)
-    temp = Content.where(section_id: id, display_on_timeline: true, delete_flag: false, status: 4)
+    temp = Content.where(section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published])
     return get_list_item(temp)
   end
 
   def self.get_contents_by_publisher(pid,limit,max_id,since_id)
-    temp = Content.where(publisher_id: pid,display_on_timeline: true, delete_flag: false, status: 4,id: since_id..max_id).last(limit)
+    temp = Content.where(publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
     return get_list_item(temp)
   end
 

@@ -99,7 +99,7 @@ class Api::V1::ContentsController < ApplicationController
     if(params.include?('max_id'))
       max_id = params[:max_id].to_i
     else
-      max_id = Content.where(display_on_timeline: true, delete_flag: false ,status: 4).last(1)[0].id
+      max_id = Content.where(display_on_timeline: true, delete_flag: false ,status: Content.statuses[:published]).last(1)[0].id
     end
 
     if(@publisher_id != -1)
