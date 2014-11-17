@@ -18,6 +18,24 @@ class Api::V1::ContentsController < ApplicationController
       return
     end
 
+    # v1/publisher/:publisher_id/contents
+    @publisher_id = -1
+    if(params.include?('publisher_id'))
+      if(params[:publisher_id].to_i.to_s != params[:publisher_id])
+        @response["status"] = 1
+        @response["message"] = "Invaild publisher id"
+        render :json => @response, status: 400
+        return
+      elsif(Publisher.exists?(params[:publisher_id]))
+        @publisher_id = params[:publisher_id]
+      else
+        @response["status"] = 2
+        @response["message"] = "publisher didn't exist"
+        render :json => @response, status: 400
+        return
+      end
+    end
+
     # v1/contents/:content_id/contents
     if(params.include?('content_id'))
       if(params[:content_id].to_i.to_s != params[:content_id])
@@ -38,7 +56,7 @@ class Api::V1::ContentsController < ApplicationController
     end
 
     # v1/contents
-    if(params.include?('focus') && params[:focus] == 'true')
+    if(params.include?('focus') && params[:focus] == 'true' && !params.include?('publisher_id'))
       @response["status"] = 0
       @response["message"] = "ok"
       @response["list"] = Content.get_focus
@@ -83,8 +101,12 @@ class Api::V1::ContentsController < ApplicationController
     else
       max_id = Content.where(display_on_timeline: true, delete_flag: false ,status: 4).last(1)[0].id
     end
-    list = Content.get_list(limit,max_id,since_id)
 
+    if(@publisher_id != -1)
+      list = Content.get_contents_by_publisher(@publisher_id,limit,max_id,since_id)
+    else
+      list = Content.get_list(limit,max_id,since_id)
+    end
     @response["status"] = 0
     @response["message"] = 'ok'
     @response["list"] = list

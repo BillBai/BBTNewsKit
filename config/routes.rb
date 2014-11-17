@@ -10,7 +10,10 @@ Rails.application.routes.draw do
           resources :contents, only: [:index, :show]
         end
         resources :sections, only: [:index, :show] do
-          resources :contents, only: [:index, :show]
+          resources :contents, only: [:index]
+        end
+        resources :publishers, only: [] do
+          resources :contents, only: [:index]
         end
       end
     end

@@ -47,7 +47,12 @@ class Content < ActiveRecord::Base
   end
 
   def self.get_contents_by_section(id)
-    temp = Content.where(display_on_timeline: true, delete_flag: false, status: 4, section_id: id)
+    temp = Content.where(section_id: id, display_on_timeline: true, delete_flag: false, status: 4)
+    return get_list_item(temp)
+  end
+
+  def self.get_contents_by_publisher(pid,limit,max_id,since_id)
+    temp = Content.where(publisher_id: pid,display_on_timeline: true, delete_flag: false, status: 4,id: since_id..max_id).last(limit)
     return get_list_item(temp)
   end
 
