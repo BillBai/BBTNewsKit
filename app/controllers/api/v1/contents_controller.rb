@@ -45,7 +45,7 @@ class Api::V1::ContentsController < ApplicationController
       elsif(Content.exists?(params[:content_id]))
         @response["status"] = 0
         @response["message"] = "ok"
-        @response["list"] = Content.get_list_item(Content.find(params[:content_id]).subcontents)
+        @response["list"] = Content.get_subcontents(params[:content_id])
         render :json => @response
       else
         @response["status"] = 2
