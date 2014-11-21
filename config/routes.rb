@@ -7,12 +7,14 @@ Rails.application.routes.draw do
     namespace :api, :path => '/' do
       namespace :v1 do
         resources :contents, only: [:index, :show] do
-          resources :contents, only: [:index, :show]
+          member do 
+            get 'subcontents'
+          end
         end
         resources :sections, only: [:index, :show] do
           resources :contents, only: [:index]
         end
-        resources :publishers, only: [] do
+        resources :publishers, only: [:index] do
           resources :contents, only: [:index]
         end
       end
