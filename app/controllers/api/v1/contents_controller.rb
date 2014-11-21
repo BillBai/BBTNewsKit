@@ -120,21 +120,22 @@ class Api::V1::ContentsController < ApplicationController
       return
     end
 
-    content = Content.find(params[:id])
-    if content.status != 'published'
+    @content = Content.find(params[:id])
+    fresh_when(@content)
+    if @content.status != 'published'
       @response["status"] = 1
       @response["message"] = "content didn't exist"
       render :json => @response, status: 404
       return
     end
-    if content.delete_flag
-      @response["status"] = 2
+    if @content.delete_flag
+      @response["status"] = 2 
       @response["message"] = "content had been deleted"
       render :json => @response, status: 404
       return
     end
 
-    render :json => content.get_detail
+    render :json => @content.get_detail
   end
 
   def subcontents
