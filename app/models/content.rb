@@ -85,7 +85,7 @@ class Content < ActiveRecord::Base
         section: {id: self.section.id, category: section.category, module: section.module},
         created_at: self.created_at,
         updated_at: self.updated_at,
-        trumb_image_url: self.header_image.url(:thumb),
+        thumb_image_url: self.header_image.url(:thumb),
         body_html: self.body_html,
         video_url: self.video_url,
         photos: Content.get_photos(self.photos)
@@ -104,7 +104,7 @@ class Content < ActiveRecord::Base
         section: {id: self.section.id, category: self.section.category, module: self.section.module},
         created_at: self.created_at,
         updated_at: self.updated_at,
-        trumb_image_url: self.header_image.url(:thumb),
+        thumb_image_url: self.header_image.url(:thumb),
         on_focus: self.on_focus,
         display_on_timeline: self.display_on_timeline
     }
