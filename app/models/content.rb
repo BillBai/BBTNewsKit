@@ -30,13 +30,22 @@ class Content < ActiveRecord::Base
       }
   end
 
-  def self.get_list(limit,max_id,since_id,on_focus,on_timeline,content_type)
+  def self.get_list(limit,max_id,since_id,on_focus,on_timeline,content_type,from_max)
     if content_type != nil
-      temp = Content.where(content_type: Content.content_types[content_type],on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+      if from_max
+        temp = Content.where(content_type: Content.content_types[content_type],on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+      else
+        temp = Content.where(content_type: Content.content_types[content_type],on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+      end
     else
-      temp = Content.where(on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+      if from_max
+        temp = Content.where(on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+      else
+        temp = Content.where(on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+      end
     end
-    return get_list_item(temp)
+      
+    return get_list_item(temp.reverse)
   end
 
   def get_detail
@@ -55,20 +64,36 @@ class Content < ActiveRecord::Base
     return get_list_item(temp)
   end
 
-  def self.get_contents_by_section(id,limit,max_id,since_id,content_type)
+  def self.get_contents_by_section(id,limit,max_id,since_id,content_type,from_max)
     if content_type != nil
-      temp = Content.where(content_type: Content.content_types[content_type],section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+      if from_max
+        temp = Content.where(content_type: Content.content_types[content_type],section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+      else
+        temp = Content.where(content_type: Content.content_types[content_type],section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+      end
     else
-      temp = Content.where(section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+      if from_max
+        temp = Content.where(section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+      else
+        temp = Content.where(section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+      end
     end
     return get_list_item(temp)
   end
 
-  def self.get_contents_by_publisher(pid,limit,max_id,since_id,content_type)
+  def self.get_contents_by_publisher(pid,limit,max_id,since_id,content_type,from_max)
     if content_type != nil
-      temp = Content.where(content_type: Content.content_types[content_type],publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+      if from_max
+        temp = Content.where(content_type: Content.content_types[content_type],publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+      else
+        temp = Content.where(content_type: Content.content_types[content_type],publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+      end
     else
-      temp = Content.where(publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+      if from_max
+        temp = Content.where(publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+      else
+        temp = Content.where(publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+      end
     end
     return get_list_item(temp)
   end

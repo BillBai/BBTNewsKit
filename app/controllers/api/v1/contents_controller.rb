@@ -67,6 +67,7 @@ class Api::V1::ContentsController < ApplicationController
     check_parameter.call('since_id',params[:since_id])
     check_parameter.call('max_id',params[:max_id])
 
+    from_max = true
     if params.include?('limit')
       limit = params[:limit].to_i
       if limit > 76
@@ -77,11 +78,13 @@ class Api::V1::ContentsController < ApplicationController
     end
     if params.include?('since_id')
       since_id = params[:since_id].to_i
+      from_max = false
     else
       since_id = 0
     end
     if params.include?('max_id')
       max_id = params[:max_id].to_i
+      from_max = true
     else
       max_id = Content.where(delete_flag: false ,status: Content.statuses[:published]).last(1)[0].id
     end
@@ -99,11 +102,11 @@ class Api::V1::ContentsController < ApplicationController
     end
 
     if @publisher_id != nil
-      list = Content.get_contents_by_publisher(@publisher_id,limit,max_id,since_id,content_type)
+      list = Content.get_contents_by_publisher(@publisher_id,limit,max_id,since_id,content_type,from_max)
     elsif @section_id != nil
-      list = Content.get_contents_by_section(@section_id,limit,max_id,since_id,content_type)
+      list = Content.get_contents_by_section(@section_id,limit,max_id,since_id,content_type,from_max)
     else
-      list = Content.get_list(limit,max_id,since_id,on_focus,on_timeline,content_type)
+      list = Content.get_list(limit,max_id,since_id,on_focus,on_timeline,content_type,from_max)
     end
     @response["status"] = 0
     @response["message"] = 'ok'
