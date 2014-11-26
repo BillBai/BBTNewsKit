@@ -111,6 +111,7 @@ class Content < ActiveRecord::Base
         created_at: self.created_at,
         updated_at: self.updated_at,
         thumb_image_url: self.header_image.url(:thumb),
+        header_image_url: self.header_image.url(:medium),
         body_html: self.body_html,
         video_url: self.video_url,
         photos: Content.get_photos(self.photos)
