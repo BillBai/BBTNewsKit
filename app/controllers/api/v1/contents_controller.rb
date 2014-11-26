@@ -13,7 +13,7 @@ class Api::V1::ContentsController < ApplicationController
         elsif not parent.exists?(id)
           @response["status"] = 2
           @response["message"] = "#{param_name} didn't exist"
-          render :json => @response, status: 400
+          render :json => @response, status: 404
           return
         else
           id
