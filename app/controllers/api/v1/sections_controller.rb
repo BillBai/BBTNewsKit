@@ -13,7 +13,7 @@ class Api::V1::SectionsController < ApplicationController
       if(!Section.exists?(params[:id]))
         @response["status"] = 2
         @response["message"] = "section didn't exists"
-        render :json => @response, status: 400
+        render :json => @response, status: 404
         return
       end
     else
