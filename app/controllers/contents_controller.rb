@@ -1,4 +1,6 @@
 class ContentsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     if params[:section_id]
       @section = Section.find(params[:section_id])
