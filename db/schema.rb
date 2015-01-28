@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128032204) do
+ActiveRecord::Schema.define(version: 20150128062016) do
 
   create_table "article_body_images", force: true do |t|
     t.datetime "created_at"
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 20150128032204) do
     t.integer  "parent_content_id",         default: 0
     t.boolean  "on_focus",                  default: false
     t.boolean  "display_on_timeline",       default: true
-    t.integer  "publisher_id"
     t.integer  "user_id"
   end
 
@@ -76,13 +75,6 @@ ActiveRecord::Schema.define(version: 20150128032204) do
   end
 
   add_index "photos", ["content_id"], name: "index_photos_on_content_id"
-
-  create_table "publishers", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "active",     default: true
-  end
 
   create_table "sections", force: true do |t|
     t.integer  "category"
