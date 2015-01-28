@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :publishers
+
   resources :authors
 
   resources :sections do

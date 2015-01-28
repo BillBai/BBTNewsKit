@@ -26,7 +26,7 @@ class SectionsController < ApplicationController
     @section = Section.find(params[:id])
   end
 
-  def Section
+  def update
     @section = Author.find(params[:id])
 
     if @section.update(section_params)
@@ -40,7 +40,7 @@ class SectionsController < ApplicationController
     @section = Section.find(params[:id])
     @section.destroy
 
-    redirect_to @sections_path
+    redirect_to sections_path
   end
 
   private

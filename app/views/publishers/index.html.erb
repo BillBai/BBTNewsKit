@@ -1,0 +1,21 @@
+<h1> all Publisher </h1>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+  </tr>
+
+  <% @publisher.each do |publisher| %>
+      <tr>
+        <td><%= publisher.id %></td>
+        <td><%= publisher.name %></td>
+
+        <td><%= link_to 'Show', publisher_path(publisher) %></td>
+        <td><%= link_to 'Edit', edit_publisher_path(publisher) %></td>
+        <td><%= link_to 'Delete', publisher_path(publisher),
+                        method: :delete, data: { confirm: 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
+  <%= link_to 'new publisher', new_publisher_path %>
+</table>
