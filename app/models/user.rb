@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   enum group: [ :contributor, :admin ]
+
+  serialize :passed_ids
 end

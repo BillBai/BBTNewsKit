@@ -65,9 +65,9 @@ class ContentsController < ApplicationController
 
   def add
     if Content.content_types[params[:content_type]]
-      @content = Content.create(Content.default_content_params(params[:content_type]))
+      @content = Content.create(Content.default_content_params(current_user.id,params[:content_type]))
     else
-      @content = Content.create(Content.default_content_params)
+      @content = Content.create(Content.default_content_params(current_user.id))
     end
 
     # if the content to be added is a subcontent to a Content (say a special)
@@ -98,7 +98,7 @@ private
                                     :description,
                                     :author_id,
                                     :section_id,
-                                    :publisher_id,
+                                    :user_id,
                                     :header_image,
                                     :header_image_info,
                                     :body_html,

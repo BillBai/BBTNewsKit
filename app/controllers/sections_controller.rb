@@ -1,4 +1,6 @@
 class SectionsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :check_group
 
   def index
     @sections = Section.all
@@ -46,5 +48,12 @@ class SectionsController < ApplicationController
   private
   def section_params
     params.require(:section).permit(:category, :module)
+  end
+
+  def check_group
+    if not current_user.admin?
+      #have no right to access sections
+      redirect_to contents_path
+    end
   end
 end
