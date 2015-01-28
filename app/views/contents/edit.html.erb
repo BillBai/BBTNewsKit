@@ -66,14 +66,14 @@
     </div>
     <!-- Actions panel END -->
 
-    <!-- Author panel -->
+    <!-- User panel -->
     <div class="panel panel-default">
       <div class="panel-heading">Publisher</div>
       <div class="panel-body">
-        <%= select_tag :content_publisher, options_from_collection_for_select(Publisher.where(active: true), :id, :name, selected: @content.publisher_id) , {class: 'selectpicker', id: 'content-publisher-picker'}%>
+        <%= select_tag :content_user, options_from_collection_for_select(User.all, :id, :display_name, selected: @content.user_id) , {class: 'selectpicker', id: 'content-publisher-picker'}%>
       </div>
     </div>
-    <!--Author panel END-->
+    <!--User panel END-->
 
     <!-- Author panel -->
     <div class="panel panel-default">

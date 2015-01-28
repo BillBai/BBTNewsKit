@@ -15,16 +15,8 @@
 
   <div class="header">
     <ul class="nav nav-pills pull-right">
-      <li>
-        <a href="users/edit"><%= current_user.display_name %></a>
-      </li>
-      <li>
-        <%= link_to destroy_session_path(current_user), {method: :DELETE} do %>
-          logout
-        <% end %>
-      </li>
       <li class="active">
-        <a href="/">Home</a>
+        <a href="/">Get account!</a>
       </li>
       <li>
         <a href="/help">Help</a>
