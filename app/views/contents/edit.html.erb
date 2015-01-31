@@ -70,7 +70,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">Publisher</div>
       <div class="panel-body">
-        <%= select_tag :content_user, options_from_collection_for_select(User.all, :id, :display_name, selected: @content.user_id) , {class: 'selectpicker', id: 'content-publisher-picker'}%>
+        <%= label_tag 'display_name', @content.user.display_name %>
       </div>
     </div>
     <!--User panel END-->

@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   resources :authors
 
+  resources :publishers
+
   resources :sections do
     resources :contents
   end
@@ -35,6 +37,7 @@ Rails.application.routes.draw do
     member do
       patch 'publish' => 'contents#publish'
       patch 'revoke' => 'contents#revoke'
+      patch 'contribute' => 'contents#contribute'
     end
     resources :article_body_images
     resources :photos

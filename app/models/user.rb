@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  belongs_to :publisher
   
   has_many :contents, dependent: :destroy
   # Include default devise modules. Others available are:

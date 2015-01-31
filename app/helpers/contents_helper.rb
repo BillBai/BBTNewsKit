@@ -3,8 +3,12 @@ module ContentsHelper
   def status_label(content, label_text)
     if content.draft?
       "<span class='label label-default'>#{label_text}</span>"
-    elsif content.published?
+    elsif content.published? || content.approved?
       "<span class='label label-success'>#{label_text}</span>"
+    elsif content.pending?
+      "<span class='label label-warning'>#{label_text}</span>"
+    elsif content.rejected?
+      "<span class='label label-danger'>#{label_text}</span>"
     end
   end
 

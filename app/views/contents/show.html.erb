@@ -67,12 +67,21 @@
         Actions
       </div>
       <div class="panel-body">
+      <% if current_user.admin? %>
         <% if @content.draft? %>
             <%= link_to 'Publish', publish_content_path(@content), method: :patch, data: {confirm: 'Are you sure to publish this content?'}, role: 'button', class: 'btn btn-success' %>
             <%= link_to 'Edit', edit_content_path(@content), {role: 'button', class: 'btn btn-default'}%>
+        <% else %>
+              <%= link_to 'Revoke', revoke_content_path(@content), method: :patch, data: {confirm: 'Are you sure to revoke this content?'}, role: 'button', class: 'btn btn-default' %>
+        <% end %>
       <% else %>
-            <%= link_to 'Revoke', revoke_content_path(@content), method: :patch, data: {confirm: 'Are you sure to revoke this content?'}, role: 'button', class: 'btn btn-default' %>
-      <% end  %>
+        <% if @content.draft? %>
+            <%= link_to 'Contribute', contribute_content_path(@content), method: :patch, data: {confirm: 'Are you sure to contribute this content?'}, role: 'button', class: 'btn btn-success' %>
+            <%= link_to 'Edit', edit_content_path(@content), {role: 'button', class: 'btn btn-default'}%>
+        <% else %>
+              <%= link_to 'Revoke', revoke_content_path(@content), method: :patch, data: {confirm: 'Are you sure to revoke this content?'}, role: 'button', class: 'btn btn-default' %>
+        <% end %>
+      <% end %>
         <!-- Single button -->
         <div class="btn-group">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -88,6 +97,16 @@
       </div>
     </div>
     <!-- Action panel END -->
+
+    <!-- Publisher panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading">Publisher</div>
+      <div class="panel-body">
+        <strong>Display Name:</strong>
+        <%= @content.user.display_name %>
+      </div>
+    </div>
+    <!--Publisher panel END-->
 
     <!-- Author panel -->
     <div class="panel panel-default">

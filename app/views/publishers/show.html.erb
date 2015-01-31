@@ -1,0 +1,15 @@
+<h1> Author </h1>
+
+<p>
+  <strong>id: </strong>
+  <%= @publisher.id %>
+</p>
+
+<p>
+  <strong> Name: </strong>
+  <%= @publisher.name %>
+</p>
+
+<%= link_to 'Back', publishers_path %>
+<%= link_to 'Edit', edit_publisher_path(@publisher) %>
+

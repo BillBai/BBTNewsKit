@@ -91,6 +91,12 @@ class ContentsController < ApplicationController
     redirect_to action: 'show', id: @content.id
   end
 
+  def contribute
+    @content = Content.find(params[:id])
+    @content.pending!
+    redirect_to action: 'show', id: @content.id
+  end
+
 private
   def content_params
     params.require(:content).permit(:title,
