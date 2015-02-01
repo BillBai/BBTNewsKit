@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150131121436) do
+ActiveRecord::Schema.define(version: 20150201040803) do
 
   create_table "article_body_images", force: true do |t|
     t.datetime "created_at"
@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 20150131121436) do
     t.string   "display_name"
     t.integer  "group",                  default: 0
     t.integer  "passed_ids"
-    t.integer  "publisher_id"
+    t.integer  "publisher_id",           default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

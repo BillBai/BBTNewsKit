@@ -1,0 +1,25 @@
+<h1> User </h1>
+
+<p>
+  <strong>id: </strong>
+  <%= @user.id %>
+</p>
+
+<p>
+  <strong> Display Name: </strong>
+  <%= @user.display_name %>
+</p>
+
+<p>
+  <strong> Publisher: </strong>
+  <%= @user.publisher.name %>
+</p>
+
+<p>
+  <strong> Group: </strong>
+  <%= @user.group %>
+</p>
+
+<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_path(@user) %>
+

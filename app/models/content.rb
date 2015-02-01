@@ -19,7 +19,7 @@ class Content < ActiveRecord::Base
   paginates_per 23
 
   public
-  def self.default_content_params(current_user_id,content_type = :article)
+  def self.default_content_params(user,content_type = :article)
       { :title => 'default title',
         :subtitle => 'default subtitle',
         :description => 'default description',
@@ -27,7 +27,8 @@ class Content < ActiveRecord::Base
         :status => Content.statuses[:draft],
         :section_id => 0,
         :author_id => 0,
-        :user_id => current_user_id
+        :user_id => user.id,
+        :publisher_id => user.publisher_id
       }
   end
 

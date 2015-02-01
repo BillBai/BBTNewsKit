@@ -67,7 +67,7 @@
         Actions
       </div>
       <div class="panel-body">
-      <% if current_user.admin? %>
+      <% if current_user.admin? || current_user.super_admin? %>
         <% if @content.draft? %>
             <%= link_to 'Publish', publish_content_path(@content), method: :patch, data: {confirm: 'Are you sure to publish this content?'}, role: 'button', class: 'btn btn-success' %>
             <%= link_to 'Edit', edit_content_path(@content), {role: 'button', class: 'btn btn-default'}%>
@@ -75,7 +75,7 @@
               <%= link_to 'Revoke', revoke_content_path(@content), method: :patch, data: {confirm: 'Are you sure to revoke this content?'}, role: 'button', class: 'btn btn-default' %>
         <% end %>
       <% else %>
-        <% if @content.draft? %>
+        <% if @content.draft? || content.rejected? %>
             <%= link_to 'Contribute', contribute_content_path(@content), method: :patch, data: {confirm: 'Are you sure to contribute this content?'}, role: 'button', class: 'btn btn-success' %>
             <%= link_to 'Edit', edit_content_path(@content), {role: 'button', class: 'btn btn-default'}%>
         <% else %>
@@ -102,8 +102,8 @@
     <div class="panel panel-default">
       <div class="panel-heading">Publisher</div>
       <div class="panel-body">
-        <strong>Display Name:</strong>
-        <%= @content.user.display_name %>
+        <strong>Publisher:</strong>
+        <%= @content.publisher.name %>
       </div>
     </div>
     <!--Publisher panel END-->
@@ -112,14 +112,9 @@
     <div class="panel panel-default">
       <div class="panel-heading">Author</div>
       <div class="panel-body">
-        <strong>Department:</strong>
-        <%= @content.author.department %>
-        <br/>
         <strong>Name:</strong>
-        <%= @content.author.name  %>
+        <%= @content.user.display_name %>
         <br/>
-        <strong>Display Name:</strong>
-        <%= @content.author.display_name %>
       </div>
     </div>
     <!--Author panel END-->

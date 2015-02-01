@@ -1,0 +1,24 @@
+<h1> all users </h1>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>Name</th>
+    <th>Publisher</th>
+    <th>Group</th>
+  </tr>
+
+  <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.display_name %></td>
+        <td><%= user.publisher.name %></td>
+        <td><%= user.group %></td>
+
+        <td><%= link_to 'Show', user_path(user) %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Delete', user_path(user),
+                        method: :delete, data: { confirm: 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
+</table>

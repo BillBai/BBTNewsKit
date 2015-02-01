@@ -29,7 +29,7 @@ class SectionsController < ApplicationController
   end
 
   def update
-    @section = Author.find(params[:id])
+    @section = Section.find(params[:id])
 
     if @section.update(section_params)
       redirect_to @section
@@ -51,7 +51,7 @@ class SectionsController < ApplicationController
   end
 
   def check_group
-    if not current_user.admin?
+    if not current_user.have_authority('access_sections')
       #have no right to access sections
       redirect_to contents_path
     end

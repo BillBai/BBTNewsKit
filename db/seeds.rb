@@ -18,8 +18,8 @@ genesis_section = Section.create([{id: 0,
                                    category: 0}])
 
 genesis_publisher = Publisher.create([{id: 0,
-                                       active: false,
-                                       name: 'genesis publisher'}])
+                                       active: true,
+                                       name: 'Individual contributor'}])
 
 genesis_content = Content.create([{id: 0,
                                    title: 'genesis content',

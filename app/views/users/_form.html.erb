@@ -1,0 +1,34 @@
+<%= form_for @user do |f| %>
+
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %>
+            prohibited
+            this article from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <p>
+      <strong>display name: </strong>
+      <%= @user.display_name %>
+    </p>
+
+    <p>
+      <%= f.label :publisher %>
+      <%= f.select :publisher_id, options_from_collection_for_select(Publisher.where(active: true), :id, :name, selected: @user.publisher_id) %>
+    </p>
+
+    <p>
+      <%= f.label :group %>
+      <%= f.select :group, options_for_select(User.groups.keys.to_a, selected: @user.group)%>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>

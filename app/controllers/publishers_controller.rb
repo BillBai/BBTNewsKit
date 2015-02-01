@@ -3,7 +3,7 @@ class PublishersController < ApplicationController
   before_action :check_group
 
   def index
-    @publishers = Publisher.all
+    @publishers = Publisher.where.not(id: 0)
   end
 
   def show
@@ -51,8 +51,8 @@ class PublishersController < ApplicationController
   end
 
   def check_group
-    if not current_user.admin?
-      #have no right to access sections
+    if not current_user.have_authority('access_publishers')
+      #have no right to access publishers
       redirect_to contents_path
     end
   end
