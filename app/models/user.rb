@@ -31,8 +31,54 @@ class User < ActiveRecord::Base
       else
         false
       end
+    when 'publish'
+      if self.admin? or self.super_admin?
+        true
+      else
+        false
+      end
+    when 'view_all_contents'
+      if self.admin? or self.super_admin?
+        true
+      else
+        false
+      end
     else
 	     false
   	end
+  end
+
+  def can_modify_content(content_id)
+    @content = Content.find(content_id)
+    if self.admin? || self.super_admin?
+      if (@content.publisher_id == self.publisher_id && !(@content.pending?)) || @content.passed_contribution?
+        true
+      else
+        false
+      end
+    else
+      if @content.user_id == self.id && !(@content.approved? || @content.pending?)
+        true
+      else
+        false
+      end
+    end
+  end
+
+  def can_view_content(content_id)
+    @content = Content.find(content_id)
+    if self.admin? || self.super_admin?
+      if @content.publisher_id == self.publisher_id || @content.pending? || @content.passed_contribution?
+        true
+      else
+        false
+      end
+    else
+      if @content.user_id == self.id
+        true
+      else
+        false
+      end
+    end
   end
 end

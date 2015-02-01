@@ -16,7 +16,7 @@
   <div class="header">
     <ul class="nav nav-pills pull-right">
       <li>
-        <a href="users/edit"><%= current_user.display_name %></a>
+        <%= link_to current_user.display_name, edit_registration_path(current_user) %>
       </li>
       <li>
         <%= link_to destroy_session_path(current_user), {method: :DELETE} do %>

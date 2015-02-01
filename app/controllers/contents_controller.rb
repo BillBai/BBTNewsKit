@@ -1,5 +1,14 @@
 class ContentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_group
+
+  def check_group
+    if params[:contributions]
+      if not current_user.have_authority('view_all_contents')
+        redirect_to contents_path
+      end
+    end
+  end
 
   def index
     if params[:section_id]
@@ -8,14 +17,35 @@ class ContentsController < ApplicationController
     elsif params[:content_id]
       @content = Content.find(params[:content_id])
       @contents = @content.subcontents.where(delete_flag: false).order(:id).page params[:page]
+    #srot by content_type
     elsif params[:content_type] && Content.content_types[params[:content_type]]
-      @contents = Content.where(delete_flag: false, content_type: Content.content_types[params[:content_type]]).order(:id).page params[:page]
+      if current_user.have_authority('view_all_contents')
+        @contents = Content.where(["delete_flag = ? AND content_type = ? AND (publisher_id = ? OR passed_contribution = ?)", false, Content.content_types[params[:content_type]], current_user.publisher_id, true]).order(:id).page params[:page]
+      elsif current_user.publisher_id == 0
+        @contents = Content.where(delete_flag: false, user_id: current_user.id, passed_contribution: false, content_type: Content.content_types[params[:content_type]]).order(:id).page params[:page]
+      else
+        @contents = Content.where(delete_flag: false, publisher_id: current_user.publisher_id, passed_contribution: false, content_type: Content.content_types[params[:content_type]]).order(:id).page params[:page]
+      end
+    #view contributions(admin/super_admin only)
+    elsif params[:contributions] == "true"
+      @contents = Content.where(delete_flag: false, status: Content.statuses["pending"]).order(:id).page params[:page]
+    #all contents
     else
-      @contents = Content.where(delete_flag: false).order(:id).page params[:page]
+      if current_user.have_authority('view_all_contents')
+        @contents = Content.where(["delete_flag = ? AND (publisher_id = ? OR passed_contribution = ?)", false, current_user.publisher_id, true]).order(:id).page params[:page]
+      elsif current_user.publisher_id == 0
+        @contents = Content.where(delete_flag: false, user_id: current_user.id, passed_contribution: false).order(:id).page params[:page]
+      else
+        @contents = Content.where(delete_flag: false, publisher_id: current_user.publisher_id, passed_contribution: false).order(:id).page params[:page]
+      end
     end
   end
 
   def show
+    if not current_user.can_view_content(params[:id])
+      redirect_to contents_path
+    end
+
     @content = Content.find(params[:id])
     if @content.special?
       render 'show_special'
@@ -39,10 +69,19 @@ class ContentsController < ApplicationController
   end
 
   def edit
+    if not current_user.can_modify_content(params[:id])
+      redirect_to contents_path
+    end
+
     @content = Content.find(params[:id])
   end
 
   def update
+    if not current_user.can_modify_content(params[:id])
+      #can't access
+      redirect_to contents_path
+    end
+
     @content = Content.find(params[:id])
 
     if @content.update(content_params)
@@ -90,6 +129,21 @@ class ContentsController < ApplicationController
     @content.draft!
     redirect_to action: 'show', id: @content.id
   end
+
+  def approve
+    @content = Content.find(params[:id])
+    @approved_content = Content.new
+    @approved_content = @content.dup
+    @approved_content.header_image = @content.header_image
+    @approved_content.article_body_images = @content.article_body_images
+    @approved_content.photos = @content.photos
+    @approved_content.passed_contribution = true
+    @approved_content.draft!
+    @approved_content.save
+    @content.approved!
+    redirect_to action: 'show', id: @approved_content.id
+  end
+
 
   def contribute
     @content = Content.find(params[:id])

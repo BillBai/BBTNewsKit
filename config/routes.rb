@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       patch 'publish' => 'contents#publish'
       patch 'revoke' => 'contents#revoke'
       patch 'contribute' => 'contents#contribute'
+      patch 'approve' => 'contents#approve'
     end
     resources :article_body_images
     resources :photos

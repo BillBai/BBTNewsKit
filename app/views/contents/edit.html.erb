@@ -66,11 +66,11 @@
     </div>
     <!-- Actions panel END -->
 
-    <!-- User panel -->
+    <!-- Publisher panel -->
     <div class="panel panel-default">
       <div class="panel-heading">Publisher</div>
       <div class="panel-body">
-        <%= label_tag 'display_name', @content.user.display_name %>
+        <%= label_tag 'name', @content.publisher.name %>
       </div>
     </div>
     <!--User panel END-->
@@ -79,7 +79,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">Author</div>
       <div class="panel-body">
-        <%= select_tag :content_author, options_from_collection_for_select(Author.where(active: true), :id, :name, selected: @content.author_id) , {class: 'selectpicker', id: 'content-author-picker'}%>
+        <%= label_tag 'display_name', @content.user.display_name %>
       </div>
     </div>
     <!--Author panel END-->
