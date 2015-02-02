@@ -104,6 +104,9 @@ class ContentsController < ApplicationController
 
   def add
     if Content.content_types[params[:content_type]]
+      if params[:content_type] == 'special' && !current_user.have_authority('access_specials')
+        redirect_to contents_path and return
+      end
       @content = Content.create(Content.default_content_params(current_user,params[:content_type]))
     else
       @content = Content.create(Content.default_content_params(current_user))

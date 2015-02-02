@@ -3,6 +3,20 @@
 </div>
 
 <div class="page-header">
+  <% if current_user.have_authority('manage') %>
+    <h3> Manage </h3>
+      <%= link_to sections_path, {role: 'button', class: 'btn btn-primary'} do %>
+        Manage sections
+      <% end %>
+      <%= link_to publishers_path, {role: 'button', class: 'btn btn-primary'} do %>
+        Manage publishers
+      <% end %>
+      <% if current_user.super_admin? %>
+        <%= link_to users_path, {role: 'button', class: 'btn btn-primary'} do %>
+          Manage users
+        <% end %>
+      <% end %>
+  <% end %>
   <h3> All Contents </h3>
     <%= link_to add_contents_path(content_type: :article), {role: 'button', class: 'btn btn-primary'} do %>
       <span class='glyphicon glyphicon-file'></span> Add article
@@ -13,8 +27,10 @@
     <%= link_to add_contents_path(content_type: :video), {role: 'button', class: 'btn btn-primary'} do %>
       <span class='glyphicon glyphicon-facetime-video'></span> Add video
     <% end %>
-    <%= link_to add_contents_path(content_type: :special), {role: 'button', class: 'btn btn-primary'} do %>
-      <span class='glyphicon glyphicon-star'></span> Add special
+    <% if current_user.have_authority('access_specials') %>
+      <%= link_to add_contents_path(content_type: :special), {role: 'button', class: 'btn btn-primary'} do %>
+        <span class='glyphicon glyphicon-star'></span> Add special
+      <% end %>
     <% end %>
 </div>
 

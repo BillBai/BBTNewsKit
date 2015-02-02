@@ -25,6 +25,12 @@ class User < ActiveRecord::Base
       else
         false
       end
+    when 'manage'
+      if self.admin? or self.super_admin?
+        true
+      else
+        false
+      end
     when 'manage_users'
       if self.super_admin?
         true
@@ -38,6 +44,12 @@ class User < ActiveRecord::Base
         false
       end
     when 'view_all_contents'
+      if self.admin? or self.super_admin?
+        true
+      else
+        false
+      end
+    when 'access_specials'
       if self.admin? or self.super_admin?
         true
       else

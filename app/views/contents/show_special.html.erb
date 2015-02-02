@@ -45,12 +45,23 @@
         Actions
       </div>
       <div class="panel-body">
+      <% if current_user.have_authority('publish') %>
         <% if @content.draft? %>
             <%= link_to 'Publish', publish_content_path(@content), method: :patch, data: {confirm: 'Are you sure to publish this content?'}, role: 'button', class: 'btn btn-success' %>
             <%= link_to 'Edit', edit_content_path(@content), {role: 'button', class: 'btn btn-default'}%>
+        <% elsif @content.pending? %>
+            <%= link_to 'Approve', approve_content_path(@content), method: :patch, data: {confirm: 'Are you sure to approve this content?'}, role: 'button', class: 'btn btn-success' %>
         <% else %>
             <%= link_to 'Revoke', revoke_content_path(@content), method: :patch, data: {confirm: 'Are you sure to revoke this content?'}, role: 'button', class: 'btn btn-default' %>
-        <% end  %>
+        <% end %>
+      <% else %>
+        <% if @content.draft? || @content.rejected? %>
+            <%= link_to 'Contribute', contribute_content_path(@content), method: :patch, data: {confirm: 'Are you sure to contribute this content?'}, role: 'button', class: 'btn btn-success' %>
+            <%= link_to 'Edit', edit_content_path(@content), {role: 'button', class: 'btn btn-default'}%>
+        <% elsif not @content.approved? %>
+              <%= link_to 'Revoke', revoke_content_path(@content), method: :patch, data: {confirm: 'Are you sure to revoke this content?'}, role: 'button', class: 'btn btn-default' %>
+        <% end %>
+      <% end %>
         <!-- Single button -->
         <div class="btn-group">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">

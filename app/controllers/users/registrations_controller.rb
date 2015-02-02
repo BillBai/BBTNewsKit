@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  layout "visitor"
+  layout :resolve_layout
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
@@ -58,4 +58,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+  def resolve_layout
+    case action_name
+    when 'edit'
+      'application'
+    else
+      'visitor'
+    end
+  end
 end

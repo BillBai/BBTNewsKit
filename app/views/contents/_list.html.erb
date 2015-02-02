@@ -26,7 +26,9 @@
 
 
         <td><%= link_to 'Show', content_path(content) %></td>
-        <td><%= link_to 'Edit', edit_content_path(content) %></td>
+        <% if current_user.can_modify_content(content.parent_content_id) %>
+          <td><%= link_to 'Edit', edit_content_path(content) %></td>
+        <% end %>
       </tr>
   <% end  %>
   </tbody>
