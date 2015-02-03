@@ -10,6 +10,8 @@
   <%= @publisher.name %>
 </p>
 
-<%= link_to 'Back', publishers_path %>
-<%= link_to 'Edit', edit_publisher_path(@publisher) %>
+<%= link_to 'Back', publishers_path,
+	{role: 'button', class: 'btn btn-default'}%>
+<%= link_to 'Edit', edit_publisher_path(@publisher),
+	{role: 'button', class: 'btn btn-warning'}%>
 

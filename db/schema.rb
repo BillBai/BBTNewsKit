@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150201084744) do
+ActiveRecord::Schema.define(version: 20150203023501) do
 
   create_table "article_body_images", force: true do |t|
     t.datetime "created_at"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20150201084744) do
     t.string   "title"
     t.string   "subtitle"
     t.string   "description"
-    t.integer  "author_id"
     t.integer  "section_id"
     t.string   "header_image_file_name"
     t.string   "header_image_content_type"

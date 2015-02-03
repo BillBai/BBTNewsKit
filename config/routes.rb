@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
+  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations", shared: "users/shared", passwords: "users/passwords"}
   root 'contents#index'
 
   constraints subdomain: 'api' do

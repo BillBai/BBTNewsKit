@@ -26,7 +26,7 @@ class Content < ActiveRecord::Base
         :content_type => Content.content_types[content_type],
         :status => Content.statuses[:draft],
         :section_id => 0,
-        :author_id => 0,
+        #:author_id => 0,
         :user_id => user.id,
         :publisher_id => user.publisher_id
       }

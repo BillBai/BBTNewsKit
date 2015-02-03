@@ -71,10 +71,13 @@
             <td><%=raw status_label(content, content.status) %></td>
 
 
-            <td><%= link_to 'Show', content_path(content) %></td>
+            <td><%= link_to 'Show', content_path(content),
+                {role: 'button', class: 'btn btn-info'}%>
             <% if current_user.can_modify_content(content.id) %>
-              <td><%= link_to 'Edit', edit_content_path(content) %></td>
+                <%= link_to 'Edit', edit_content_path(content),
+                  {role: 'button', class: 'btn btn-warning'}%>
             <% end %>
+            </td>
           </tr>
       <% end  %>
       </tbody>
