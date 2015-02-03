@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
 
   # Use for devise to allow additional attributes
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_locale_zh
+
+  def set_locale_zh
+    I18n.locale = :zh
+  end
 
   protected
   def configure_permitted_parameters

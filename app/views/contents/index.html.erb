@@ -4,32 +4,32 @@
 
 <div class="page-header">
   <% if current_user.have_authority('manage') %>
-    <h3> Manage </h3>
+    <h3><%= t :manage %></h3>
       <%= link_to sections_path, {role: 'button', class: 'btn btn-primary'} do %>
-        Manage sections
+        <%= t :manage_sections %>
       <% end %>
       <%= link_to publishers_path, {role: 'button', class: 'btn btn-primary'} do %>
-        Manage publishers
+        <%= t :manage_publishers %>
       <% end %>
       <% if current_user.super_admin? %>
         <%= link_to users_path, {role: 'button', class: 'btn btn-primary'} do %>
-          Manage users
+          <%= t :manage_users %>
         <% end %>
       <% end %>
   <% end %>
-  <h3> All Contents </h3>
+  <h3><%= t :all_contents %></h3>
     <%= link_to add_contents_path(content_type: :article), {role: 'button', class: 'btn btn-primary'} do %>
-      <span class='glyphicon glyphicon-file'></span> Add article
+      <span class='glyphicon glyphicon-file'></span> <%= t :add_article %>
     <% end %>
     <%= link_to add_contents_path(content_type: :album), {role: 'button', class: 'btn btn-primary'} do %>
-      <span class='glyphicon glyphicon-picture'></span> Add album
+      <span class='glyphicon glyphicon-picture'></span> <%= t :add_album %>
     <% end %>
     <%= link_to add_contents_path(content_type: :video), {role: 'button', class: 'btn btn-primary'} do %>
-      <span class='glyphicon glyphicon-facetime-video'></span> Add video
+      <span class='glyphicon glyphicon-facetime-video'></span> <%= t :add_video %>
     <% end %>
     <% if current_user.have_authority('access_specials') %>
       <%= link_to add_contents_path(content_type: :special), {role: 'button', class: 'btn btn-primary'} do %>
-        <span class='glyphicon glyphicon-star'></span> Add special
+        <span class='glyphicon glyphicon-star'></span> <%= t :add_special%>
       <% end %>
     <% end %>
 </div>
@@ -38,22 +38,21 @@
 <div class="row">
   <div class="col-md-12">
     <ul id="tabs" class="nav nav-tabs" role="tablist">
-      <li id='all_tab'><a href="/#tabs">All</a></li>
-      <li id='article_tab'><a href="?content_type=article#tabs">Article</a></li>
-      <li id='video_tab'><a href="?content_type=video#tabs">Video</a></li>
-      <li id='album_tab'><a href="?content_type=album#tabs">Album</a></li>
-      <li id='contributions_tab'><a href="?contributions=true#tabs">Contributions</a></li>
+      <li id='all_tab'><a href="/#tabs"><%= t :all %></a></li>
+      <li id='article_tab'><a href="?content_type=article#tabs"><%= t :article %></a></li>
+      <li id='video_tab'><a href="?content_type=video#tabs"><%= t :video %></a></li>
+      <li id='album_tab'><a href="?content_type=album#tabs"><%= t :album %></a></li>
+      <li id='contributions_tab'><a href="?contributions=true#tabs"><%= t :contributions %></a></li>
     </ul>
     <table class="table table-striped">
       <thead>
       <tr>
-        <th>#</th>
-        <th>header img</th>
-        <th>Type</th>
-        <th>Title</th>
-        <th>Subtitle</th>
-        <th>Description</th>
-        <th>Status</th>
+        <th><%= t :header_img %></th>
+        <th><%= t :type %></th>
+        <th><%= t :title %></th>
+        <th><%= t :subtitle %></th>
+        <th><%= t :description %></th>
+        <th><%= t :status %></th>
 
 
       </tr>
@@ -62,19 +61,18 @@
       <tbody>
       <% @contents.each do |content| %>
           <tr>
-            <td><%= content.id %></td>
             <td><%= image_tag content.header_image.url(:thumb) %></td>
-            <td><%=raw content_type_label(content, content.content_type) %></td>
+            <td><%=raw content_type_label(content,t(content.content_type)) %></td>
             <td><%= content.title %></td>
             <td><%= content.subtitle %></td>
             <td><%= content.description %></td>
             <td><%=raw status_label(content, content.status) %></td>
 
 
-            <td><%= link_to 'Show', content_path(content),
+            <td><%= link_to t('show'), content_path(content),
                 {role: 'button', class: 'btn btn-info'}%>
             <% if current_user.can_modify_content(content.id) %>
-                <%= link_to 'Edit', edit_content_path(content),
+                <%= link_to t('edit'), edit_content_path(content),
                   {role: 'button', class: 'btn btn-warning'}%>
             <% end %>
             </td>

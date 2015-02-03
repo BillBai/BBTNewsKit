@@ -1,0 +1,42 @@
+zh:
+  bbt_news_kit: 百步梯新闻系统
+  home: 首页
+  help: 查看帮助
+  logout: 注销
+  #users/sign_in
+  log_in: 登录
+  email: 电子邮箱
+  password: 密码
+  remember_me: 记住我
+  sign_up: 注册
+  forgot_your_password: 忘记密码?
+  #users/sign_up
+  display_name: 用户名
+  minimum_length: 最小长度
+  password_confirmation: 确认密码
+  #users/password/new
+  send_reset_email: 给我发送重置密码邮件
+  #/
+  manage: 管理
+  manage_sections: 专题管理
+  manage_publishers: 发布者管理
+  manage_users: 用户管理
+  all_contents: 所有内容
+  add_article: 新建文章
+  add_album: 新建图集
+  add_video: 新建视频
+  add_special: 新建专题
+  all: 全部
+  article: 文章
+  album: 图集
+  video: 视频
+  special: 专题
+  contributions: 投稿
+  header_img: header img
+  type: 类型
+  title: 标题
+  subtitle: 副标题
+  description: 描述
+  status: 状态
+  show: 查看
+  edit: 编辑
