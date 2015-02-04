@@ -1,4 +1,4 @@
-<h1> User </h1>
+<h1> <%= t :user %> </h1>
 
 <p>
   <strong>id: </strong>
@@ -6,21 +6,21 @@
 </p>
 
 <p>
-  <strong> Display Name: </strong>
+  <strong> <%= t :display_name %>: </strong>
   <%= @user.display_name %>
 </p>
 
 <p>
-  <strong> Publisher: </strong>
+  <strong> <%= t :publisher %>: </strong>
   <%= @user.publisher.name %>
 </p>
 
 <p>
-  <strong> Group: </strong>
-  <%= @user.group %>
+  <strong> <%= t :user_group %>: </strong>
+  <%= t(@user.group) %>
 </p>
 
-<%= link_to 'Back', users_path, {role: 'button', class: 'btn btn-default'}%>
-<%= link_to 'Edit', edit_user_path(@user),
+<%= link_to t('back'), users_path, {role: 'button', class: 'btn btn-default'}%>
+<%= link_to t('edit'), edit_user_path(@user),
 	{role: 'button', class: 'btn btn-warning'}%>
 

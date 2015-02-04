@@ -1,15 +1,15 @@
-<h1> all publishers </h1>
+<h1><%= t :all %><%= t :publisher %></h1>
 <%= link_to new_publisher_path, {role: 'button', class: 'btn btn-primary'} do%>
-  <span class="glyphicon glyphicon-plus"></span> New publisher
+  <span class="glyphicon glyphicon-plus"></span> <%= t :new_publisher %>
 <% end %>
 &nbsp
-<%= link_to "back", contents_path ,{role: 'button', class: 'btn btn-default'}%>
+<%= link_to t("back"), contents_path ,{role: 'button', class: 'btn btn-default'}%>
 
 <table class="table table-striped">
   <thead>
   <tr>
     <th>id</th>
-    <th>name</th>
+    <th><%= t :name %></th>
   </tr>
   </thead>
   <tbody>
@@ -18,9 +18,9 @@
           <td><%= publisher.id %></td>
           <td><%= publisher.name %></td>
 
-          <td><%= link_to 'Show', publisher_path(publisher), {role: 'button', class: 'btn btn-info'}%>
-          <%= link_to 'Edit', edit_publisher_path(publisher), {role: 'button', class: 'btn btn-warning'}%>
-          <%= link_to 'Delete', {url:  publisher_path(publisher), method: :delete, 
+          <td><%= link_to t('show'), publisher_path(publisher), {role: 'button', class: 'btn btn-info'}%>
+          <%= link_to t('edit'), edit_publisher_path(publisher), {role: 'button', class: 'btn btn-warning'}%>
+          <%= link_to t('delete'), {url:  publisher_path(publisher), method: :delete, 
             data: { confirm: 'Are you sure?'}},
             {role: 'button', class: 'btn btn-danger'} %></td>
         </tr>

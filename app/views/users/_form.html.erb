@@ -14,18 +14,18 @@
     <% end %>
 
     <p>
-      <strong>display name: </strong>
+      <strong><%= t :display_name %>: </strong>
       <%= @user.display_name %>
     </p>
 
     <p>
-      <%= f.label :publisher %>
+      <%= f.label t :publisher %>
       <%= f.select :publisher_id, options_from_collection_for_select(Publisher.where(active: true), :id, :name, selected: @user.publisher_id) %>
     </p>
 
     <p>
-      <%= f.label :group %>
-      <%= f.select :group, options_for_select(User.groups.keys.to_a, selected: @user.group)%>
+      <%= f.label t :user_group %>
+      <%= f.select :group, options_for_select(t(User.groups.keys.to_a), selected: @user.group)%>
     </p>
 
     <p>

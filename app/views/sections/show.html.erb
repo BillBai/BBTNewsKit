@@ -1,4 +1,4 @@
-<h1> Section </h1>
+<h1><%= t :section %></h1>
 
 <p>
   <strong>id: </strong>
@@ -6,15 +6,15 @@
 </p>
 
 <p>
-  <strong> Category: </strong>
+  <strong> <%= t :category %>: </strong>
   <%= @section.category %>
 
 <p>
-  <strong> Module: </strong>
+  <strong> <%= t :module %>: </strong>
   <%= @section.module %>
 </p>
 
-<%= link_to 'Back', sections_path, {role: 'button', class: 'btn btn-default'}%>
-<%= link_to 'Edit', edit_section_path(@section),
+<%= link_to t('back'), sections_path, {role: 'button', class: 'btn btn-default'}%>
+<%= link_to t('edit'), edit_section_path(@section),
 	{role: 'button', class: 'btn btn-warning'} %>
 

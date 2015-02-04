@@ -1,16 +1,16 @@
-<h1> all Sections </h1>
+<h1> <%= t :all_sections %> </h1>
 <%= link_to new_section_path, {role: 'button', class: 'btn btn-primary'} do %>
-  <span class="glyphicon glyphicon-plus"></span> New section
+  <span class="glyphicon glyphicon-plus"></span> <%= t :new_section %>
 <% end %>
 &nbsp
-<%= link_to "back", contents_path ,{role: 'button', class: 'btn btn-default'}%>
+<%= link_to t("back"), contents_path ,{role: 'button', class: 'btn btn-default'}%>
 
 <table class="table table-striped">
   <thead>
     <tr>
       <th>id</th>
-      <th>Category</th>
-      <th>Module</th>
+      <th><%= t :category %></th>
+      <th><%= t :module %></th>
     </tr>
   </thead>
   <tbody>
@@ -20,11 +20,11 @@
           <td><%= section.category %></td>
           <td><%= section.module %></td>
 
-          <td><%= link_to 'Show', section_path(section), 
+          <td><%= link_to t('show'), section_path(section), 
                 {role: 'button', class: 'btn btn-info'}%>
-              <%= link_to 'Edit', edit_section_path(section), 
+              <%= link_to t('edit'), edit_section_path(section), 
                 {role: 'button', class: 'btn btn-warning'} %>
-              <%= link_to 'Delete', { url: section_path(section),
+              <%= link_to t('delete'), { url: section_path(section),
                 method: :delete, data: { confirm: 'Are you sure?'} },
                 {role: 'button', class: 'btn btn-danger'} %></td>
         </tr>

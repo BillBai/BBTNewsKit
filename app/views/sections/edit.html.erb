@@ -1,5 +1,5 @@
-<h1> edit section </h1>
+<h1> <%= t :edit %><%= t :section %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', sections_path, {role: 'button', class: 'btn btn-default'}%>
+<%= link_to t('back'), sections_path, {role: 'button', class: 'btn btn-default'}%>
