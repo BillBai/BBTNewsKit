@@ -83,3 +83,10 @@ zh:
   admin: 管理员
   super_admin: 超级管理员
   user: 用户
+  current_password: 新密码
+  dangours_action: 危险操作
+  cancel_my_account: 删除我的账号
+  update: 更新
+  edit_user: 编辑用户
+  leave_blank_message: 若不需要更改,不填写即可
+  need_password: 请填写当前密码进行更改

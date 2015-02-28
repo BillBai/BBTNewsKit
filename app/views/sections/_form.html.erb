@@ -15,7 +15,7 @@
 
     <p>
       <%= f.label t :category %>
-      <%= f.select :category, options_for_select(t(Section.categories.keys.to_a), selected: @section.category) %>
+      <%= f.select :category, options_for_select({ t("news") => "news",t("special") => "special", t("weekly") => "weekly", t("video") => "video" }, selected: @section.category) %>
     </p>
 
     <p>

@@ -1,4 +1,4 @@
-<h1> <%= t :all_sections %> </h1>
+<h1> <%= t :manage_sections %> </h1>
 <%= link_to new_section_path, {role: 'button', class: 'btn btn-primary'} do %>
   <span class="glyphicon glyphicon-plus"></span> <%= t :new_section %>
 <% end %>
@@ -24,9 +24,9 @@
                 {role: 'button', class: 'btn btn-info'}%>
               <%= link_to t('edit'), edit_section_path(section), 
                 {role: 'button', class: 'btn btn-warning'} %>
-              <%= link_to t('delete'), { url: section_path(section),
-                method: :delete, data: { confirm: 'Are you sure?'} },
-                {role: 'button', class: 'btn btn-danger'} %></td>
+              <%= link_to t('delete'), section_path(section),
+                        method: :delete, data: { confirm: 'Are you sure?'},
+                        role: 'button', class: 'btn btn-danger' %></td>
         </tr>
     <% end %>
   </tbody>

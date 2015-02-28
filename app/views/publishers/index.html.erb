@@ -1,4 +1,4 @@
-<h1><%= t :all %><%= t :publisher %></h1>
+<h1><%= t :manage_publishers %></h1>
 <%= link_to new_publisher_path, {role: 'button', class: 'btn btn-primary'} do%>
   <span class="glyphicon glyphicon-plus"></span> <%= t :new_publisher %>
 <% end %>
@@ -20,9 +20,9 @@
 
           <td><%= link_to t('show'), publisher_path(publisher), {role: 'button', class: 'btn btn-info'}%>
           <%= link_to t('edit'), edit_publisher_path(publisher), {role: 'button', class: 'btn btn-warning'}%>
-          <%= link_to t('delete'), {url:  publisher_path(publisher), method: :delete, 
-            data: { confirm: 'Are you sure?'}},
-            {role: 'button', class: 'btn btn-danger'} %></td>
+          <%= link_to t('delete'), publisher_path(publisher),
+                        method: :delete, data: { confirm: 'Are you sure?'},
+                        role: 'button', class: 'btn btn-danger' %></td>
         </tr>
     <% end %>
   </tbody>

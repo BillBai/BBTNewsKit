@@ -6,12 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
-genesis_author = Author.create([{id: 0,
-                                 name: 'genesis author',
-                                 department: 0,
-                                 active: false}])
-
 genesis_section = Section.create([{id: 0,
                                    active: false,
                                    module: 'genesis section',
@@ -19,7 +13,7 @@ genesis_section = Section.create([{id: 0,
 
 genesis_publisher = Publisher.create([{id: 0,
                                        active: true,
-                                       name: 'Individual contributor'}])
+                                       name: '个人投稿'}])
 
 genesis_content = Content.create([{id: 0,
                                    title: 'genesis content',
