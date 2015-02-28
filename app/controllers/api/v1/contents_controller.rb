@@ -124,7 +124,7 @@ class Api::V1::ContentsController < ApplicationController
     end
 
     @content = Content.find(params[:id])
-    fresh_when(@content)
+    # fresh_when(@content)
     if @content.status != 'published'
       @response["status"] = 1
       @response["message"] = "content didn't exist"
