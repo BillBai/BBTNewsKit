@@ -33,7 +33,7 @@ zh:
   video: 视频
   special: 专题
   contributions: 投稿
-  header_img: header img
+  header_img: 封面图
   type: 类型
   title: 标题
   subtitle: 副标题
@@ -66,10 +66,15 @@ zh:
   special: 专题
   weekly: 周刊
   video: 视频
-  #contents/edit/:id
+  are_you_sure_to_publish: 确定要发布?
+  are_you_sure_to_approve: 确定要审核通过?
+  are_you_sure_to_revoke: 确定要撤销?
+  are_you_sure_to_contribute: 确定要进行投稿?
+  are_you_sure_to_revoke_contribution: 确定要取消投稿?
+  #contents/:id/edit
   article_body: 文章内容
   add_photo: 添加图片
-  header_img_info: header_img信息
+  header_img_info: 封面图信息
   actions: 操作
   save_draft: 保存草稿
   #sections/
@@ -90,3 +95,17 @@ zh:
   edit_user: 编辑用户
   leave_blank_message: 若不需要更改,不填写即可
   need_password: 请填写当前密码进行更改
+  are_you_sure: 你确定要这么做吗?
+
+  helpers:
+    submit:
+      create: 新建
+      update: 确认修改
+      delete: 删除
+
+  modules:
+    author: 作者
+    user: 用户
+    content: 内容
+    section: 栏目
+    publisher: 发布者

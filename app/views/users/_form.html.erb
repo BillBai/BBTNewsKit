@@ -25,7 +25,7 @@
 
     <p>
       <%= f.label t :user_group %>
-      <%= f.select :group, options_for_select(t(User.groups.keys.to_a), selected: @user.group)%>
+      <%= f.select :group, options_for_select({"投稿者" => "contributor", "管理员" => "admin", "超级管理员" => "super_admin"}, selected: @user.group)%>
     </p>
 
     <p>

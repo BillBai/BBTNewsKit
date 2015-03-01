@@ -22,9 +22,6 @@
                 {role: 'button', class: 'btn btn-info'}%>
               <%= link_to t('edit'), edit_user_path(user), 
                 {role: 'button', class: 'btn btn-warning'}%>
-              <%= link_to t('delete'), {url: user_path(user),
-                method: :delete, data: { confirm: 'Are you sure?'}},
-                {role: 'button', class: 'btn btn-danger'} %></td>
         </tr>
     <% end %>
   </tbody>

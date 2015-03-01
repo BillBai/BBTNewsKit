@@ -17,7 +17,7 @@
     <% @sections.each do |section| %>
         <tr>
           <td><%= section.id %></td>
-          <td><%= section.category %></td>
+          <td><%= t section.category %></td>
           <td><%= section.module %></td>
 
           <td><%= link_to t('show'), section_path(section), 
@@ -25,7 +25,7 @@
               <%= link_to t('edit'), edit_section_path(section), 
                 {role: 'button', class: 'btn btn-warning'} %>
               <%= link_to t('delete'), section_path(section),
-                        method: :delete, data: { confirm: 'Are you sure?'},
+                        method: :delete, data: { confirm: t("are_you_sure")},
                         role: 'button', class: 'btn btn-danger' %></td>
         </tr>
     <% end %>
