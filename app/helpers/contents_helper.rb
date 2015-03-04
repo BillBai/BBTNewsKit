@@ -24,4 +24,12 @@ module ContentsHelper
     end
   end
 
+  def focus_label(content)
+    if content.on_focus?
+      "<span class='label label-warning'>" + t("focus") + "</span>"
+    else
+      ""
+    end
+  end
+
 end

@@ -16,17 +16,17 @@
   <% contents.each do |content| %>
       <tr>
         <td><%= image_tag content.header_image.url(:thumb) %></td>
-        <td><%=raw content_type_label(content, content.content_type) %></td>
+        <td><%=raw content_type_label(content, t(content.content_type)) %></td>
         <td><%= content.title %></td>
         <td><%= content.subtitle %></td>
         <td><%= content.description %></td>
-        <td><%=raw status_label(content, content.status) %></td>
+        <td><%=raw status_label(content, t(content.status)) %></td>
 
 
-        <td><%= link_to t('show'), content_path(content) %></td>
-        <% if current_user.can_modify_content(content.parent_content_id) %>
-          <td><%= link_to t('edit'), edit_content_path(content) %></td>
-        <% end %>
+        <td><%= link_to t('show'), content_path(content),
+              {role: 'button', class: 'btn btn-info'}%>
+            <%= link_to t('edit'), edit_content_path(content),
+              {role: 'button', class: 'btn btn-warning'}%></td>
       </tr>
   <% end  %>
   </tbody>

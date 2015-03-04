@@ -9,6 +9,7 @@
         <%= t :content_meta_data %>
         <%=raw status_label(@content,t(@content.status)) %>
         <%=raw content_type_label(@content, t(@content.content_type)) %>
+        <%=raw focus_label(@content) %>
       </div>
       <div class="panel-body">
         <p>
@@ -74,10 +75,12 @@
           <% elsif @content.pending? %>
               <%= link_to t('approve'), approve_content_path(@content), method: :patch, data: {confirm: t('are_you_sure_to_approve')}, role: 'button', class: 'btn btn-success' %>
           <% else %>
-              <% if @content.on_focus? %>
-                  <%= link_to t('unset_focus'), unfocus_content_path(@content), method: :patch, role: 'button', class: 'btn btn-default' %>
-              <% else %>
-                  <%= link_to t('set_focus'), focus_content_path(@content), method: :patch, role: 'button', class: 'btn btn-default' %>
+              <% if @content.parent_content_id == 0 %>
+                <% if @content.on_focus? %>
+                    <%= link_to t('unset_focus'), unfocus_content_path(@content), method: :patch, role: 'button', class: 'btn btn-info' %>
+                <% else %>
+                    <%= link_to t('set_focus'), focus_content_path(@content), method: :patch, role: 'button', class: 'btn btn-warning' %>
+                <% end %>
               <% end %>
               <%= link_to t('revoke'), revoke_content_path(@content), method: :patch, data: {confirm: t('are_you_sure_to_revoke')}, role: 'button', class: 'btn btn-default' %>
           <% end %>

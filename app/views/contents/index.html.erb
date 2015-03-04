@@ -67,7 +67,8 @@
             <td><%= content.title %></td>
             <td><%= content.subtitle %></td>
             <td><%= content.description %></td>
-            <td><%=raw status_label(content, t(content.status)) %></td>
+            <td><%=raw status_label(content, t(content.status)) %></br>
+                <%=raw focus_label(content) %></td>
 
 
             <td><%= link_to t('show'), content_path(content),
