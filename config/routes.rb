@@ -41,6 +41,8 @@ Rails.application.routes.draw do
       patch 'revoke' => 'contents#revoke'
       patch 'contribute' => 'contents#contribute'
       patch 'approve' => 'contents#approve'
+      patch 'focus' => 'contents#focus'
+      patch 'unfocus' => 'contents#unfocus'
     end
     resources :article_body_images
     resources :photos

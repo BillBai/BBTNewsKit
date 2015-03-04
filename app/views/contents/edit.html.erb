@@ -32,13 +32,13 @@
     <% when 'special'%>
         <hr/>
         <%= link_to add_content_contents_path(@content, content_type: :article), {role: 'button', class: 'btn btn-primary'} do %>
-            <span class='glyphicon glyphicon-file'></span> Add article
+            <span class='glyphicon glyphicon-file'></span> <%= t :add_article %>
         <% end %>
         <%= link_to add_content_contents_path(@content, content_type: :album), {role: 'button', class: 'btn btn-primary'} do %>
-            <span class='glyphicon glyphicon-picture'></span> Add album
+            <span class='glyphicon glyphicon-picture'></span> <%= t :add_album %>
         <% end %>
         <%= link_to add_content_contents_path(@content,content_type: :video), {role: 'button', class: 'btn btn-primary'} do %>
-            <span class='glyphicon glyphicon-facetime-video'></span> Add video
+            <span class='glyphicon glyphicon-facetime-video'></span> <%= t :add_video %>
         <% end %>
         <%= render partial: 'list', locals: {contents: @content.subcontents} %>
     <% end %>

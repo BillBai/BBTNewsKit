@@ -13,30 +13,30 @@ class ContentsController < ApplicationController
   def index
     if params[:section_id]
       @section = Section.find(params[:section_id])
-      @contents = @section.contents.where(delete_flag: false).order(:id).page params[:page]
+      @contents = @section.contents.where(delete_flag: false, parent_content_id: 0).order(:id).page params[:page]
     elsif params[:content_id]
       @content = Content.find(params[:content_id])
-      @contents = @content.subcontents.where(delete_flag: false).order(:id).page params[:page]
+      @contents = @content.subcontents.where(delete_flag: false, parent_content_id: 0).order(:id).page params[:page]
     #srot by content_type
     elsif params[:content_type] && Content.content_types[params[:content_type]]
       if current_user.have_authority('view_all_contents')
-        @contents = Content.where(["delete_flag = ? AND content_type = ? AND (publisher_id = ? OR passed_contribution = ?)", false, Content.content_types[params[:content_type]], current_user.publisher_id, true]).order(:id).page params[:page]
+        @contents = Content.where(["delete_flag = ? AND content_type = ? AND (publisher_id = ? OR passed_contribution = ?) AND parent_content_id = ?", false, Content.content_types[params[:content_type]], current_user.publisher_id, true, 0]).order(:id).page params[:page]
       elsif current_user.publisher_id == 0
-        @contents = Content.where(delete_flag: false, user_id: current_user.id, passed_contribution: false, content_type: Content.content_types[params[:content_type]]).order(:id).page params[:page]
+        @contents = Content.where(delete_flag: false, user_id: current_user.id, passed_contribution: false, content_type: Content.content_types[params[:content_type]], parent_content_id: 0).order(:id).page params[:page]
       else
-        @contents = Content.where(delete_flag: false, publisher_id: current_user.publisher_id, passed_contribution: false, content_type: Content.content_types[params[:content_type]]).order(:id).page params[:page]
+        @contents = Content.where(delete_flag: false, publisher_id: current_user.publisher_id, passed_contribution: false, content_type: Content.content_types[params[:content_type]], parent_content_id: 0).order(:id).page params[:page]
       end
     #view contributions(admin/super_admin only)
     elsif params[:contributions] == "true"
-      @contents = Content.where(delete_flag: false, status: Content.statuses["pending"]).order(:id).page params[:page]
+      @contents = Content.where(delete_flag: false, status: Content.statuses["pending"], parent_content_id: 0).order(:id).page params[:page]
     #all contents
     else
       if current_user.have_authority('view_all_contents')
-        @contents = Content.where(["delete_flag = ? AND (publisher_id = ? OR passed_contribution = ?)", false, current_user.publisher_id, true]).order(:id).page params[:page]
+        @contents = Content.where(["delete_flag = ? AND (publisher_id = ? OR passed_contribution = ?) AND parent_content_id = ?", false, current_user.publisher_id, true, 0]).order(:id).page params[:page]
       elsif current_user.publisher_id == 0
-        @contents = Content.where(delete_flag: false, user_id: current_user.id, passed_contribution: false).order(:id).page params[:page]
+        @contents = Content.where(delete_flag: false, user_id: current_user.id, passed_contribution: false, parent_content_id: 0).order(:id).page params[:page]
       else
-        @contents = Content.where(delete_flag: false, publisher_id: current_user.publisher_id, passed_contribution: false).order(:id).page params[:page]
+        @contents = Content.where(delete_flag: false, publisher_id: current_user.publisher_id, passed_contribution: false, parent_content_id: 0).order(:id).page params[:page]
       end
     end
   end
@@ -151,6 +151,22 @@ class ContentsController < ApplicationController
   def contribute
     @content = Content.find(params[:id])
     @content.pending!
+    redirect_to action: 'show', id: @content.id
+  end
+
+  def focus
+    @content = Content.find(params[:id])
+    @content.on_focus = true
+    @content.display_on_timeline = false
+    @content.save
+    redirect_to action: 'show', id: @content.id
+  end
+
+  def unfocus
+    @content = Content.find(params[:id])
+    @content.on_focus = false
+    @content.display_on_timeline = true
+    @content.save
     redirect_to action: 'show', id: @content.id
   end
 
