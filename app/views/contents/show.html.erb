@@ -1,5 +1,11 @@
 <div class="page-header">
-  <h3> <%= @content.content_type %> <%= @content.id %></h3>
+  <% if @content.parent_content_id == 0%>
+      <%= link_to t('back'), contents_path, 
+    {role: 'button', class: 'btn btn-default'}%>
+  <% else %>
+      <%= link_to t('back'), :back, 
+    {role: 'button', class: 'btn btn-default'}%>
+  <% end %>
 </div>
 
 <div class="row">

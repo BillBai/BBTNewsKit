@@ -1,5 +1,6 @@
 <div class="page-header">
-  <h3> <%= @content.content_type %> <%= @content.id %></h3>
+    <%= link_to t('back'), contents_path, 
+  {role: 'button', class: 'btn btn-default'}%>
 </div>
 
 <div class="row">
@@ -43,7 +44,7 @@
     <!-- Action panel-->
     <div class="panel panel-primary">
       <div class="panel-heading">
-        Actions
+        <%= t :actions %>
       </div>
       <div class="panel-body">
       <% if current_user.have_authority('publish') %>

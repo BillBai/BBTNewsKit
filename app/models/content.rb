@@ -69,9 +69,9 @@ class Content < ActiveRecord::Base
   def self.get_contents_by_section(id,limit,max_id,since_id,content_type,from_max)
     if content_type != nil
       if from_max
-        temp = Content.where(content_type: Content.content_types[content_type],section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id, parent_content_id: 0).last(limit)
+        temp = Content.where(content_type: Content.content_types[content_type],section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
       else
-        temp = Content.where(content_type: Content.content_types[content_type],section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id, parent_content_id: 0).limit(limit)
+        temp = Content.where(content_type: Content.content_types[content_type],section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
       end
     else
       if from_max
@@ -86,15 +86,15 @@ class Content < ActiveRecord::Base
   def self.get_contents_by_publisher(pid,limit,max_id,since_id,content_type,from_max)
     if content_type != nil
       if from_max
-        temp = Content.where(content_type: Content.content_types[content_type],publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id, parent_content_id: 0).last(limit)
+        temp = Content.where(content_type: Content.content_types[content_type],publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
       else
-        temp = Content.where(content_type: Content.content_types[content_type],publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id, parent_content_id: 0).limit(limit)
+        temp = Content.where(content_type: Content.content_types[content_type],publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
       end
     else
       if from_max
-        temp = Content.where(publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id, parent_content_id: 0).last(limit)
+        temp = Content.where(publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
       else
-        temp = Content.where(publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id, parent_content_id: 0).limit(limit)
+        temp = Content.where(publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
       end
     end
     return get_list_item(temp)
