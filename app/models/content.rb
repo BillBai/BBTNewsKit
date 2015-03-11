@@ -133,6 +133,7 @@ class Content < ActiveRecord::Base
         created_at: self.created_at,
         updated_at: self.updated_at,
         thumb_image_url: self.header_image.url(:thumb),
+        header_image_url: self.header_image.url(:medium),
         on_focus: self.on_focus,
         display_on_timeline: self.display_on_timeline
     }
