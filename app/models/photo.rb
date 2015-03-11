@@ -1,7 +1,7 @@
 class Photo < ActiveRecord::Base
   belongs_to :content
 
-  has_attached_file :image, :styles => { :medium => "800x500>", :thumb => "160x90>" }
+  has_attached_file :image, :styles => { :medium => "720x480>", :thumb => "300x200>" }
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   def to_jq_photo
