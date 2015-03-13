@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :contents, only: [:index, :show] do
         member do 
           get 'subcontents'
+          patch 'like' => 'contents#like'
         end
       end
       resources :sections, only: [:index, :show] do

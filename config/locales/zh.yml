@@ -74,6 +74,8 @@ zh:
   set_focus: 设为焦点内容
   unset_focus: 取消焦点状态
   focus: 焦点
+  views: 浏览
+  like: 赞
   #contents/:id/edit
   article_body: 文章内容
   add_photo: 添加图片

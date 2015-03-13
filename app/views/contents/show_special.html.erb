@@ -11,6 +11,10 @@
         <%=raw status_label(@content, t(@content.status)) %>
         <%=raw content_type_label(@content, t(@content.content_type)) %>
         <%=raw focus_label(@content) %>
+        <% if current_user.admin? or current_user.super_admin? %>
+          <span class='label label-primary'><%= t('views') + ":" + @content.views.to_s %></span>
+          <span class='label label-danger'><%= t('like') + ":" + @content.like.to_s %></span>
+        <% end %>
       </div>
       <div class="panel-body">
         <p>
