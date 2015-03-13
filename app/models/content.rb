@@ -32,41 +32,41 @@ class Content < ActiveRecord::Base
       }
   end
 
-  def self.get_list(limit,max_id,since_id,on_focus,on_timeline,content_type,from_max)
+  def self.get_list(limit,max_id,since_id,on_focus,on_timeline,content_type,from_max,host_url)
     if content_type != nil
       if from_max
-        temp = Content.where(content_type: Content.content_types[content_type],on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id, parent_content_id: 0).last(limit)
+        temp = Content.where(content_type: Content.content_types[content_type],on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
       else
-        temp = Content.where(content_type: Content.content_types[content_type],on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id, parent_content_id: 0).limit(limit)
+        temp = Content.where(content_type: Content.content_types[content_type],on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
       end
     else
       if from_max
-        temp = Content.where(on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id, parent_content_id: 0).last(limit)
+        temp = Content.where(on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
       else
-        temp = Content.where(on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id, parent_content_id: 0).limit(limit)
+        temp = Content.where(on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
       end
     end
       
-    return get_list_item(temp.reverse)
+    return get_list_item(temp,host_url)
   end
 
-  def get_detail
+  def get_detail(host_url)
     #author = Author.find(self.author_id)
     #section = Section.find(self.section_id)
-    item = full_hash_for_api
+    item = full_hash_for_api(host_url)
   end
 
-  def self.get_subcontents(parent_content_id)
+  def self.get_subcontents(parent_content_id,host_url)
     content_arr = Content.find(parent_content_id).subcontents.where(delete_flag:  false, status: Content.statuses[:published])
-    return get_list_item(content_arr)
+    return get_list_item(content_arr,host_url)
   end
 
-  def self.get_focus
-    temp = Content.where(delete_flag: false, status: Content.statuses[:published], on_focus: true, parent_content_id: 0).last(5)
-    return get_list_item(temp)
+  def self.get_focus(host_url)
+    temp = Content.where(delete_flag: false, status: Content.statuses[:published], on_focus: true).last(5)
+    return get_list_item(temp,host_url)
   end
 
-  def self.get_contents_by_section(id,limit,max_id,since_id,content_type,from_max)
+  def self.get_contents_by_section(id,limit,max_id,since_id,content_type,from_max,host_url)
     if content_type != nil
       if from_max
         temp = Content.where(content_type: Content.content_types[content_type],section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
@@ -75,15 +75,15 @@ class Content < ActiveRecord::Base
       end
     else
       if from_max
-        temp = Content.where(section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id, parent_content_id: 0).last(limit)
+        temp = Content.where(section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
       else
-        temp = Content.where(section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id, parent_content_id: 0).limit(limit)
+        temp = Content.where(section_id: id, display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
       end
     end
-    return get_list_item(temp)
+    return get_list_item(temp,host_url)
   end
 
-  def self.get_contents_by_publisher(pid,limit,max_id,since_id,content_type,from_max)
+  def self.get_contents_by_publisher(pid,limit,max_id,since_id,content_type,from_max,host_url)
     if content_type != nil
       if from_max
         temp = Content.where(content_type: Content.content_types[content_type],publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
@@ -97,10 +97,10 @@ class Content < ActiveRecord::Base
         temp = Content.where(publisher_id: pid,display_on_timeline: true, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
       end
     end
-    return get_list_item(temp)
+    return get_list_item(temp,host_url)
   end
 
-  def full_hash_for_api
+  def full_hash_for_api(host_url)
     {
         id: self.id,
         title: self.title,
@@ -112,15 +112,15 @@ class Content < ActiveRecord::Base
         section: {id: section.id, category: section.category, module: section.module},
         created_at: self.created_at,
         updated_at: self.updated_at,
-        thumb_image_url: self.header_image.url(:thumb),
-        header_image_url: self.header_image.url(:medium),
+        thumb_image_url: host_url + self.header_image.url(:thumb),
+        header_image_url: host_url + self.header_image.url(:medium),
         body_html: self.body_html,
         video_url: self.video_url,
-        photos: Content.get_photos(self.photos)
+        photos: Content.get_photos(self.photos,host_url)
     }
   end
 
-  def reduced_hash_for_api
+  def reduced_hash_for_api(host_url)
     {
         id: self.id,
         title: self.title,
@@ -132,8 +132,8 @@ class Content < ActiveRecord::Base
         section: {id: section.id, category: self.section.category, module: self.section.module},
         created_at: self.created_at,
         updated_at: self.updated_at,
-        thumb_image_url: self.header_image.url(:thumb),
-        header_image_url: self.header_image.url(:medium),
+        thumb_image_url: host_url + self.header_image.url(:thumb),
+        header_image_url: host_url + self.header_image.url(:medium),
         on_focus: self.on_focus,
         display_on_timeline: self.display_on_timeline
     }
@@ -144,19 +144,19 @@ class Content < ActiveRecord::Base
   end
   
   private
-    def self.get_list_item(content_array)
+    def self.get_list_item(content_array,host_url)
       list = Array.new
       content_array.each do |content|
         #author = Author.find(content.author_id)
         #section = Section.find(content.section_id)
-        item = content.reduced_hash_for_api
+        item = content.reduced_hash_for_api(host_url)
         list << item
       end
-      return list
+      return list.reverse
     end
 
   private
-    def self.get_photos(photos_array)
+    def self.get_photos(photos_array,host_url)
       list = Array.new
       photos_array.each do |photo|
         list << {
@@ -166,7 +166,7 @@ class Content < ActiveRecord::Base
             photographer: photo.photographer,
             created_at: photo.created_at,
             image_file_size: photo.image_file_size,
-            image_url: photo.image.url(:medium)
+            image_url: host_url + photo.image.url(:medium)
         }
       end
       return list

@@ -3,7 +3,7 @@
       <%= link_to t('back'), contents_path, 
     {role: 'button', class: 'btn btn-default'}%>
   <% else %>
-      <%= link_to t('back'), :back, 
+      <%= link_to t('back'), content_path(@content.parent_content_id), 
     {role: 'button', class: 'btn btn-default'}%>
   <% end %>
 </div>
