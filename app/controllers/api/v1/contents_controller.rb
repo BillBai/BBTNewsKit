@@ -116,6 +116,14 @@ class Api::V1::ContentsController < ApplicationController
 
   def show
     @response = Hash.new
+
+    if params.include?('test')
+      if params['test'] == 'true'
+        render html: Content.find(params[:id]).body_html.html_safe
+        return
+      end
+    end
+
     if not Content.exists?(params[:id])
       @response["status"] = 1
       @response["message"] = "content didn't exist"

@@ -110,6 +110,7 @@
           height: 400,
           onImageUpload: function(files, editor, welEdtitable) {
               sendFile(files[0], editor, welEdtitable);
+              //console.log(welEdtitable);
           }
       });
 
@@ -126,10 +127,17 @@
               contentType: false,
               processData: false,
               success: function(data, status, jqXHR) {
-                  console.log(data, status, jqXHR);
+                  console.log(url);
                   editor.insertImage(welEdtitable, url);
               },
               complete: function(data){
+                  //set callback to resize image px to % when insert complete
+                  welEdtitable.data('callbacks').onChange = function($editable_html, $editable)
+                  {
+                    $("img[src*='" + url + "']")[0].style.width = "100%";
+                    $editable.data('callbacks').onChange = null
+                  };
+
                   var url = data.responseText;
                   console.log('complete', url);
                   editor.insertImage(welEdtitable, url);
