@@ -1,0 +1,26 @@
+<h1> <%= t :user %> </h1>
+
+<p>
+  <strong>id: </strong>
+  <%= @user.id %>
+</p>
+
+<p>
+  <strong> <%= t :display_name %>: </strong>
+  <%= @user.display_name %>
+</p>
+
+<p>
+  <strong> <%= t :publisher %>: </strong>
+  <%= @user.publisher.name %>
+</p>
+
+<p>
+  <strong> <%= t :user_group %>: </strong>
+  <%= t(@user.group) %>
+</p>
+
+<%= link_to t('back'), users_path, {role: 'button', class: 'btn btn-default'}%>
+<%= link_to t('edit'), edit_user_path(@user),
+	{role: 'button', class: 'btn btn-warning'}%>
+

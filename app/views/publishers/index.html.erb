@@ -1,0 +1,29 @@
+<h1><%= t :manage_publishers %></h1>
+<%= link_to new_publisher_path, {role: 'button', class: 'btn btn-primary'} do%>
+  <span class="glyphicon glyphicon-plus"></span> <%= t :new_publisher %>
+<% end %>
+&nbsp
+<%= link_to t("back"), contents_path ,{role: 'button', class: 'btn btn-default'}%>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>id</th>
+    <th><%= t :name %></th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @publishers.each do |publisher| %>
+        <tr>
+          <td><%= publisher.id %></td>
+          <td><%= publisher.name %></td>
+
+          <td><%= link_to t('show'), publisher_path(publisher), {role: 'button', class: 'btn btn-info'}%>
+          <%= link_to t('edit'), edit_publisher_path(publisher), {role: 'button', class: 'btn btn-warning'}%>
+          <%= link_to t('delete'), publisher_path(publisher),
+                        method: :delete, data: { confirm: t("are_you_sure")},
+                        role: 'button', class: 'btn btn-danger' %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

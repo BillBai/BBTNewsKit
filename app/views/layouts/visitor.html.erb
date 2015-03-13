@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= t :bbt_news_kit %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= yield :head %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <ul class="nav nav-pills pull-right">
+      <li class="active">
+        <a href="/"><%= t :home %></a>
+      </li>
+    </ul>
+    <h3 class="text-muted"><%= t :bbt_news_kit %></h3>
+  </div>
+  <hr/>
+
+  <div class="container" roal="main">
+
+  <%= yield %>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,19 +1,51 @@
 class ContentsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :check_group
+
+  def check_group
+    if params[:contributions]
+      if not current_user.have_authority('view_all_contents')
+        redirect_to contents_path
+      end
+    end
+  end
+
   def index
     if params[:section_id]
       @section = Section.find(params[:section_id])
-      @contents = @section.contents.where(delete_flag: false).order(:id).page params[:page]
+      @contents = @section.contents.where(delete_flag: false, parent_content_id: 0).order(:id).page params[:page]
     elsif params[:content_id]
       @content = Content.find(params[:content_id])
-      @contents = @content.subcontents.where(delete_flag: false).order(:id).page params[:page]
+      @contents = @content.subcontents.where(delete_flag: false, parent_content_id: 0).order(:id).page params[:page]
+    #srot by content_type
     elsif params[:content_type] && Content.content_types[params[:content_type]]
-      @contents = Content.where(delete_flag: false, content_type: Content.content_types[params[:content_type]]).order(:id).page params[:page]
+      if current_user.have_authority('view_all_contents')
+        @contents = Content.where(["delete_flag = ? AND content_type = ? AND (publisher_id = ? OR passed_contribution = ?) AND parent_content_id = ?", false, Content.content_types[params[:content_type]], current_user.publisher_id, true, 0]).order(:id).page params[:page]
+      elsif current_user.publisher_id == 0
+        @contents = Content.where(delete_flag: false, user_id: current_user.id, passed_contribution: false, content_type: Content.content_types[params[:content_type]], parent_content_id: 0).order(:id).page params[:page]
+      else
+        @contents = Content.where(delete_flag: false, publisher_id: current_user.publisher_id, passed_contribution: false, content_type: Content.content_types[params[:content_type]], parent_content_id: 0).order(:id).page params[:page]
+      end
+    #view contributions(admin/super_admin only)
+    elsif params[:contributions] == "true"
+      @contents = Content.where(delete_flag: false, status: Content.statuses["pending"], parent_content_id: 0).order(:id).page params[:page]
+    #all contents
     else
-      @contents = Content.where(delete_flag: false).order(:id).page params[:page]
+      if current_user.have_authority('view_all_contents')
+        @contents = Content.where(["delete_flag = ? AND (publisher_id = ? OR passed_contribution = ?) AND parent_content_id = ?", false, current_user.publisher_id, true, 0]).order(:id).page params[:page]
+      elsif current_user.publisher_id == 0
+        @contents = Content.where(delete_flag: false, user_id: current_user.id, passed_contribution: false, parent_content_id: 0).order(:id).page params[:page]
+      else
+        @contents = Content.where(delete_flag: false, publisher_id: current_user.publisher_id, passed_contribution: false, parent_content_id: 0).order(:id).page params[:page]
+      end
     end
   end
 
   def show
+    if not current_user.can_view_content(params[:id])
+      redirect_to contents_path
+    end
+
     @content = Content.find(params[:id])
     if @content.special?
       render 'show_special'
@@ -37,10 +69,19 @@ class ContentsController < ApplicationController
   end
 
   def edit
+    if not current_user.can_modify_content(params[:id])
+      redirect_to contents_path
+    end
+
     @content = Content.find(params[:id])
   end
 
   def update
+    if not current_user.can_modify_content(params[:id])
+      #can't access
+      redirect_to contents_path
+    end
+
     @content = Content.find(params[:id])
 
     if @content.update(content_params)
@@ -63,9 +104,12 @@ class ContentsController < ApplicationController
 
   def add
     if Content.content_types[params[:content_type]]
-      @content = Content.create(Content.default_content_params(params[:content_type]))
+      if params[:content_type] == 'special' && !current_user.have_authority('access_specials')
+        redirect_to contents_path and return
+      end
+      @content = Content.create(Content.default_content_params(current_user,params[:content_type]))
     else
-      @content = Content.create(Content.default_content_params)
+      @content = Content.create(Content.default_content_params(current_user))
     end
 
     # if the content to be added is a subcontent to a Content (say a special)
@@ -89,6 +133,43 @@ class ContentsController < ApplicationController
     redirect_to action: 'show', id: @content.id
   end
 
+  def approve
+    @content = Content.find(params[:id])
+    @approved_content = Content.new
+    @approved_content = @content.dup
+    @approved_content.header_image = @content.header_image
+    @approved_content.article_body_images = @content.article_body_images
+    @approved_content.photos = @content.photos
+    @approved_content.passed_contribution = true
+    @approved_content.draft!
+    @approved_content.save
+    @content.approved!
+    redirect_to action: 'show', id: @approved_content.id
+  end
+
+
+  def contribute
+    @content = Content.find(params[:id])
+    @content.pending!
+    redirect_to action: 'show', id: @content.id
+  end
+
+  def focus
+    @content = Content.find(params[:id])
+    @content.on_focus = true
+    @content.display_on_timeline = false
+    @content.save
+    redirect_to action: 'show', id: @content.id
+  end
+
+  def unfocus
+    @content = Content.find(params[:id])
+    @content.on_focus = false
+    @content.display_on_timeline = true
+    @content.save
+    redirect_to action: 'show', id: @content.id
+  end
+
 private
   def content_params
     params.require(:content).permit(:title,
@@ -96,7 +177,7 @@ private
                                     :description,
                                     :author_id,
                                     :section_id,
-                                    :publisher_id,
+                                    :user_id,
                                     :header_image,
                                     :header_image_info,
                                     :body_html,

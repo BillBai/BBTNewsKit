@@ -1,6 +1,8 @@
 class Api::V1::ContentsController < ApplicationController
   protect_from_forgery with: :null_session
   def index
+    host_url = request.protocol + request.host_with_port
+
     @response = Hash.new
 
     validate_id = Proc.new { |param_name,id,parent|
@@ -42,7 +44,7 @@ class Api::V1::ContentsController < ApplicationController
     if params.include?('focus') && params[:focus] == 'true' && !params.include?('publisher_id')
       @response["status"] = 0
       @response["message"] = "ok"
-      @response["list"] = Content.get_focus
+      @response["list"] = Content.get_focus(host_url)
       render :json => @response
       return
     end
@@ -102,11 +104,11 @@ class Api::V1::ContentsController < ApplicationController
     end
 
     if @publisher_id != nil
-      list = Content.get_contents_by_publisher(@publisher_id,limit,max_id,since_id,content_type,from_max)
+      list = Content.get_contents_by_publisher(@publisher_id,limit,max_id,since_id,content_type,from_max,host_url)
     elsif @section_id != nil
-      list = Content.get_contents_by_section(@section_id,limit,max_id,since_id,content_type,from_max)
+      list = Content.get_contents_by_section(@section_id,limit,max_id,since_id,content_type,from_max,host_url)
     else
-      list = Content.get_list(limit,max_id,since_id,on_focus,on_timeline,content_type,from_max)
+      list = Content.get_list(limit,max_id,since_id,on_focus,on_timeline,content_type,from_max,host_url)
     end
     @response["status"] = 0
     @response["message"] = 'ok'
@@ -115,7 +117,9 @@ class Api::V1::ContentsController < ApplicationController
   end
 
   def show
+    host_url = request.protocol + request.host_with_port
     @response = Hash.new
+
     if not Content.exists?(params[:id])
       @response["status"] = 1
       @response["message"] = "content didn't exist"
@@ -124,7 +128,7 @@ class Api::V1::ContentsController < ApplicationController
     end
 
     @content = Content.find(params[:id])
-    fresh_when(@content)
+    # fresh_when(@content)
     if @content.status != 'published'
       @response["status"] = 1
       @response["message"] = "content didn't exist"
@@ -138,10 +142,14 @@ class Api::V1::ContentsController < ApplicationController
       return
     end
 
-    render :json => @content.get_detail
+    #record views
+    @content.views += 1
+    @content.save
+    render :json => @content.get_detail(host_url)
   end
 
   def subcontents
+    host_url = request.protocol + request.host_with_port
     @response = Hash.new
 
     if params[:id].to_i.to_s != params[:id]
@@ -151,7 +159,7 @@ class Api::V1::ContentsController < ApplicationController
     elsif Content.exists?(params[:id])
       @response["status"] = 0
       @response["message"] = "ok"
-      @response["list"] = Content.get_subcontents(params[:id])
+      @response["list"] = Content.get_subcontents(params[:id],host_url)
       render :json => @response
     else
       @response["status"] = 2
@@ -159,5 +167,25 @@ class Api::V1::ContentsController < ApplicationController
       render :json => @response, status: 400
     end
     return
+  end
+
+  def like
+    @response = Hash.new
+      if params[:id].to_i.to_s != params[:id]
+      @response["status"] = 1
+      @response["message"] = "Invaild id"
+      render :json => @response, status: 400
+    elsif Content.exists?(params[:id])
+      @content = Content.find(params[:id])
+      @content.like += 1
+      @content.save
+      @response["status"] = 0
+      @response["message"] = "ok"
+      render :json => @response
+    else
+      @response["status"] = 2
+      @response["message"] = "content didn't exist"
+      render :json => @response, status: 400
+    end
   end
 end

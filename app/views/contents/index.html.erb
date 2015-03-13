@@ -3,40 +3,57 @@
 </div>
 
 <div class="page-header">
-  <h3> All Contents </h3>
+  <% if current_user.have_authority('manage') %>
+    <h3><%= t :manage %></h3>
+      <%= link_to sections_path, {role: 'button', class: 'btn btn-primary'} do %>
+        <%= t :manage_sections %>
+      <% end %>
+      <%= link_to publishers_path, {role: 'button', class: 'btn btn-primary'} do %>
+        <%= t :manage_publishers %>
+      <% end %>
+      <% if current_user.super_admin? %>
+        <%= link_to users_path, {role: 'button', class: 'btn btn-primary'} do %>
+          <%= t :manage_users %>
+        <% end %>
+      <% end %>
+  <% end %>
+  <h3><%= t :all_contents %></h3>
     <%= link_to add_contents_path(content_type: :article), {role: 'button', class: 'btn btn-primary'} do %>
-      <span class='glyphicon glyphicon-file'></span> Add article
+      <span class='glyphicon glyphicon-file'></span> <%= t :add_article %>
     <% end %>
     <%= link_to add_contents_path(content_type: :album), {role: 'button', class: 'btn btn-primary'} do %>
-      <span class='glyphicon glyphicon-picture'></span> Add album
+      <span class='glyphicon glyphicon-picture'></span> <%= t :add_album %>
     <% end %>
     <%= link_to add_contents_path(content_type: :video), {role: 'button', class: 'btn btn-primary'} do %>
-      <span class='glyphicon glyphicon-facetime-video'></span> Add video
+      <span class='glyphicon glyphicon-facetime-video'></span> <%= t :add_video %>
     <% end %>
-    <%= link_to add_contents_path(content_type: :special), {role: 'button', class: 'btn btn-primary'} do %>
-      <span class='glyphicon glyphicon-star'></span> Add special
+    <% if current_user.have_authority('access_specials') %>
+      <%= link_to add_contents_path(content_type: :special), {role: 'button', class: 'btn btn-primary'} do %>
+        <span class='glyphicon glyphicon-star'></span> <%= t :add_special%>
+      <% end %>
     <% end %>
 </div>
 
 
 <div class="row">
   <div class="col-md-12">
-    <ul class="nav nav-tabs" role="tablist">
-      <li><a href="#">All</a></li>
-      <li class="active"><a href="#">Article</a></li>
-      <li><a href="#">Video</a></li>
-      <li><a href="#">Album</a></li>
+    <ul id="tabs" class="nav nav-tabs" role="tablist">
+      <li id='all_tab'><a href="/#tabs"><%= t :all %></a></li>
+      <li id='article_tab'><a href="?content_type=article#tabs"><%= t :article %></a></li>
+      <li id='video_tab'><a href="?content_type=video#tabs"><%= t :video %></a></li>
+      <li id='album_tab'><a href="?content_type=album#tabs"><%= t :album %></a></li>
+      <li id='special_tab'><a href="?content_type=special#tabs"><%= t :special %></a></li>
+      <li id='contributions_tab'><a href="?contributions=true#tabs"><%= t :contributions %></a></li>
     </ul>
     <table class="table table-striped">
       <thead>
       <tr>
-        <th>#</th>
-        <th>header img</th>
-        <th>Type</th>
-        <th>Title</th>
-        <th>Subtitle</th>
-        <th>Description</th>
-        <th>Status</th>
+        <th><%= t :header_img %></th>
+        <th><%= t :type %></th>
+        <th><%= t :title %></th>
+        <th><%= t :subtitle %></th>
+        <th><%= t :description %></th>
+        <th><%= t :status %></th>
 
 
       </tr>
@@ -45,17 +62,22 @@
       <tbody>
       <% @contents.each do |content| %>
           <tr>
-            <td><%= content.id %></td>
             <td><%= image_tag content.header_image.url(:thumb) %></td>
-            <td><%=raw content_type_label(content, content.content_type) %></td>
+            <td><%=raw content_type_label(content,t(content.content_type)) %></td>
             <td><%= content.title %></td>
             <td><%= content.subtitle %></td>
             <td><%= content.description %></td>
-            <td><%=raw status_label(content, content.status) %></td>
+            <td><%=raw status_label(content, t(content.status)) %></br>
+                <%=raw focus_label(content) %></td>
 
 
-            <td><%= link_to 'Show', content_path(content) %></td>
-            <td><%= link_to 'Edit', edit_content_path(content) %></td>
+            <td><%= link_to t('show'), content_path(content),
+                {role: 'button', class: 'btn btn-info'}%>
+            <% if current_user.can_modify_content(content.id) %>
+                <%= link_to t('edit'), edit_content_path(content),
+                  {role: 'button', class: 'btn btn-warning'}%>
+            <% end %>
+            </td>
           </tr>
       <% end  %>
       </tbody>
@@ -64,7 +86,45 @@
   </div>
 </div>
 
+<script type="text/javascript" charset="utf-8">
+    var type = getUrlParameter('content_type');
+    var contributions = getUrlParameter('contributions')
+    if(type == "article")
+    {
+      $("#article_tab").addClass("active")
+    }
+    else if(type == "album")
+    {
+      $("#album_tab").addClass("active")
+    }
+    else if(type == "video")
+    {
+      $("#video_tab").addClass("active")
+    }
+    else if(contributions == "true")
+    {
+      $("#contributions_tab").addClass("active")
+    }
 
+    if(type == undefined && contributions == undefined)
+    {
+      $("#all_tab").addClass("active")
+    }
+
+    function getUrlParameter(sParam)
+    {
+      var sPageURL = window.location.search.substring(1);
+      var sURLVariables = sPageURL.split('&');
+      for (var i = 0; i < sURLVariables.length; i++) 
+      {
+          var sParameterName = sURLVariables[i].split('=');
+          if (sParameterName[0] == sParam) 
+          {
+              return sParameterName[1];
+          }
+      }
+    }
+</script>
 
 
 

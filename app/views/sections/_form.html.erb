@@ -14,12 +14,12 @@
     <% end %>
 
     <p>
-      <%= f.label :category %>
-      <%= f.select :category, options_for_select(Section.categories.keys.to_a, selected: @section.category) %>
+      <%= f.label t :category %>
+      <%= f.select :category, options_for_select({ t("news") => "news",t("special") => "special", t("weekly") => "weekly", t("video") => "video" }, selected: @section.category) %>
     </p>
 
     <p>
-      <%= f.label :module %>
+      <%= f.label t :module %>
       <%= f.text_field :module %>
     </p>
 

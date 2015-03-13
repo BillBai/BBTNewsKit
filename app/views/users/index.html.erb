@@ -1,0 +1,28 @@
+<h1><%= t :manage_users %></h1>
+<%= link_to t("back"), contents_path ,{role: 'button', class: 'btn btn-default'}%>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th><%= t :display_name %></th>
+      <th><%= t :publisher%></th>
+      <th><%= t :user_group %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.display_name %></td>
+          <td><%= user.publisher.name %></td>
+          <td><%= t(user.group) %></td>
+
+          <td><%= link_to t('show'), user_path(user),
+                {role: 'button', class: 'btn btn-info'}%>
+              <%= link_to t('edit'), edit_user_path(user), 
+                {role: 'button', class: 'btn btn-warning'}%>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -12,33 +12,31 @@
         </div>
     <% end %>
     <div class="form-group">
-      <%= f.label :title %>
+      <%= f.label t :title %>
       <%= f.text_field :title, class: 'form-control' %>
     </div>
 
     <div class="form-group">
-      <%= f.label :subtitle %>
+      <%= f.label t :subtitle %>
       <%= f.text_field :subtitle, class: 'form-control' %>
     </div>
 
     <div class="form-group">
-      <%= f.label :description %>
+      <%= f.label t :description %>
       <%= f.text_field :description, class: 'form-control' %>
     </div>
-
-    <%= f.hidden_field :author_id %>
-
+    
     <%= f.hidden_field :section_id %>
 
-    <%= f.hidden_field :publisher_id %>
+    <%= f.hidden_field :user_id %>
 
     <div class="form-group">
-      <%= f.label :header_image %>
+      <%= f.label t :header_img %>
       <%= f.file_field :header_image, class: 'form-control'%>
     </div>
 
     <div class="form-group">
-      <%= f.label :header_image_info %>
+      <%= f.label t :header_img_info %>
       <%= f.text_field :header_image_info, class: 'form-control' %>
     </div>
 

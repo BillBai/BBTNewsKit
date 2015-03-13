@@ -1,13 +1,12 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th>#</th>
-    <th>header img</th>
-    <th>Type</th>
-    <th>Title</th>
-    <th>Subtitle</th>
-    <th>Description</th>
-    <th>Status</th>
+    <th><%= t :header_img %></th>
+    <th><%= t :type %></th>
+    <th><%= t :title %></th>
+    <th><%= t :subtitle %></th>
+    <th><%= t :description %></th>
+    <th><%= t :status %></th>
 
 
   </tr>
@@ -16,17 +15,18 @@
   <tbody>
   <% contents.each do |content| %>
       <tr>
-        <td><%= content.id %></td>
         <td><%= image_tag content.header_image.url(:thumb) %></td>
-        <td><%=raw content_type_label(content, content.content_type) %></td>
+        <td><%=raw content_type_label(content, t(content.content_type)) %></td>
         <td><%= content.title %></td>
         <td><%= content.subtitle %></td>
         <td><%= content.description %></td>
-        <td><%=raw status_label(content, content.status) %></td>
+        <td><%=raw status_label(content, t(content.status)) %></td>
 
 
-        <td><%= link_to 'Show', content_path(content) %></td>
-        <td><%= link_to 'Edit', edit_content_path(content) %></td>
+        <td><%= link_to t('show'), content_path(content),
+              {role: 'button', class: 'btn btn-info'}%>
+            <%= link_to t('edit'), edit_content_path(content),
+              {role: 'button', class: 'btn btn-warning'}%></td>
       </tr>
   <% end  %>
   </tbody>

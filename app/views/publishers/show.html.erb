@@ -1,0 +1,17 @@
+<h1> <%= t :publisher %> </h1>
+
+<p>
+  <strong>id: </strong>
+  <%= @publisher.id %>
+</p>
+
+<p>
+  <strong> <%= t :name %>: </strong>
+  <%= @publisher.name %>
+</p>
+
+<%= link_to t('back'), publishers_path,
+	{role: 'button', class: 'btn btn-default'}%>
+<%= link_to t('edit'), edit_publisher_path(@publisher),
+	{role: 'button', class: 'btn btn-warning'}%>
+

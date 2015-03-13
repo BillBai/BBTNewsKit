@@ -1,27 +1,31 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations", shared: "users/shared", passwords: "users/passwords"}
   root 'contents#index'
 
-  constraints subdomain: 'api' do
-    namespace :api, :path => '/' do
-      namespace :v1 do
-        resources :contents, only: [:index, :show] do
-          member do 
-            get 'subcontents'
-          end
+  namespace :api, :path => '/' do
+    namespace :v1 do
+      resources :contents, only: [:index, :show] do
+        member do 
+          get 'subcontents'
+          patch 'like' => 'contents#like'
         end
-        resources :sections, only: [:index, :show] do
-          resources :contents, only: [:index]
-        end
-        resources :publishers, only: [:index] do
-          resources :contents, only: [:index]
-        end
+      end
+      resources :sections, only: [:index, :show] do
+        resources :contents, only: [:index]
+      end
+      resources :publishers, only: [:index] do
+        resources :contents, only: [:index]
       end
     end
   end
 
+
+  resources :users 
+
   resources :authors
+
+  resources :publishers
 
   resources :sections do
     resources :contents
@@ -35,6 +39,10 @@ Rails.application.routes.draw do
     member do
       patch 'publish' => 'contents#publish'
       patch 'revoke' => 'contents#revoke'
+      patch 'contribute' => 'contents#contribute'
+      patch 'approve' => 'contents#approve'
+      patch 'focus' => 'contents#focus'
+      patch 'unfocus' => 'contents#unfocus'
     end
     resources :article_body_images
     resources :photos

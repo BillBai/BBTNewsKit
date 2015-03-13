@@ -1,15 +1,21 @@
 <div class="page-header">
-  <h3> Edit <%= @content.content_type %> <%= @content.id %></h3>
+  <% if @content.parent_content_id == 0%>
+      <%= link_to t('back'), contents_path, 
+    {role: 'button', class: 'btn btn-default'}%>
+  <% else %>
+      <%= link_to t('back'), :back, 
+    {role: 'button', class: 'btn btn-default'}%>
+  <% end %>
 </div>
 
-    <%= link_to 'Back', content_path(@content) %>
+    <%= link_to t('back'), content_path(@content) %>
 <div class="row">
   <div class="col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Content meta data
-        <%=raw status_label(@content, @content.status) %>
-        <%=raw content_type_label(@content, @content.content_type) %>
+        <%= t :content_meta_data %>
+        <%=raw status_label(@content, t(@content.status)) %>
+        <%=raw content_type_label(@content, t(@content.content_type)) %>
       </div>
       <div class="panel-body">
         <%= render partial: 'form' , locals: {content_type: @content.content_type}%>
@@ -17,7 +23,7 @@
     </div>
     <% case  @content.content_type %>
     <% when 'article' %>
-        <strong>Article body</strong>
+        <strong><%= t :article_body %></strong>
         <hr/>
 
         <div id="summernote" >
@@ -25,20 +31,20 @@
         </div>
 
     <% when 'album' %>
-        <h2>Add photo</h2>
+        <h2><%= t :add_photo %></h2>
         <%= render 'photos/form' %>
 
     <% when 'video' %>
     <% when 'special'%>
         <hr/>
         <%= link_to add_content_contents_path(@content, content_type: :article), {role: 'button', class: 'btn btn-primary'} do %>
-            <span class='glyphicon glyphicon-file'></span> Add article
+            <span class='glyphicon glyphicon-file'></span> <%= t :add_article %>
         <% end %>
         <%= link_to add_content_contents_path(@content, content_type: :album), {role: 'button', class: 'btn btn-primary'} do %>
-            <span class='glyphicon glyphicon-picture'></span> Add album
+            <span class='glyphicon glyphicon-picture'></span> <%= t :add_album %>
         <% end %>
         <%= link_to add_content_contents_path(@content,content_type: :video), {role: 'button', class: 'btn btn-primary'} do %>
-            <span class='glyphicon glyphicon-facetime-video'></span> Add video
+            <span class='glyphicon glyphicon-facetime-video'></span> <%= t :add_video %>
         <% end %>
         <%= render partial: 'list', locals: {contents: @content.subcontents} %>
     <% end %>
@@ -46,19 +52,19 @@
 
   <div class="col-md-4">
     <!-- Actions panel-->
-      <div class="panel panel-primary">
+    <div class="panel panel-primary">
       <div class="panel-heading">
-        Actions
+        <%= t :actions %>
       </div>
       <div class="panel-body">
-        <button type="button" class="btn btn-primary" id="save-content-button">Save draft</button>
+        <button type="button" class="btn btn-primary" id="save-content-button"><%= t :save_draft %></button>
         <!-- Single button -->
         <div class="btn-group">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            Other <span class="caret"></span>
+            <%= t :other_action %> <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
-            <li><%= link_to 'Delete', content_path(@content), method: :delete, data: { confirm: 'Are you sure?'}, role: 'button', class: 'btn btn-danger' %>
+            <li><%= link_to t('delete'), content_path(@content), method: :delete, data: { confirm: t('are_you_sure')}, role: 'button', class: 'btn btn-danger' %>
             </li>
           </ul>
         </div>
@@ -66,27 +72,27 @@
     </div>
     <!-- Actions panel END -->
 
-    <!-- Author panel -->
+    <!-- Publisher panel -->
     <div class="panel panel-default">
-      <div class="panel-heading">Publisher</div>
+      <div class="panel-heading"><%= t :publisher %></div>
       <div class="panel-body">
-        <%= select_tag :content_publisher, options_from_collection_for_select(Publisher.where(active: true), :id, :name, selected: @content.publisher_id) , {class: 'selectpicker', id: 'content-publisher-picker'}%>
+        <%= label_tag 'name', @content.publisher.name %>
       </div>
     </div>
-    <!--Author panel END-->
+    <!--User panel END-->
 
     <!-- Author panel -->
     <div class="panel panel-default">
-      <div class="panel-heading">Author</div>
+      <div class="panel-heading"><%= t :author %></div>
       <div class="panel-body">
-        <%= select_tag :content_author, options_from_collection_for_select(Author.where(active: true), :id, :name, selected: @content.author_id) , {class: 'selectpicker', id: 'content-author-picker'}%>
+        <%= label_tag 'display_name', @content.user.display_name %>
       </div>
     </div>
     <!--Author panel END-->
 
     <!--Section panel -->
     <div class="panel panel-default">
-      <div class="panel-heading">Section</div>
+      <div class="panel-heading"><%= t :section %></div>
       <div class="panel-body">
         <%= select_tag :content_section, options_from_collection_for_select(Section.where(active: true), :id, :module, selected: @content.section_id) , {class: 'selectpicker', id: 'content-section-picker'}%>
       </div>
@@ -104,6 +110,7 @@
           height: 400,
           onImageUpload: function(files, editor, welEdtitable) {
               sendFile(files[0], editor, welEdtitable);
+              //console.log(welEdtitable);
           }
       });
 
@@ -120,10 +127,17 @@
               contentType: false,
               processData: false,
               success: function(data, status, jqXHR) {
-                  console.log(data, status, jqXHR);
+                  console.log(url);
                   editor.insertImage(welEdtitable, url);
               },
               complete: function(data){
+                  //set callback to resize image px to % when insert complete
+                  welEdtitable.data('callbacks').onChange = function($editable_html, $editable)
+                  {
+                    $("img[src*='" + url + "']")[0].style.width = "100%";
+                    $editable.data('callbacks').onChange = null
+                  };
+
                   var url = data.responseText;
                   console.log('complete', url);
                   editor.insertImage(welEdtitable, url);

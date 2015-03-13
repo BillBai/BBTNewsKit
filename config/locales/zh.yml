@@ -1,0 +1,116 @@
+zh:
+  bbt_news_kit: 百步梯新闻系统
+  home: 首页
+  help: 查看帮助
+  logout: 注销
+  back: 返回
+  #users/sign_in
+  log_in: 登录
+  email: 电子邮箱
+  password: 密码
+  remember_me: 记住我
+  sign_up: 注册
+  forgot_your_password: 忘记密码?
+  #users/sign_up
+  display_name: 用户名
+  minimum_length: 最小长度
+  password_confirmation: 确认密码
+  #users/password/new
+  send_reset_email: 给我发送重置密码邮件
+  #/
+  manage: 管理
+  manage_sections: 栏目管理
+  manage_publishers: 发布者管理
+  manage_users: 用户管理
+  all_contents: 所有内容
+  add_article: 新建文章
+  add_album: 新建图集
+  add_video: 新建视频
+  add_special: 新建专题
+  all: 全部
+  article: 文章
+  album: 图集
+  video: 视频
+  special: 专题
+  contributions: 投稿
+  header_img: 封面图
+  type: 类型
+  title: 标题
+  subtitle: 副标题
+  description: 描述
+  status: 状态
+  show: 查看
+  edit: 编辑
+  draft: 草稿
+  published: 已发布
+  pending: 待审核
+  approved: 已通过
+  rejected: 被退回
+  #contents/:id
+  content_meta_data: 详细数据
+  publish: 发布
+  approve: 通过
+  revoke: 撤销
+  contribute: 投稿
+  photos: 图片
+  other_action: 其他操作
+  delete: 删除
+  publisher: 发布者
+  name: 名称
+  author: 作者
+  section: 栏目
+  sections: 栏目
+  category: 分类
+  module: 模块
+  news: 新闻
+  special: 专题
+  weekly: 周刊
+  video: 视频
+  are_you_sure_to_publish: 确定要发布?
+  are_you_sure_to_approve: 确定要审核通过?
+  are_you_sure_to_revoke: 确定要撤销?
+  are_you_sure_to_contribute: 确定要进行投稿?
+  are_you_sure_to_revoke_contribution: 确定要取消投稿?
+  set_focus: 设为焦点内容
+  unset_focus: 取消焦点状态
+  focus: 焦点
+  views: 浏览
+  like: 赞
+  #contents/:id/edit
+  article_body: 文章内容
+  add_photo: 添加图片
+  header_img_info: 封面图信息
+  actions: 操作
+  save_draft: 保存草稿
+  #sections/
+  all_sections: 全部栏目
+  new_section: 新建栏目
+  #publishers/
+  new_publisher: 新建发布者
+  #users/
+  user_group: 用户组
+  contributor: 投稿者
+  admin: 管理员
+  super_admin: 超级管理员
+  user: 用户
+  current_password: 新密码
+  dangours_action: 危险操作
+  cancel_my_account: 删除我的账号
+  update: 更新
+  edit_user: 编辑用户
+  leave_blank_message: 若不需要更改,不填写即可
+  need_password: 请填写当前密码进行更改
+  are_you_sure: 你确定要这么做吗?
+
+  helpers:
+    submit:
+      create: 新建
+      update: 确认修改
+      delete: 删除
+
+  modules:
+    author: 作者
+    user: 用户
+    content: 内容
+    section: 栏目
+    publisher: 发布者

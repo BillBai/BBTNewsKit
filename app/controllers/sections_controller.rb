@@ -1,4 +1,6 @@
 class SectionsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :check_group
 
   def index
     @sections = Section.all
@@ -26,8 +28,8 @@ class SectionsController < ApplicationController
     @section = Section.find(params[:id])
   end
 
-  def Section
-    @section = Author.find(params[:id])
+  def update
+    @section = Section.find(params[:id])
 
     if @section.update(section_params)
       redirect_to @section
@@ -40,11 +42,18 @@ class SectionsController < ApplicationController
     @section = Section.find(params[:id])
     @section.destroy
 
-    redirect_to @sections_path
+    redirect_to sections_path
   end
 
   private
   def section_params
     params.require(:section).permit(:category, :module)
+  end
+
+  def check_group
+    if not current_user.have_authority('access_sections')
+      #have no right to access sections
+      redirect_to contents_path
+    end
   end
 end
