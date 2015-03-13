@@ -114,6 +114,8 @@ class Content < ActiveRecord::Base
         updated_at: self.updated_at,
         thumb_image_url: host_url + self.header_image.url(:thumb),
         header_image_url: host_url + self.header_image.url(:medium),
+        like: self.like,
+        views: self.views,
         body_html: self.body_html,
         video_url: self.video_url,
         photos: Content.get_photos(self.photos,host_url)
@@ -134,6 +136,8 @@ class Content < ActiveRecord::Base
         updated_at: self.updated_at,
         thumb_image_url: host_url + self.header_image.url(:thumb),
         header_image_url: host_url + self.header_image.url(:medium),
+        like: self.like,
+        views: self.views,
         on_focus: self.on_focus,
         display_on_timeline: self.display_on_timeline
     }
