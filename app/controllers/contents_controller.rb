@@ -172,6 +172,8 @@ class ContentsController < ApplicationController
   end
 
   def test
+    if params.include?('id')
+      @Content = Content.find(params[:id])
     @content = Content.find(17)
     @html_string = render_to_string 'mobile_article'
     render html: @html_string
