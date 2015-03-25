@@ -117,6 +117,7 @@ class Content < ActiveRecord::Base
         like: self.like,
         views: self.views,
         body_html: self.body_html,
+        template_html: self.template_html,
         video_url: self.video_url,
         photos: Content.get_photos(self.photos,host_url)
     }

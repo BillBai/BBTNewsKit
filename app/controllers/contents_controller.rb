@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_group
-  layout false, only: [:test]
+  layout false, only: [:test, :update]
 
   def check_group
     if params[:contributions]
@@ -86,6 +86,10 @@ class ContentsController < ApplicationController
     @content = Content.find(params[:id])
 
     if @content.update(content_params)
+      #update template_html
+      @content.template_html = render_to_string 'mobile_article'
+      @content.save
+
       if @content.parent_content_id != 0 # a sub content, return to its parent page
         redirect_to action: 'edit', id: @content.parent_content
       else
