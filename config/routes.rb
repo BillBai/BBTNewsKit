@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resources :contents do
     collection do
       get 'add' => 'contents#add'
+      get 'test' => 'contents#test'
     end
 
     member do

@@ -1,6 +1,7 @@
 class ContentsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_group
+  layout false, only: [:test]
 
   def check_group
     if params[:contributions]
@@ -168,6 +169,12 @@ class ContentsController < ApplicationController
     @content.display_on_timeline = true
     @content.save
     redirect_to action: 'show', id: @content.id
+  end
+
+  def test
+    @content = Content.find(17)
+    @html_string = render_to_string 'mobile_article'
+    render html: @html_string
   end
 
 private
