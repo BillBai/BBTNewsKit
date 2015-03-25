@@ -2,7 +2,7 @@ app_path = File.expand_path(File.dirname(__FILE__) + '/..')
 
 worker_processes(ENV['RAILS_ENV'] == 'production' ? 3 : 1)
 
-listen app_path + 'tmp/unicorn.sock', backlog: 64
+listen app_path + '/tmp/unicorn.sock', backlog: 64
 
 listen "0.0.0.0:3031", :tcp_nopush => true
 
