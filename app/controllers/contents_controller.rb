@@ -173,7 +173,7 @@ class ContentsController < ApplicationController
 
   def test
     if params.include?('id')
-      @Content = Content.find(params[:id])
+      @content = Content.find(params[:id])
     else
       @content = Content.find(17)
     end
