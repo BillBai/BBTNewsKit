@@ -87,7 +87,13 @@ class ContentsController < ApplicationController
 
     if @content.update(content_params)
       #update template_html
-      @content.template_html = render_to_string 'mobile_article'
+      @host_url = request.protocol + request.host_with_port
+      case @content.content_type
+      when 'article'
+        @content.template_html = render_to_string 'mobile_article'
+      when 'album'
+        @content.template_html = render_to_string 'mobile_album'
+      end
       @content.save
 
       if @content.parent_content_id != 0 # a sub content, return to its parent page
