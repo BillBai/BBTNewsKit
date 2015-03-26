@@ -176,12 +176,13 @@ class ContentsController < ApplicationController
   end
 
   def test
+    @host_url = request.protocol + request.host_with_port
     if params.include?('id')
       @content = Content.find(params[:id])
     else
       @content = Content.find(17)
     end
-    @html_string = render_to_string 'mobile_article'
+    @html_string = render_to_string 'mobile_album'
     render html: @html_string
   end
 

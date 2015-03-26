@@ -1,0 +1,7 @@
+<body>
+  <h1><%= @content.title %></h1>
+  <h2><%= @content.description %></h2>
+  <% @content.photos.each do |photo| %>
+    <img src=<%= "#{photo.image.url(:original)}" %> width="100%" style="margin-top:30px">
+  <% end %>
+</body>
