@@ -96,6 +96,10 @@ class ContentsController < ApplicationController
       end
       @content.save
 
+      if params.include?('new') and params[:new] == "true"
+        head :ok
+        return
+      end
       if @content.parent_content_id != 0 # a sub content, return to its parent page
         redirect_to action: 'edit', id: @content.parent_content
       else
