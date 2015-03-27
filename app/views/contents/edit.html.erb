@@ -108,6 +108,18 @@
   $(document).ready(function() {
       $('#summernote').summernote({
           height: 400,
+          fontsize: "26px",
+          toolbar: [
+            ['style', ['style']], // no style button
+            ['style', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear', ]],
+            //['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            //['height', ['height']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video', 'hr']],
+            ['layout',['fullscreen', 'codeview', 'undo', 'redo', 'help']]
+          ],
           onImageUpload: function(files, editor, welEdtitable) {
               sendFile(files[0], editor, welEdtitable);
               //console.log(welEdtitable);
