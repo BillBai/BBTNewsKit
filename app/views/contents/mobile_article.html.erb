@@ -1,18 +1,21 @@
-<html style="padding:0px;margin:0px">
-	<style type="text/css">
-	  body {font-family: "STHeiti"; top: 0px; margin: 0px; font-weight: 100;}
-	  p {font-size: 34px; line-height: 36px; margin-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; color: #262626}
-	  span {font-size: 34px; line-height: 1}
-	  img { margin-left: 0px; margin-top: 5px; margin-right: 0px; margin-bottom: 15px}
-	</style>
+<html style="padding:0;margin:0">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, mininum-scale=1, maximum-scale=1" />
+		<style type="text/css">
+		  body {font-family: "STHeiti"; font-weight: 100; margin-left: 0.882rem; margin-top: 0; margin-right: 0.882rem; margin-bottom: 0}
+		  p {font-size: 1rem; line-height: 1.47rem; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0.588rem; color: #262626}
+		  span {font-size: 1rem; line-height: 1.47rem}
+		  img { margin-left: 0; margin-top: 0.588rem; margin-right: 0px; margin-bottom: 0.588rem}
+		</style>
+	</head>
 	<body>
-	  <div id="head" style="padding:0; margin-top:30px; font-weight:bold; font-size:40px; color:#1a1a1a; letter-spacing:0; line-height:1">
+	  <div id="head" style="padding:0; margin-top: 0.882rem; font-weight:bold; font-size:1.235rem; color:#1a1a1a; letter-spacing:0; line-height:1">
 	  	  <%=@content.title%>
 	  </div>
-	  <div id="subhead" style="margin-top:20px; color:#bababa; font-weight:bold; font-size:20px; line-height:1">
+	  <div id="subhead" style="margin-top:0.882rem; color:#bababa; font-weight:bold; font-size:0.588rem; line-height:1">
 	  	作者 <%=@content.user.display_name%>
 	  </div>
-	  <div id="subhead2" style="margin-top:10px; color:#bababa; font-weight:bold; font-size:20px; line-height:1">
+	  <div id="subhead2" style="margin-top:0.294rem; color:#bababa; font-weight:bold; font-size:0.588rem; line-height:1">
 	  	日期 <%=@content.created_at.to_date%>
 	  </div>
 	  <div id="content" style="margin-top:15px;">
