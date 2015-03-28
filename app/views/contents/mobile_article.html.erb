@@ -1,25 +1,32 @@
-<html style="padding:0;margin:0">
+<html style="padding:0;margin:0" id="root">
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1, mininum-scale=1, maximum-scale=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<style type="text/css">
-		  body {font-family: "STHeiti"; font-weight: 100; margin-left: 0.882rem; margin-top: 0; margin-right: 0.882rem; margin-bottom: 0}
-		  p {font-size: 1rem; line-height: 1.47rem; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0.588rem; color: #262626}
-		  span {font-size: 1rem; line-height: 1.47rem}
+		  body {font-family: "STHeiti"; font-weight: 100; margin-left: 0.714rem; margin-top: 0; margin-right: 0.714rem; margin-bottom: 0;}
+		  p {font-size: 0.8095rem; line-height: 1.19rem; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0.476rem; color: #262626}
+		  span {font-size: 0.8095rem; line-height: 1.19rem}
 		  img { margin-left: 0; margin-top: 0.588rem; margin-right: 0px; margin-bottom: 0.588rem}
 		</style>
+		<script type="text/javascript">
+			var size = screen.width * 0.065625
+			console.log(size)
+			document.getElementById('root').style.fontSize = size
+		</script>
 	</head>
 	<body>
-	  <div id="head" style="padding:0; margin-top: 0.882rem; font-weight:bold; font-size:2.625rem; color:#1a1a1a; letter-spacing:0; line-height:1">
+	  <div id="head" style="padding:0; margin-top: 0.714rem; font-weight:bold; font-size: 1rem; color:#1a1a1a; letter-spacing:0; line-height:1">
 	  	  <%=@content.title%>
 	  </div>
-	  <div id="subhead" style="margin-top:0.882rem; color:#bababa; font-weight:bold; font-size:0.588rem; line-height:1">
+	  <div id="subhead" style="margin-top:0.714rem; color:#bababa; font-weight:bold; font-size:0.476rem; line-height:1">
 	  	作者 <%=@content.user.display_name%>
 	  </div>
-	  <div id="subhead2" style="margin-top:0.294rem; color:#bababa; font-weight:bold; font-size:0.588rem; line-height:1">
+	  <div id="subhead2" style="margin-top:0.238rem; color:#bababa; font-weight:bold; font-size:0.476rem; line-height:1">
 	  	日期 <%=@content.created_at.to_date%>
 	  </div>
-	  <div id="content" style="margin-top:15px;">
+	  <div id="content" style="margin-top:0.952rem;">
 	  	<%=raw @content.body_html%>
 	  </div>
 	</body>
+
+
 </html>
