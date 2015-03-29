@@ -5,19 +5,19 @@
 		  body {font-family: "STHeiti"; font-weight: 100; margin-left: 0.714rem; margin-top: 0; margin-right: 0.714rem; margin-bottom: 0;}
 		  p {font-size: 0.8095rem; line-height: 1.19rem; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0.476rem; color: #262626}
 		  span {font-size: 0.8095rem; line-height: 1.19rem}
-		  img { margin-left: 0; margin-top: 0.588rem; margin-right: 0px; margin-bottom: 0.588rem}
+		  img { margin-left: 0; margin-top: 0.286rem; margin-right: 0px; margin-bottom: 0.286rem}
 		</style>
 		<script type="text/javascript">
 			var size = screen.width * 0.065625
 			console.log(size)
-			document.getElementById('root').style.fontSize = "10px"
+			document.getElementById('root').style.fontSize = size
 		</script>
 	</head>
 	<body style="letter-spacing:0">
 	  <div id="head" style="padding:0; margin-top: 0.714rem; font-weight:bold; font-size: 1rem; color:#1a1a1a; line-height:1">
 	  	  <%=@content.title%>
 	  </div>
-	  <div id="subhead" style="margin-top:0.714rem; color:#bababa; font-weight:bold; font-size:0.476rem; line-height:1">
+	  <div id="subhead" style="margin-top:0.238rem; color:#bababa; font-weight:bold; font-size:0.476rem; line-height:1">
 	  	作者 <%=@content.user.display_name%>
 	  </div>
 	  <div id="subhead2" style="margin-top:0.238rem; color:#bababa; font-weight:bold; font-size:0.476rem; line-height:1">
