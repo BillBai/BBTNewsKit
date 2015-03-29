@@ -1,5 +1,5 @@
 module ContentsHelper
-
+  require 'nokogiri'
   def status_label(content, label_text)
     if content.draft?
       "<span class='label label-default label-lg'>#{label_text}</span>"
@@ -32,4 +32,11 @@ module ContentsHelper
     end
   end
 
+  def get_mobile_html(html_string)
+    html_doc = Nokogiri::HTML(html_string)
+    html_doc.css("img").each do |img|
+      img["style"] = "width:100%"
+    end
+    return html_doc.to_html
+  end
 end

@@ -2,6 +2,7 @@ class ContentsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_group
   layout false, only: [:test, :update]
+  include ContentsHelper
 
   def check_group
     if params[:contributions]
@@ -90,9 +91,9 @@ class ContentsController < ApplicationController
       @host_url = request.protocol + request.host_with_port
       case @content.content_type
       when 'article'
-        @content.template_html = render_to_string 'mobile_article'
+        @content.template_html = get_mobile_html render_to_string('mobile_article')
       when 'album'
-        @content.template_html = render_to_string 'mobile_album'
+        @content.template_html = get_mobile_html render_to_string('mobile_album')
       end
       @content.save
 
@@ -192,8 +193,9 @@ class ContentsController < ApplicationController
     else
       @content = Content.find(17)
     end
-    @html_string = render_to_string 'mobile_article'
-    render html: @html_string
+    #@html_string = render_to_string 'mobile_article'
+    #render html: @html_string
+    render html: @content.template_html.html_safe
   end
 
 private
