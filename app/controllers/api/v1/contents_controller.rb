@@ -41,7 +41,7 @@ class Api::V1::ContentsController < ApplicationController
     @publisher_id = validate_id.call('publisher_id',params[:publisher_id],Publisher)
 
     # v1/contents
-    if params.include?('focus') && params[:focus] == 'true' && !params.include?('publisher_id')
+    if params.include?('on_focus') && params[:on_focus] == 'true' && !params.include?('publisher_id')
       @response["status"] = 0
       @response["message"] = "ok"
       @response["list"] = Content.get_focus(host_url)
