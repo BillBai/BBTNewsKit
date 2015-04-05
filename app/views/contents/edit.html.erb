@@ -225,7 +225,7 @@ function CleanPastedHTML(input) {
   // 2. strip Word generated HTML comments
   var commentSripper = new RegExp('<!--(.*?)-->','g');
   var output = output.replace(commentSripper, '');
-  var tagStripper = new RegExp('<(/)*(meta|link|span|\\?xml:|st1:|o:|font)(.*?)>','gi');
+  var tagStripper = new RegExp('<(/)*(a|h[1-9]|div|meta|link|span|\\?xml:|st1:|o:|font)(.*?)>','gi');
   // 3. remove tags leave content if any
   output = output.replace(tagStripper, '');
   // 4. Remove everything in between and including tags '<style(.)style(.)>'
@@ -241,7 +241,7 @@ function CleanPastedHTML(input) {
     var attributeStripper = new RegExp(' ' + badAttributes[i] + '="(.*?)"','gi');
     output = output.replace(attributeStripper, '');
   }
-  return output;
+  return "<p>" + output + "</p>";
 }
 
 </script>
