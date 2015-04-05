@@ -48,6 +48,7 @@ module ContentsHelper
     html_doc.css("iframe").each do |iframe|
       iframe["width"] = "100%"
       iframe["height"] = "auto"
+      iframe["style"] = "margin-top:0.714rem"
     end
     return html_doc.to_html
   end
