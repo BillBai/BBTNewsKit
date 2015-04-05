@@ -95,7 +95,7 @@ class ContentsController < ApplicationController
       when 'album'
         @content.template_html = get_mobile_html render_to_string('mobile_album')
       when 'video'
-        @content.template_html = get_mobile_html render_to_string('mobile_video')
+        @content.template_html = get_mobile_video_html render_to_string('mobile_video')
       end
       @content.save
 

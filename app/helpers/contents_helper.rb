@@ -39,4 +39,16 @@ module ContentsHelper
     end
     return html_doc.to_html
   end
+
+  def get_mobile_video_html(html_string)
+    html_doc = Nokogiri::HTML(html_string)
+    html_doc.css("img").each do |img|
+      img["style"] = "width:100%"
+    end
+    html_doc.css("iframe").each do |iframe|
+      iframe["width"] = "100%"
+      iframe["height"] = "auto"
+    end
+    return html_doc.to_html
+  end
 end
