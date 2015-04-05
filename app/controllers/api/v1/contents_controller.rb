@@ -181,6 +181,7 @@ class Api::V1::ContentsController < ApplicationController
       @content.save
       @response["status"] = 0
       @response["message"] = "ok"
+      @response["like"] = @content.like
       render :json => @response
     else
       @response["status"] = 2
