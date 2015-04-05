@@ -25,7 +25,7 @@
 	  </div>
 	  <div id="content" style="margin-top:0.476rem;">
 	  	  <% @content.photos.each do |photo| %>
-		    <img src="<%= @host_url + photo.image.url(:original) %>">
+		    <a href="www.google.com"><img src="<%= @host_url + photo.image.url(:original) %>"></a>
 		    <p style="margin-top:0.286rem; margin-bottom:0.2rem ;color:#888; font-size:0.5rem; line-height:1.2"><%= photo.description %></p>
 		  <% end %>
 	  </div>
