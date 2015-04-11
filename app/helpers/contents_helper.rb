@@ -51,4 +51,9 @@ module ContentsHelper
     end
     return html_doc.to_html
   end
+
+  def get_video_id(url)
+    uri = URI.parse(url)
+    return /\/id_(.*)\.html/.match(uri.path)[1]
+  end
 end
