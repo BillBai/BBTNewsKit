@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411033448) do
+ActiveRecord::Schema.define(version: 20150412121918) do
 
   create_table "article_body_images", force: true do |t|
     t.datetime "created_at"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20150411033448) do
     t.integer  "views",                     default: 0
     t.integer  "like",                      default: 0
     t.string   "template_html"
-    t.string   "video_id"
+    t.string   "video_id",                  default: ""
   end
 
   create_table "photos", force: true do |t|
