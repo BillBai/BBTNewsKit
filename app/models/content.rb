@@ -118,7 +118,7 @@ class Content < ActiveRecord::Base
         views: self.views,
         body_html: self.body_html,
         template_html: self.template_html,
-        video_url: self.video_url,
+        video: {video_url: self.video_url,player_url: "http://player.youku.com/embed/#{self.video_id}"},
         photos: Content.get_photos(self.photos,host_url)
     }
   end
