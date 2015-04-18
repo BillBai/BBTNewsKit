@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         member do 
           get 'subcontents'
           put 'like' => 'contents#like'
+          put 'unlike' => 'contents#unlike'
         end
       end
       resources :sections, only: [:index, :show] do

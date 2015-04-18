@@ -196,8 +196,8 @@ class ContentsController < ApplicationController
     else
       @content = Content.find(17)
     end
-    #@html_string = render_to_string 'mobile_article'
-    #render html: @html_string
+    # @html_string = render_to_string 'mobile_article'
+    # render html: @html_string
     render html: @content.template_html.html_safe
   end
 

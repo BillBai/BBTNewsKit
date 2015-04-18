@@ -2,7 +2,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<style type="text/css">
-		  body {font-family: "STHeiti"; font-weight: 100; margin-left: 0.714rem; margin-top: 0; margin-right: 0.714rem; margin-bottom: 0;}
+		  body {font-family: "Heiti";	 margin-left: 0.714rem; margin-top: 0; margin-right: 0.714rem; margin-bottom: 0;}
 		  p {font-size: 0.8095rem; line-height: 1.19rem; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0.476rem; color: #262626}
 		  span {font-size: 0.8095rem; line-height: 1.19rem}
 		  img { margin-left: 0; margin-top: 0.286rem; margin-right: 0px; margin-bottom: 0.286rem}
@@ -14,15 +14,20 @@
 		</script>
 	</head>
 	<body>
-		 <div id="head" style="padding:0; margin-top: 0.714rem; font-weight:bold; font-size: 1rem; color:#1a1a1a; line-height:1">
+		 <div id="head" style="padding:0; margin-top: 0.714rem; font-size: 1rem; color:#1a1a1a; line-height:1">
 		  	 <%=@content.title%>
 		 </div>
-		 <div id="subhead" style="margin-top:0.238rem; color:#bababa; font-weight:bold; font-size:0.476rem; line-height:1">
-		  	作者 <%=@content.user.display_name%>
+		 <div id="subhead" style="margin-top:0.9rem; font-size:0.565rem; line-height:1">
+		  	<%= "#{@content.created_at.to_date.year}年#{@content.created_at.to_date.month}月#{@content.created_at.to_date.day}日" %>
 		 </div>
-		 <div id="subhead2" style="margin-top:0.238rem; color:#bababa; font-weight:bold; font-size:0.476rem; line-height:1">
-		  	日期 <%=@content.created_at.to_date%>
+		 <div id="subhead2" style="font-size:0.565rem; line-height:1">
+		  	<%= "#{@content.publisher.name}/#{@content.user.display_name}" %>
 		 </div>
+ 		 <div id="info" style="height: 0.435rem; margin-top:0.435rem; font-size:0.435rem; line-height:1; ">
+ 		 	<div style="float:right; margin-left:0.435rem"><%= "收到#{@content.like}个赞"%></div>
+ 		 	<div style="float:right"><%= "有#{@content.views}个路人来过"%></div>
+ 		 </div>
+ 		 <hr style="margin-top:0.217rem">
 		 <iframe style="width:100%; height:9rem; margin-top:0.714rem" src="<%= 'http://player.youku.com/embed/' + @content.video_id %>" frameborder=0 allowfullscreen></iframe>
 	</body>
 </html>

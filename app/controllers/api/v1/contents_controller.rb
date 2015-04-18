@@ -171,13 +171,36 @@ class Api::V1::ContentsController < ApplicationController
 
   def like
     @response = Hash.new
-      if params[:id].to_i.to_s != params[:id]
+    if params[:id].to_i.to_s != params[:id]
       @response["status"] = 1
       @response["message"] = "Invaild id"
       render :json => @response, status: 400
     elsif Content.exists?(params[:id])
       @content = Content.find(params[:id])
       @content.like += 1
+      @content.save
+      @response["status"] = 0
+      @response["message"] = "ok"
+      @response["like"] = @content.like
+      render :json => @response
+    else
+      @response["status"] = 2
+      @response["message"] = "content didn't exist"
+      render :json => @response, status: 400
+    end
+  end
+
+  def unlike
+    @response = Hash.new
+    if params[:id].to_i.to_s != params[:id]
+      @response["status"] = 1
+      @response["message"] = "Invaild id"
+      render :json => @response, status: 400
+    elsif Content.exists?(params[:id])
+      @content = Content.find(params[:id])
+      if @content.like > 0
+        @content.like -= 1
+      end
       @content.save
       @response["status"] = 0
       @response["message"] = "ok"
