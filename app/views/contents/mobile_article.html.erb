@@ -25,11 +25,11 @@
 			<%= "#{@content.publisher.name}/#{@content.user.display_name}" %>
 		</div>
 		<div id="info" style="height: 0.435rem; margin-top:0.435rem; font-size:0.435rem; line-height:1; ">
-			<div style="float:right; margin-left:0.435rem"><%= "收到#{@content.like}个赞"%></div>
-			<div style="float:right"><%= "有#{@content.views}个路人来过"%></div>
+			<div id="like" style="float:right; margin-left:0.435rem"><%= "收到#{@content.like}个赞"%></div>
+			<div id="views" style="float:right"><%= "有#{@content.views}个路人来过"%></div>
 		</div>
 		<hr style="margin-top:0.217rem">
-		<div id="content" style="margin-top:0.952rem;">
+		<div id="content" style="margin-top:0.952rem; margin-bottom:1rem">
 			<%=raw @content.body_html%>
 		</div>
 	</body>

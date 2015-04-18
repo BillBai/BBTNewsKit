@@ -1,5 +1,7 @@
 class Api::V1::ContentsController < ApplicationController
   protect_from_forgery with: :null_session
+  include ContentsHelper
+
   def index
     host_url = request.protocol + request.host_with_port
 
@@ -144,6 +146,7 @@ class Api::V1::ContentsController < ApplicationController
 
     #record views
     @content.views += 1
+    @content.template_html = update_html_info(@content.template_html,@content.views,@content.like)
     @content.save
     render :json => @content.get_detail(host_url)
   end
@@ -178,10 +181,11 @@ class Api::V1::ContentsController < ApplicationController
     elsif Content.exists?(params[:id])
       @content = Content.find(params[:id])
       @content.like += 1
-      @content.save
       @response["status"] = 0
       @response["message"] = "ok"
       @response["like"] = @content.like
+      @content.template_html = update_html_info(@content.template_html,@content.views,@content.like)
+      @content.save
       render :json => @response
     else
       @response["status"] = 2
@@ -201,10 +205,11 @@ class Api::V1::ContentsController < ApplicationController
       if @content.like > 0
         @content.like -= 1
       end
-      @content.save
       @response["status"] = 0
       @response["message"] = "ok"
       @response["like"] = @content.like
+      @content.template_html = update_html_info(@content.template_html,@content.views,@content.like)
+      @content.save
       render :json => @response
     else
       @response["status"] = 2

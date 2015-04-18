@@ -56,4 +56,15 @@ module ContentsHelper
     uri = URI.parse(url)
     return /\/id_(.*)\.html/.match(uri.path)[1]
   end
+
+  def update_html_info(html_string,views,like)
+    html_doc = Nokogiri::HTML(html_string)
+    html_doc.css("#views").each do |each|
+      each.inner_html = "有#{views}个路人来过"
+    end
+    html_doc.css("#like").each do |each|
+      each.inner_html = "收到#{like}个赞"
+    end
+    return html_doc.to_html
+  end
 end
