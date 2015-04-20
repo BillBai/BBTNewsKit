@@ -62,7 +62,7 @@
       <tbody>
       <% @contents.each do |content| %>
           <tr>
-            <td><%= image_tag content.header_image.url(:thumb) %></td>
+            <td><%= image_tag(content.header_image.url(:thumb), height: '100') %></td>
             <td><%=raw content_type_label(content,t(content.content_type)) %></td>
             <td><%= content.title %></td>
             <td><%= content.subtitle %></td>

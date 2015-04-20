@@ -13,7 +13,7 @@ class Content < ActiveRecord::Base
   enum status: [:draft, :pending, :approved, :rejected, :published, :archived]
   enum content_type: [:article, :album, :video, :special]
 
-  has_attached_file :header_image, :styles => { :medium => "500x500#", :thumb => "100x100#" }
+  has_attached_file :header_image, :styles => { :medium => "1024x768#", :thumb => "400x300#" }
   validates_attachment_content_type :header_image, :content_type => /\Aimage\/.*\Z/
 
   paginates_per 23
