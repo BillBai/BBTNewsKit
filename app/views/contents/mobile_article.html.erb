@@ -1,35 +1,36 @@
-<html style="padding:0;margin:0" id="root" style="font-size=20px; -webkit-text-size-adjust=100%">
+<html style="padding:0;margin:0" id="root">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<style type="text/css">
 		  body {font-family: "Heiti"; margin-top: 0; margin-bottom: 1rem; margin-left: 0; margin-right: 0}
-		  p {font-size: 0.696rem; line-height: 1.19rem; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0.476rem; color: #262626}
-		  span {font-size: 0.696rem; line-height: 1.19rem}
+		  p {font-size: 0.64rem; line-height: 1.16rem; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0.476rem; color: #262626}
+		  span {font-size: 0.64rem; line-height: 1.16rem}
 		  img { margin-left: 0; margin-top: 0.286rem; margin-right: 0px; margin-bottom: 0.286rem}
 		</style>
 		<script type="text/javascript">
-			var size = document.documentElement.clientWidth * 0.065625
+			var size = document.documentElement.clientWidth * 0.0694
 			console.log(size)
 			document.getElementById('root').style.fontSize = size
 			//document.getElementById('root').style.fontSize = "20px"
 		</script>
 	</head>
 	<body style="letter-spacing:0">
-		<div id="head" style="padding:0; margin-top: 0.714rem; font-size: 1rem; color:#1a1a1a; line-height:1">
+		<div id="head" style="padding:0; margin-top: 0.96rem; font-size: 1rem; color:#1a1a1a; line-height:1">
 			<%=@content.title%>
 		</div>
-		<div id="subhead" style="margin-top:0.9rem; font-size:0.565rem; line-height:1">
+		<div id="subhead" style="margin-top:0.9rem; font-size:0.52rem; line-height:1">
 			<%= "#{@content.created_at.to_date.year}年#{@content.created_at.to_date.month}月#{@content.created_at.to_date.day}日" %>
 		</div>
-		<div id="subhead2" style="font-size:0.565rem; line-height:1">
+		<div id="subhead2" style="font-size:0.52rem; line-height:1">
 			<%= "#{@content.publisher.name}/#{@content.user.display_name}" %>
 		</div>
-		<div id="info" style="height: 0.435rem; margin-top:0.435rem; font-size:0.435rem; line-height:1; ">
-			<div id="like" style="float:right; margin-left:0.435rem"><%= "收到#{@content.like}个赞"%></div>
+		<div id="info" style="height: 0.4rem; margin-top:0.32rem; font-size:0.4rem; line-height:1;">
+			<div id="like" style="float:right; margin-left:0.217rem"><%= "收到#{@content.like}个赞"%></div>
+			<div style="float:right; margin-left:0.217rem">/</div>
 			<div id="views" style="float:right"><%= "有#{@content.views}个路人来过"%></div>
 		</div>
-		<hr style="margin-top:0.217rem">
-		<div id="content" style="margin-top:0.952rem">
+		<hr style="margin-top:0.24rem">
+		<div id="content" style="margin-top:0.96rem">
 			<%=raw @content.body_html%>
 		</div>
 	</body>

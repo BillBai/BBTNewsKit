@@ -3,38 +3,43 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<style type="text/css">
 		  body {font-family: "Heiti"; margin-top: 0; margin-bottom: 1rem; margin-left: 0; margin-right: 0}
-		  p {font-size: 0.8095rem; line-height: 1.19rem; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0.476rem; color: #262626}
-		  span {font-size: 0.8095rem; line-height: 1.19rem}
+		  p {font-size: 0.64rem; line-height: 1.16rem; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0.476rem; color: #262626}
+		  span {font-size: 0.64rem; line-height: 1.16rem}
 		  img { margin-left: 0; margin-top: 0.286rem; margin-right: 0px; margin-bottom: 0.286rem}
 		</style>
 		<script type="text/javascript">
-			var size = screen.width * 0.065625
+			var size = document.documentElement.clientWidth * 0.0694
 			console.log(size)
 			document.getElementById('root').style.fontSize = size
 		</script>
 	</head>
 	<body style="letter-spacing:0">
-		<div id="head" style="padding:0; margin-top: 0.714rem; font-size: 1rem; color:#1a1a1a; line-height:1">
+		<div id="head" style="padding:0; margin-top: 0.96rem; font-size: 1rem; color:#1a1a1a; line-height:1">
 			<%=@content.title%>
 		</div>
-		<div id="description" style="margin-top: 0.565rem; font-size:0.565rem;">
-			<%= @content.description %>
+		<div id="description" style="padding:0; margin-top: 0.4rem; font-size:0.52rem; ">
+			<%=@content.description%>
 		</div>
-		<div id="subhead" style="margin-top:0.9rem; font-size:0.565rem; line-height:1">
+		<div id="subhead" style="margin-top:0.9rem; font-size:0.52rem; line-height:1">
 			<%= "#{@content.created_at.to_date.year}年#{@content.created_at.to_date.month}月#{@content.created_at.to_date.day}日" %>
 		</div>
-		<div id="subhead2" style="font-size:0.565rem; line-height:1">
+		<div id="subhead2" style="font-size:0.52rem; line-height:1">
 			<%= "#{@content.publisher.name}/#{@content.user.display_name}" %>
 		</div>
-		<div id="info" style="height: 0.435rem; margin-top:0.435rem; font-size:0.435rem; line-height:1; ">
-			<div style="float:right; margin-left:0.435rem"><%= "收到#{@content.like}个赞"%></div>
-			<div style="float:right"><%= "有#{@content.views}个路人来过"%></div>
+		<div id="info" style="height: 0.4rem; margin-top:0.32rem; font-size:0.4rem; line-height:1;">
+			<div id="like" style="float:right; margin-left:0.217rem"><%= "收到#{@content.like}个赞"%></div>
+			<div style="float:right; margin-left:0.217rem">/</div>
+			<div id="views" style="float:right"><%= "有#{@content.views}个路人来过"%></div>
 		</div>
-		<hr style="margin-top:0.217rem">
+		<hr style="margin-top:0.24rem">
 		<div id="content" style="margin-top:0.476rem;">
 			  <% @content.photos.each do |photo| %>
 		    <a href="<%= @host_url + photo.image.url(:original) + '&photo_id=' + photo.id.to_s %>"><img width="100%" src="<%= @host_url + photo.image.url(:original) %>"></a>
-		    <p style="margin-top:0.286rem; margin-bottom:0.2rem ;color:#888; font-size:0.5rem; line-height:1.2"><%= photo.description %></p>
+		    <% if photo.description != "" %>
+		    	<p style="margin-top:0; margin-bottom:0rem ;color:#888; font-size:0.64rem; line-height:1.16"><%= photo.description %></p>
+	    	<% else %>
+		    	<div style="margin-top:0.96rem; margin-bottom:0rem"/>
+		    <% end %>
 		  <% end %>
 		</div>
 	</body>
