@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_group
-  layout false, only: [:test, :update, :update_viewsg]
+  layout false, only: [:test, :update, :update_views]
   include ContentsHelper
 
   def check_group
