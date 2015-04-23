@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     collection do
       get 'add' => 'contents#add'
       get 'test' => 'contents#test'
+      get 'update_views' => 'contents#update_views'
     end
 
     member do

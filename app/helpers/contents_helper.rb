@@ -53,8 +53,12 @@ module ContentsHelper
   end
 
   def get_video_id(url)
-    uri = URI.parse(url)
-    return /\/id_(.*)\.html/.match(uri.path)[1]
+    if url =~ URI::regexp
+      uri = URI.parse(url)
+      return /\/id_(.*)\.html/.match(uri.path)[1]
+    else
+      return ""
+    end
   end
 
   def update_html_info(html_string,views,like)

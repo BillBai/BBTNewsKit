@@ -1,4 +1,7 @@
 class Content < ActiveRecord::Base
+
+  include ContentsHelper
+
   belongs_to :author
   belongs_to :section
   belongs_to :publisher
