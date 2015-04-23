@@ -54,7 +54,11 @@ module ContentsHelper
 
   def get_video_id(url)
     if url =~ URI::regexp
-      uri = URI.parse(url)
+      begin
+        uri = URI.parse(url)
+      rescue URI::InvalidURIError => e
+        return ""
+      end
       return /\/id_(.*)\.html/.match(uri.path)[1]
     else
       return ""
