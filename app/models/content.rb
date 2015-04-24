@@ -37,19 +37,35 @@ class Content < ActiveRecord::Base
 
   def self.get_list(limit,max_id,since_id,on_focus,on_timeline,content_type,from_max,host_url)
     if content_type != nil
-      if from_max
-        temp = Content.where(content_type: Content.content_types[content_type],on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+      if on_timeline == false && on_focus == false
+        if from_max
+          temp = Content.where(parent_content_id: 0, content_type: Content.content_types[content_type], delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+        else
+          temp = Content.where(parent_content_id: 0, content_type: Content.content_types[content_type], delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+        end
       else
-        temp = Content.where(content_type: Content.content_types[content_type],on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+        if from_max
+          temp = Content.where(display_on_timeline:on_timeline, on_focus:on_focus, content_type: Content.content_types[content_type], delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+        else
+          temp = Content.where(display_on_timeline:on_timeline, on_focus:on_focus, content_type: Content.content_types[content_type], delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+        end
       end
     else
-      if from_max
-        temp = Content.where(on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+      if on_timeline == false && on_focus == false
+        if from_max
+          temp = Content.where(parent_content_id: 0, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+        else
+          temp = Content.where(parent_content_id: 0, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+        end
       else
-        temp = Content.where(on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+        if from_max
+          temp = Content.where(display_on_timeline:on_timeline, on_focus:on_focus, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+        else
+          temp = Content.where(display_on_timeline:on_timeline, on_focus:on_focus, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+        end
       end
     end
-      
+
     return get_list_item(temp,host_url)
   end
 

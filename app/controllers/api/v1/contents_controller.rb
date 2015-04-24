@@ -43,13 +43,13 @@ class Api::V1::ContentsController < ApplicationController
     @publisher_id = validate_id.call('publisher_id',params[:publisher_id],Publisher)
 
     # v1/contents
-    if params.include?('on_focus') && params[:on_focus] == 'true' && !params.include?('publisher_id')
-      @response["status"] = 0
-      @response["message"] = "ok"
-      @response["list"] = Content.get_focus(host_url)
-      render :json => @response
-      return
-    end
+    # if params.include?('on_focus') && params[:on_focus] == 'true' && !params.include?('publisher_id')
+    #   @response["status"] = 0
+    #   @response["message"] = "ok"
+    #   @response["list"] = Content.get_focus(host_url)
+    #   render :json => @response
+    #   return
+    # end
 
     if params.include?('content_type')
       case params[:content_type]
@@ -102,7 +102,7 @@ class Api::V1::ContentsController < ApplicationController
     case params[:on_timeline]
     when "true" then on_timeline = true
     when "false" then on_timeline = false
-    else on_timeline = true
+    else on_timeline = false
     end
 
     if @publisher_id != nil
