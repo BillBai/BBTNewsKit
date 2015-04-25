@@ -2,16 +2,16 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<style type="text/css">
-		  body {font-family: "Heiti"; margin-top: 0; margin-bottom: 1rem; margin-left: 0; margin-right: 0}
-		  p {font-size: 0.81rem; line-height: 1.16rem; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0.476rem; color: #262626}
-		  span {font-size: 0.81rem; line-height: 1.16rem}
+		  body {font-family: "Heiti"; margin-top: 0; margin-bottom: 1rem; margin-left: 0.64rem; margin-right: 0.64rem}
+		  p {font-size: 0.72rem; line-height: 1.16rem; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0.476rem; color: #262626}
+		  span {font-size: 0.72rem; line-height: 1.16rem}
 		  img { margin-left: 0; margin-top: 0.286rem; margin-right: 0px; margin-bottom: 0.286rem}
 		</style>
 		<script type="text/javascript">
 			var size = document.documentElement.clientWidth * 0.0694
 			console.log(size)
-			document.getElementById('root').style.fontSize = size
-			//document.getElementById('root').style.fontSize = "20px"
+			//document.getElementById('root').style.fontSize = size
+			document.getElementById('root').style.fontSize = "22px"
 		</script>
 	</head>
 	<body style="letter-spacing:0">
@@ -30,7 +30,7 @@
 			<div id="views" style="float:right"><%= "有#{@content.views}个路人来过"%></div>
 		</div>
 		<hr style="margin-top:0.24rem">
-		<div id="content" style="margin-top:0.96rem;font-size:0.81rem">
+		<div id="content" style="margin-top:0.96rem;font-size:0.72rem">
 			<%=raw @content.body_html%>
 		</div>
 	</body>
