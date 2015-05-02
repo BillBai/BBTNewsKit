@@ -10,7 +10,8 @@
 		<script type="text/javascript">
 			var size = document.documentElement.clientWidth * 0.0694
 			console.log(size)
-			document.getElementById('root').style.fontSize = size
+			document.getElementById('root').style.fontSize = "22.2px"
+			//document.getElementById('root').style.fontSize = size
 		</script>
 	</head>
 	<body style="letter-spacing:0">
@@ -20,13 +21,13 @@
 		<div id="description" style="padding:0; margin-top: 0.4rem; font-size:0.52rem; ">
 			<%=@content.description%>
 		</div>
-		<div id="subhead" style="margin-top:0.9rem; font-size:0.52rem; line-height:1">
+		<div id="subhead" style="margin-top:0.9rem; font-size:0.52rem; line-height:1; color:#666666">
 			<%= "#{@content.created_at.to_date.year}年#{@content.created_at.to_date.month}月#{@content.created_at.to_date.day}日" %>
 		</div>
-		<div id="subhead2" style="font-size:0.52rem; line-height:1">
+		<div id="subhead2" style="font-size:0.52rem; line-height:1; color:#666666">
 			<%= "#{@content.publisher.name}/#{@content.user.display_name}" %>
 		</div>
-		<div id="info" style="height: 0.4rem; margin-top:0.32rem; font-size:0.4rem; line-height:1;">
+		<div id="info" style="height: 0.4rem; margin-top:0.32rem; font-size:0.4rem; line-height:1; color:#666666">
 			<div id="like" style="float:right; margin-left:0.217rem"><%= "收到#{@content.like}个赞"%></div>
 			<div style="float:right; margin-left:0.217rem">/</div>
 			<div id="views" style="float:right"><%= "有#{@content.views}个路人来过"%></div>
