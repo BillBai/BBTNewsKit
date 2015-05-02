@@ -6,7 +6,7 @@
 		  p {font-size: 0.81rem; line-height: 1.16rem; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0.476rem; color: #262626}
 		  span {font-size: 0.81rem; line-height: 1.16rem}
 		  img { margin-left: 0; margin-top: 0.286rem; margin-right: 0px; margin-bottom: 0.286rem}
-		  #info { line-height: 0.4rem; height: 0.4rem; margin-top: 0.32rem; font-size: 0.4rem ; color: #666666}
+  		  #info { line-height: 0.4rem; height: 0.64rem; margin-top: 0.32rem; font-size: 0.4rem ; color: #666666 ; position: relative; width: 100%; border-spacing: 0}
 		</style>
 		<script type="text/javascript">
 			var size = document.documentElement.clientWidth * 0.0694
@@ -28,12 +28,20 @@
 		<div id="subhead2" style="font-size:0.52rem; line-height:1; color:#666666">
 			<%= "#{@content.publisher.name}/#{@content.user.display_name}" %>
 		</div>
-		<div id="info">
-			<div id="like" style="float:right; margin-left:0.217rem"><%= "收到#{@content.like}个赞"%></div>
-			<div style="float:right; margin-left:0.217rem">/</div>
-			<div id="views" style="float:right"><%= "有#{@content.views}个路人来过"%></div>
-		</div>
-		<hr style="margin-top:0.24rem">
+		<table id="info">
+			<tr style="margin:0"> 
+				<td style="padding:0">
+				<div id="like" style="float:right; margin-left:0.217rem"><%= "收到#{@content.like}个赞"%></div>
+				<div style="float:right; margin-left:0.217rem">/</div>
+				<div id="views" style="float:right"><%= "有#{@content.views}个路人来过"%></div>
+				</td>
+			</tr>
+			<tr style="margin-top:0">
+				<td style="padding:0">
+					<hr style="color:#000000; margin:0; margin-top:0.24rem; border-top:1; border-bottom-color:#000000">
+				</td>
+			</tr>
+		</table>
 		<div id="content" style="margin-top:0.476rem;">
 			  <% @content.photos.each do |photo| %>
 		    <a href="<%= @host_url + photo.image.url(:original) + '&photo_id=' + photo.id.to_s %>"><img width="100%" src="<%= @host_url + photo.image.url(:original) %>"></a>
