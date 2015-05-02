@@ -32,7 +32,9 @@
 			<div style="float:right; margin-left:0.217rem">/</div>
 			<div id="views" style="float:right"><%= "有#{@content.views}个路人来过"%></div>
 		</div>
-		<hr style="margin-top:0.24rem">
+		<div style="margin-top:0rem;padding-top:0.24rem">
+			<hr style="margin-top:0">
+		</div>
 		<div id="content" style="margin-top:0.476rem;">
 			  <% @content.photos.each do |photo| %>
 		    <a href="<%= @host_url + photo.image.url(:original) + '&photo_id=' + photo.id.to_s %>"><img width="100%" src="<%= @host_url + photo.image.url(:original) %>"></a>
