@@ -1,5 +1,7 @@
 class Api::V1::ContentsController < ApplicationController
   protect_from_forgery with: :null_session
+  include ContentsHelper
+
   def index
     host_url = request.protocol + request.host_with_port
 
@@ -41,13 +43,13 @@ class Api::V1::ContentsController < ApplicationController
     @publisher_id = validate_id.call('publisher_id',params[:publisher_id],Publisher)
 
     # v1/contents
-    if params.include?('focus') && params[:focus] == 'true' && !params.include?('publisher_id')
-      @response["status"] = 0
-      @response["message"] = "ok"
-      @response["list"] = Content.get_focus(host_url)
-      render :json => @response
-      return
-    end
+    # if params.include?('on_focus') && params[:on_focus] == 'true' && !params.include?('publisher_id')
+    #   @response["status"] = 0
+    #   @response["message"] = "ok"
+    #   @response["list"] = Content.get_focus(host_url)
+    #   render :json => @response
+    #   return
+    # end
 
     if params.include?('content_type')
       case params[:content_type]
@@ -100,7 +102,7 @@ class Api::V1::ContentsController < ApplicationController
     case params[:on_timeline]
     when "true" then on_timeline = true
     when "false" then on_timeline = false
-    else on_timeline = true
+    else on_timeline = false
     end
 
     if @publisher_id != nil
@@ -144,6 +146,7 @@ class Api::V1::ContentsController < ApplicationController
 
     #record views
     @content.views += 1
+    @content.template_html = update_html_info(@content.template_html,@content.views,@content.like)
     @content.save
     render :json => @content.get_detail(host_url)
   end
@@ -171,16 +174,42 @@ class Api::V1::ContentsController < ApplicationController
 
   def like
     @response = Hash.new
-      if params[:id].to_i.to_s != params[:id]
+    if params[:id].to_i.to_s != params[:id]
       @response["status"] = 1
       @response["message"] = "Invaild id"
       render :json => @response, status: 400
     elsif Content.exists?(params[:id])
       @content = Content.find(params[:id])
       @content.like += 1
-      @content.save
       @response["status"] = 0
       @response["message"] = "ok"
+      @response["like"] = @content.like
+      @content.template_html = update_html_info(@content.template_html,@content.views,@content.like)
+      @content.save
+      render :json => @response
+    else
+      @response["status"] = 2
+      @response["message"] = "content didn't exist"
+      render :json => @response, status: 400
+    end
+  end
+
+  def unlike
+    @response = Hash.new
+    if params[:id].to_i.to_s != params[:id]
+      @response["status"] = 1
+      @response["message"] = "Invaild id"
+      render :json => @response, status: 400
+    elsif Content.exists?(params[:id])
+      @content = Content.find(params[:id])
+      if @content.like > 0
+        @content.like -= 1
+      end
+      @response["status"] = 0
+      @response["message"] = "ok"
+      @response["like"] = @content.like
+      @content.template_html = update_html_info(@content.template_html,@content.views,@content.like)
+      @content.save
       render :json => @response
     else
       @response["status"] = 2

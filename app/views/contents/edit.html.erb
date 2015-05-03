@@ -37,15 +37,15 @@
     <% when 'video' %>
     <% when 'special'%>
         <hr/>
-        <%= link_to add_content_contents_path(@content, content_type: :article), {role: 'button', class: 'btn btn-primary'} do %>
-            <span class='glyphicon glyphicon-file'></span> <%= t :add_article %>
-        <% end %>
-        <%= link_to add_content_contents_path(@content, content_type: :album), {role: 'button', class: 'btn btn-primary'} do %>
-            <span class='glyphicon glyphicon-picture'></span> <%= t :add_album %>
-        <% end %>
-        <%= link_to add_content_contents_path(@content,content_type: :video), {role: 'button', class: 'btn btn-primary'} do %>
-            <span class='glyphicon glyphicon-facetime-video'></span> <%= t :add_video %>
-        <% end %>
+        <button class="btn btn-primary" id="add-article-button" onclick="add_content(this)">
+          <span class='glyphicon glyphicon-file'></span> <%= t :add_article %>
+        </button>
+        <button class="btn btn-primary" id="add-album-button" onclick="add_content(this)">
+          <span class='glyphicon glyphicon-picture'></span> <%= t :add_album %>
+        </button>
+        <button class="btn btn-primary" id="add-video-button" onclick="add_content(this)">
+          <span class='glyphicon glyphicon-facetime-video'></span> <%= t :add_video %>
+        </button>
         <%= render partial: 'list', locals: {contents: @content.subcontents} %>
     <% end %>
   </div>
@@ -108,10 +108,35 @@
   $(document).ready(function() {
       $('#summernote').summernote({
           height: 400,
+          fontsize: "26px",
+          toolbar: [
+            ['style', ['style']], // no style button
+            ['style', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear', ]],
+            //['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            //['height', ['height']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video', 'hr']],
+            ['layout',['fullscreen', 'codeview', 'undo', 'redo', 'help']]
+          ],
           onImageUpload: function(files, editor, welEdtitable) {
               sendFile(files[0], editor, welEdtitable);
               //console.log(welEdtitable);
-          }
+          },
+          onpaste: function(e) {
+            var thisNote = $(this);
+            var updatePastedText = function(someNote){
+                var original = someNote.code();
+                var cleaned = CleanPastedHTML(original); //this is where to call whatever clean function you want. I have mine in a different file, called CleanPastedHTML.
+                someNote.code('').html(cleaned); //this sets the displayed content editor to the cleaned pasted code.
+            };
+            setTimeout(function () {
+                //this kinda sucks, but if you don't do a setTimeout, 
+                //the function is called before the text is really pasted.
+                updatePastedText(thisNote);
+            }, 10);
+        }
       });
 
       function sendFile(file, editor, welEdtitable) {
@@ -158,6 +183,66 @@
       $('#content_publisher_id').val($('#content-publisher-picker').val());
       $("#content-form").submit();
   });
+
+  function add_content(obj) {
+    $('#content_author_id').val($('#content-author-picker').val());
+    $('#content_section_id').val($('#content-section-picker').val());
+    $('#content_publisher_id').val($('#content-publisher-picker').val());
+    var formData = new FormData($('#content-form')[0]);
+    $.ajax({
+        data: formData,
+        method: "PATCH",
+        url: <%=raw "'#{content_path(@content)}?new=true'"%>,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(){
+          switch(obj.id)
+          {
+            case 'add-article-button':
+              window.location.replace("<%= add_content_contents_path(@content, content_type: :article) %>")
+              break;
+            case 'add-album-button':
+              window.location.replace("<%= add_content_contents_path(@content,content_type: :album)%>")
+              break;
+            case 'add-video-button':
+              window.location.replace("<%= add_content_contents_path(@content,content_type: :video)%>")
+              break;
+            default:
+              console.log("unkonw")
+          }
+        },
+        error: function(){
+          console.log("error")
+        }
+    });
+  }
+
+function CleanPastedHTML(input) {
+  // 1. remove line breaks / Mso classes
+  var stringStripper = /(\n|\r| class=(")?Mso[a-zA-Z]+(")?)/g;
+  var output = input.replace(stringStripper, ' ');
+  // 2. strip Word generated HTML comments
+  var commentSripper = new RegExp('<!--(.*?)-->','g');
+  var output = output.replace(commentSripper, '');
+  var tagStripper = new RegExp('<(/)*(a|h[1-9]|div|meta|link|span|\\?xml:|st1:|o:|font)(.*?)>','gi');
+  // 3. remove tags leave content if any
+  output = output.replace(tagStripper, '');
+  // 4. Remove everything in between and including tags '<style(.)style(.)>'
+  var badTags = ['style', 'script','applet','embed','noframes','noscript'];
+
+  for (var i=0; i< badTags.length; i++) {
+    tagStripper = new RegExp('<'+badTags[i]+'.*?'+badTags[i]+'(.*?)>', 'gi');
+    output = output.replace(tagStripper, '');
+  }
+  // 5. remove attributes ' style="..."'
+  var badAttributes = ['style', 'start'];
+  for (var i=0; i< badAttributes.length; i++) {
+    var attributeStripper = new RegExp(' ' + badAttributes[i] + '="(.*?)"','gi');
+    output = output.replace(attributeStripper, '');
+  }
+  return "<p>" + output + "</p>";
+}
 
 </script>
 

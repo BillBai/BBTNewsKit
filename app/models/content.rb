@@ -1,4 +1,7 @@
 class Content < ActiveRecord::Base
+
+  include ContentsHelper
+
   belongs_to :author
   belongs_to :section
   belongs_to :publisher
@@ -13,7 +16,7 @@ class Content < ActiveRecord::Base
   enum status: [:draft, :pending, :approved, :rejected, :published, :archived]
   enum content_type: [:article, :album, :video, :special]
 
-  has_attached_file :header_image, :styles => { :medium => "500x500#", :thumb => "100x100#" }
+  has_attached_file :header_image, :styles => { :medium => "1280x720#", :thumb => "480x272#" }
   validates_attachment_content_type :header_image, :content_type => /\Aimage\/.*\Z/
 
   paginates_per 23
@@ -34,19 +37,35 @@ class Content < ActiveRecord::Base
 
   def self.get_list(limit,max_id,since_id,on_focus,on_timeline,content_type,from_max,host_url)
     if content_type != nil
-      if from_max
-        temp = Content.where(content_type: Content.content_types[content_type],on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+      if on_timeline == false && on_focus == false
+        if from_max
+          temp = Content.where(parent_content_id: 0, content_type: Content.content_types[content_type], delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+        else
+          temp = Content.where(parent_content_id: 0, content_type: Content.content_types[content_type], delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+        end
       else
-        temp = Content.where(content_type: Content.content_types[content_type],on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+        if from_max
+          temp = Content.where(display_on_timeline:on_timeline, on_focus:on_focus, content_type: Content.content_types[content_type], delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+        else
+          temp = Content.where(display_on_timeline:on_timeline, on_focus:on_focus, content_type: Content.content_types[content_type], delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+        end
       end
     else
-      if from_max
-        temp = Content.where(on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+      if on_timeline == false && on_focus == false
+        if from_max
+          temp = Content.where(parent_content_id: 0, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+        else
+          temp = Content.where(parent_content_id: 0, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+        end
       else
-        temp = Content.where(on_focus: on_focus,display_on_timeline: on_timeline, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+        if from_max
+          temp = Content.where(display_on_timeline:on_timeline, on_focus:on_focus, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).last(limit)
+        else
+          temp = Content.where(display_on_timeline:on_timeline, on_focus:on_focus, delete_flag: false, status: Content.statuses[:published],id: since_id..max_id).limit(limit)
+        end
       end
     end
-      
+
     return get_list_item(temp,host_url)
   end
 
@@ -108,7 +127,7 @@ class Content < ActiveRecord::Base
         publisher: {id: self.publisher.id,name: self.publisher.name, active: self.publisher.active},
         description: self.description,
         content_type: self.content_type,
-        author: {display_name: self.user.display_name },
+        author: {id: self.user.id, display_name: self.user.display_name},
         section: {id: section.id, category: section.category, module: section.module},
         created_at: self.created_at,
         updated_at: self.updated_at,
@@ -117,7 +136,8 @@ class Content < ActiveRecord::Base
         like: self.like,
         views: self.views,
         body_html: self.body_html,
-        video_url: self.video_url,
+        template_html: self.template_html,
+        video: {video_url: self.video_url,player_url: "http://player.youku.com/embed/#{self.video_id}"},
         photos: Content.get_photos(self.photos,host_url)
     }
   end
@@ -130,7 +150,7 @@ class Content < ActiveRecord::Base
         publisher: {id: self.publisher.id,name: self.publisher.name, active: self.publisher.active},
         description: self.description,
         content_type: self.content_type,
-        author: {display_name: self.user.display_name },
+        author: {id: self.user.id, display_name: self.user.display_name },
         section: {id: section.id, category: self.section.category, module: self.section.module},
         created_at: self.created_at,
         updated_at: self.updated_at,

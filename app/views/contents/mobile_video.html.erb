@@ -1,0 +1,45 @@
+<html style="padding:0;margin:0" id="root">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<style type="text/css">
+		  body {font-family: "Heiti"; margin-top: 0; margin-bottom: 1rem; margin-left: 0rem; margin-right: 0rem}
+		  p {font-size: 0.81rem; line-height: 1.16rem; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0.476rem; color: #262626}
+		  span {font-size: 0.81rem; line-height: 1.16rem}
+		  img { margin-left: 0; margin-top: 0.286rem; margin-right: 0px; margin-bottom: 0.286rem}
+  		  #info { line-height: 0.4rem; height: 0.64rem; margin-top: 0.32rem; font-size: 0.4rem ; color: #666666 ; position: relative; width: 100%; border-spacing: 0}
+		</style>
+		<script type="text/javascript">
+			var size = document.documentElement.clientWidth * 0.0694
+			console.log(size)
+			document.getElementById('root').style.fontSize = "22.2px"
+			//document.getElementById('root').style.fontSize = size
+		</script>
+	</head>
+	<body>
+		<div id="head" style="padding:0; margin-top: 0.96rem; font-size: 1rem; color:#1a1a1a; line-height:1">
+			<%=@content.title%>
+		</div>
+		<div id="subhead" style="margin-top:0.9rem; font-size:0.52rem; line-height:1">
+			<%= "#{@content.created_at.to_date.year}年#{@content.created_at.to_date.month}月#{@content.created_at.to_date.day}日" %>
+		</div>
+		<div id="subhead2" style="font-size:0.52rem; line-height:1">
+			<%= "#{@content.publisher.name}/#{@content.user.display_name}" %>
+		</div>
+		<table id="info">
+			<tr style="margin:0"> 
+				<td style="padding:0">
+				<div id="like" style="float:right; margin-left:0.217rem"><%= "收到#{@content.like}个赞"%></div>
+				<div style="float:right; margin-left:0.217rem">/</div>
+				<div id="views" style="float:right"><%= "有#{@content.views}个路人来过"%></div>
+				</td>
+			</tr>
+			<tr style="margin-top:0">
+				<td style="padding:0">
+					<hr style="color:#000000; margin:0; margin-top:0.24rem; border-top:1; border-bottom-color:#000000">
+				</td>
+			</tr>
+		</table>
+<!-- 	 	<iframe style="width:100%; height:9rem; margin-top:0.714rem" src="<%= 'http://player.youku.com/embed/' + @content.video_id %>" frameborder=0 allowfullscreen></iframe> -->
+	 	<iframe frameborder="0" style="width:100%; height:9rem; margin-top:0.714rem" src="http://v.qq.com/iframe/player.html?vid=v0151p8zin0&tiny=0&auto=0" allowfullscreen></iframe>
+	</body>
+</html>

@@ -55,7 +55,7 @@ gem 'twitter-bootstrap-rails'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -63,3 +63,4 @@ gem 'twitter-bootstrap-rails'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'nokogiri'

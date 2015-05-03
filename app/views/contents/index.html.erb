@@ -48,30 +48,29 @@
     <table class="table table-striped">
       <thead>
       <tr>
-        <th><%= t :header_img %></th>
-        <th><%= t :type %></th>
-        <th><%= t :title %></th>
-        <th><%= t :subtitle %></th>
-        <th><%= t :description %></th>
-        <th><%= t :status %></th>
-
-
+        <th class="col-md-1"><%= t :header_img %></th>
+        <th class="col-md-1"><%= t :type %></th>
+        <th class="col-md-2"><%= t :title %></th>
+        <th class="col-md-2"><%= t :subtitle %></th>
+        <th class="col-md-3"><%= t :description %></th>
+        <th class="col-md-1"><%= t :status %></th>
+        <th class="col-md-2"></th>
       </tr>
       </thead>
 
       <tbody>
       <% @contents.each do |content| %>
           <tr>
-            <td><%= image_tag content.header_image.url(:thumb) %></td>
-            <td><%=raw content_type_label(content,t(content.content_type)) %></td>
-            <td><%= content.title %></td>
-            <td><%= content.subtitle %></td>
-            <td><%= content.description %></td>
-            <td><%=raw status_label(content, t(content.status)) %></br>
+            <td class="col-md-1"><%= image_tag(content.header_image.url(:thumb), height: '100') %></td>
+            <td class="col-md-1"><%=raw content_type_label(content,t(content.content_type)) %></td>
+            <td class="col-md-2"><%= content.title %></td>
+            <td class="col-md-2"><%= content.subtitle %></td>
+            <td class="col-md-3"><%= content.description %></td>
+            <td class="col-md-1"><%=raw status_label(content, t(content.status)) %></br>
                 <%=raw focus_label(content) %></td>
 
 
-            <td><%= link_to t('show'), content_path(content),
+            <td class="col-md-2"><%= link_to t('show'), content_path(content),
                 {role: 'button', class: 'btn btn-info'}%>
             <% if current_user.can_modify_content(content.id) %>
                 <%= link_to t('edit'), edit_content_path(content),

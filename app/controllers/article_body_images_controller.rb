@@ -30,6 +30,7 @@ private
   end
 
   def body_image_url_with_id
-    "#{@article_body_image.body_image.url(:original)}?id=#{@article_body_image.id}"
+    host_url = request.protocol + request.host_with_port
+    host_url + "#{@article_body_image.body_image.url(:original)}?id=#{@article_body_image.id}"
   end
 end

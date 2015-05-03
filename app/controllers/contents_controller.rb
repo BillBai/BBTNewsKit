@@ -1,6 +1,8 @@
 class ContentsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_group
+  layout false, only: [:test, :update, :update_views]
+  include ContentsHelper
 
   def check_group
     if params[:contributions]
@@ -85,6 +87,23 @@ class ContentsController < ApplicationController
     @content = Content.find(params[:id])
 
     if @content.update(content_params)
+      #update template_html
+      @host_url = request.protocol + request.host_with_port
+      case @content.content_type
+      when 'article'
+        @content.template_html = get_mobile_html render_to_string('mobile_article')
+      when 'album'
+        @content.template_html = get_mobile_html render_to_string('mobile_album')
+      when 'video'
+        @content.video_id = get_video_id @content.video_url
+        @content.template_html = get_mobile_html render_to_string('mobile_video')
+      end
+      @content.save
+
+      if params.include?('new') and params[:new] == "true"
+        head :ok
+        return
+      end
       if @content.parent_content_id != 0 # a sub content, return to its parent page
         redirect_to action: 'edit', id: @content.parent_content
       else
@@ -168,6 +187,44 @@ class ContentsController < ApplicationController
     @content.display_on_timeline = true
     @content.save
     redirect_to action: 'show', id: @content.id
+  end
+
+  def test
+    @host_url = request.protocol + request.host_with_port
+    if params.include?('id')
+      @content = Content.find(params[:id])
+    else
+      @content = Content.find(17)
+    end
+    # @html_string = render_to_string 'mobile_article'
+    # render html: @html_string
+    render html: @content.template_html.html_safe
+  end
+
+  def update_views
+    if not current_user.super_admin?
+      render :nothing
+      return
+    end
+    @host_url = request.protocol + request.host_with_port
+    contents = Content.all
+    contents.each do |content|
+      if content.user == nil or content.publisher == nil
+        next
+      end
+      @content = content
+      case @content.content_type
+      when 'article'
+        @content.template_html = get_mobile_html render_to_string('mobile_article')
+      when 'album'
+        @content.template_html = get_mobile_html render_to_string('mobile_album')
+      when 'video'
+        @content.video_id = get_video_id @content.video_url
+        @content.template_html = get_mobile_html render_to_string('mobile_video')
+      end
+      @content.save
+    end
+    render nothing: true
   end
 
 private

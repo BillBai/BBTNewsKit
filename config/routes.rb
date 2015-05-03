@@ -8,7 +8,8 @@ Rails.application.routes.draw do
       resources :contents, only: [:index, :show] do
         member do 
           get 'subcontents'
-          patch 'like' => 'contents#like'
+          put 'like' => 'contents#like'
+          put 'unlike' => 'contents#unlike'
         end
       end
       resources :sections, only: [:index, :show] do
@@ -19,8 +20,7 @@ Rails.application.routes.draw do
       end
     end
   end
-
-
+  
   resources :users 
 
   resources :authors
@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   resources :contents do
     collection do
       get 'add' => 'contents#add'
+      get 'test' => 'contents#test'
+      get 'update_views' => 'contents#update_views'
     end
 
     member do
